@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.topclassanimation.mylibrary'
+    namespace 'com.newanimation.mylibrary'
     compileSdk 33
 
     defaultConfig {
-//        applicationId "com.topclassanimation.mylibrary"
+//        applicationId "com.newanimation.mixanimation"
         minSdk 24
         targetSdk 33
         versionCode 1

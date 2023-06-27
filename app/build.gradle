@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.topclassanimation.classyanime'
+    namespace 'com.newanimation.mixanimation'
     compileSdk 33
 
     defaultConfig {

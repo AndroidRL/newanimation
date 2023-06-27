@@ -15,7 +15,7 @@
             android:exported="false" />
         <activity android:name=".UpdateAppActivity" />
         <activity android:name=".Splash" />
-        <activity android:name="com.topclassanimation.mylibrary.QurekaInterActivity" />
+        <activity android:name="com.newanimation.mylibrary.QurekaInterActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"

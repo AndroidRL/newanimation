@@ -1,4 +1,4 @@
-package com.topclassanimation.classyanime;
+package com.newanimation.mixanimation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.topclassanimation.mylibrary.BigAnimation;
-import com.topclassanimation.mylibrary.NextAnimation;
-import com.topclassanimation.mylibrary.SmallAnimation;
+import com.newanimation.mylibrary.BigAnimation;
+import com.newanimation.mylibrary.NextAnimation;
+import com.newanimation.mylibrary.SmallAnimation;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,4 +29,5 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         NextAnimation.BackAnimation(this, null);//Back Interstitial
     }
+
 }

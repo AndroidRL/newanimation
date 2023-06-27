@@ -1,4 +1,4 @@
-package com.topclassanimation.mylibrary;
+package com.newanimation.mylibrary;
 
 import static androidx.lifecycle.Lifecycle.Event.ON_START;
 

@@ -1,4 +1,4 @@
-package com.topclassanimation.classyanime;
+package com.newanimation.mixanimation;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.topclassanimation.classyanime", appContext.getPackageName());
+        assertEquals("com.newanimation.mixanimation", appContext.getPackageName());
     }
 }

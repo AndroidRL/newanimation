@@ -1,11 +1,11 @@
-package com.topclassanimation.classyanime;
+package com.newanimation.mixanimation;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.topclassanimation.mylibrary.Splash;
+import com.newanimation.mylibrary.Splash;
 
 public class SplashActivity extends AppCompatActivity {
 

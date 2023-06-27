@@ -1,4 +1,4 @@
-package com.topclassanimation.mylibrary;
+package com.newanimation.mylibrary;
 
 import android.os.Bundle;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.topclassanimation.classyanime;
+package com.newanimation.mixanimation;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.topclassanimation.mylibrary.NextAnimation;
+import com.newanimation.mylibrary.NextAnimation;
 
 
 public class ExitScreen extends Activity {
