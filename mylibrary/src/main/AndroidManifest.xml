@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+
+    <application android:name=".MyProHelperClass">
+
+        <activity
+            android:name=".InternetErrorActivity"
+            android:exported="false" />
+        <activity android:name=".UpdateAppActivity" />
+        <activity android:name=".Splash" />
+        <activity android:name="com.topclassanimation.mylibrary.QurekaInterActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="VvMHQ8qTbnOUx1SS7gTV2dloZMX_RremcudgIVezo_tO0TSDTLUUkG5malJ63camEvhEOrnyLgkJm2gSniHLr2" />
+        <meta-data
+            android:name="applovin.sdk.verbose_logging"
+            android:value="true" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fix_white"
+    tools:context=".QurekaInterActivity">
+
+
+    <ImageView
+        android:id="@+id/inter_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/q_inter_1" />
+
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_round"
+        android:backgroundTint="#2B2A2A"
+        android:elevation="10dp"
+        android:onClick="close"
+        android:padding="2dp"
+        android:src="@drawable/close"
+        app:tint="@color/fix_white" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/gnt_outline_shape"
+        android:backgroundTint="@color/blue_color"
+        android:padding="2dp"
+        android:text="Ad"
+        android:textColor="#fff"
+        android:textSize="10sp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyLibrary</string>
+    <string name="ads_load">Ad Load...</string>
+    <string name="internet_message"><![CDATA[You are not connected to the internet.\nmake sure Wi-Fi is on, Airplane mode is off & mobile data is on and try again.]]></string>
+    <string name="internet_title">No Internet Connection</string>
+    <string name="try_again">Try Again</string>
+    <string name="install_now">Install Now</string>
+    <string name="about_update">About Update</string>
+    <string name="install_our_new_app_now_and_enjoy">➺ Install our new app now and enjoy</string>
+    <string name="we_improves_speed_and_performance_etc">➺ We improves speed and performance, etc.</string>
+</resources>
