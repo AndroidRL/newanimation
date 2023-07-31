@@ -27,7 +27,7 @@ public class NextAnimation {
     public static int intent_status;
 
     public static Intent qureka_intent;
-    public static int qureka_finish;
+
 
     /*Google*/
     public static com.google.android.gms.ads.interstitial.InterstitialAd google_InterstitialAd;
@@ -130,14 +130,11 @@ public class NextAnimation {
 
     private static void QurekaInter() {
         qureka_intent = main_intent;
-        qureka_finish = 1;
-
         if (main_intent == null) {
             main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
             main_context.finish();
         } else {
             if (intent_status == 0) {
-                qureka_finish = 0;
                 main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
             } else if (intent_status == 1) {
                 main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));

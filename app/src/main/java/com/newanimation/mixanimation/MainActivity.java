@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BigAnimation.TopAnimation(this, findViewById(R.id.top_animation), "medium");//Native Code
+        BigAnimation.TopAnimation(this, findViewById(R.id.top_animation));//Native Code
         SmallAnimation.BottomAnimation(this, findViewById(R.id.bottom_animation));//Banner Code
     }
 

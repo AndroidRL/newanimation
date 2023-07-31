@@ -71,16 +71,16 @@ public class BigAnimation {
     public static int mix_ads_native = 0;
     public static int auto_native_show_id = 0;
 
-    public static String Ad_Size = "small";
+    public static String Ad_Size = "medium";
 
 
     /**
      * NATIVE ADS CODE START
      */
-    public static void TopAnimation(Activity context1, RelativeLayout main_native1, String ad_Size) {
+    public static void TopAnimation(Activity context1, RelativeLayout main_native1) {
         main_context = context1;
         main_native = main_native1;
-        Ad_Size = ad_Size;   /*Google*/  //Small //Medium  //Big  /*Facebook*/ //Medium //Big
+        Ad_Size = MyProHelperClass.getNativeViewSize();   /*Google*/  //Small //Medium  //Big  /*Facebook*/ //Medium //Big
 
         if (!MyProHelperClass.isOnline(context1)) {
             context1.startActivity(new Intent(context1, InternetErrorActivity.class));
@@ -267,6 +267,11 @@ public class BigAnimation {
                 FacebookNativePopulateMediumShow();
             } else if (Ad_Size.equals("big")) {
                 FacebookNativePopulateShow();
+
+            } else if (Ad_Size.equals("small")) {
+
+                FacebookNativePopulateSmallShow();
+
             }
 
         } else {
@@ -305,6 +310,10 @@ public class BigAnimation {
             } else if (Ad_Size.equals("big")) {
 
                 FacebookNativePopulateShow();
+
+            } else if (Ad_Size.equals("small")) {
+
+                FacebookNativePopulateSmallShow();
 
             }
 
@@ -416,6 +425,9 @@ public class BigAnimation {
 
                 FacebookNativePopulateShow();
 
+            } else if (Ad_Size.equals("small")) {
+
+                FacebookNativePopulateSmallShow();
             }
 
         }
@@ -801,6 +813,9 @@ public class BigAnimation {
 
                         FacebookNativePopulateShow();
 
+                    } else if (Ad_Size.equals("small")) {
+
+                        FacebookNativePopulateSmallShow();
                     }
 
                 }
@@ -999,6 +1014,14 @@ public class BigAnimation {
             main_native.removeAllViews();
             main_native.addView(load_view);
 
+        } else if (Ad_Size.equals("small")) {
+            LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.load_google_native_banner, main_native, false);
+            ShimmerFrameLayout layouts = load_view.findViewById(R.id.shimmer_view_container);
+            layouts.startShimmer();
+            main_native.removeAllViews();
+            main_native.addView(load_view);
+
         }
 
 
@@ -1146,7 +1169,6 @@ public class BigAnimation {
 
     }
 
-
     //On demand Google fail code
     private static void Stop_Preload_google_fails_other_show() {
 
@@ -1176,6 +1198,9 @@ public class BigAnimation {
 
                             FacebookNativePopulateShow();
 
+                        } else if (Ad_Size.equals("small")) {
+
+                            FacebookNativePopulateSmallShow();
                         }
 
                     }
@@ -1331,6 +1356,9 @@ public class BigAnimation {
 
                                         FacebookNativePopulateShow();
 
+                                    } else if (Ad_Size.equals("small")) {
+
+                                        FacebookNativePopulateSmallShow();
                                     }
 
                                 }
@@ -1389,6 +1417,9 @@ public class BigAnimation {
 
                             FacebookNativePopulateShow();
 
+                        } else if (Ad_Size.equals("small")) {
+
+                            FacebookNativePopulateSmallShow();
                         }
 
                     }
@@ -1426,5 +1457,43 @@ public class BigAnimation {
         main_native.removeAllViews();
         main_native.addView(load_view);
     }
+
+
+    public static void FacebookNativePopulateSmallShow() {
+
+        LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_small_native, main_native, false);
+
+        facebook_native_ads.unregisterView();
+
+        // Create native UI using the ad metadata.
+        com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
+        TextView nativeAdTitle = adView.findViewById(R.id.native_ad_title);
+        TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
+        TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
+        TextView nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+
+        // Set the Text.
+        nativeAdTitle.setText(facebook_native_ads.getAdvertiserName());
+        nativeAdBody.setText(facebook_native_ads.getAdBodyText());
+        nativeAdCallToAction.setVisibility(facebook_native_ads.hasCallToAction() ? View.VISIBLE : View.INVISIBLE);
+        nativeAdCallToAction.setText(facebook_native_ads.getAdCallToAction());
+        nativeAdCallToAction.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(MyProHelperClass.getGooglebutton_color())));
+        sponsoredLabel.setText(facebook_native_ads.getSponsoredTranslation());
+
+        // Create a list of clickable views
+        List<View> clickableViews = new ArrayList<>();
+        clickableViews.add(nativeAdTitle);
+        clickableViews.add(nativeAdCallToAction);
+
+        // Register the Title and CTA button to listen for clicks.
+        facebook_native_ads.registerViewForInteraction(adView, nativeAdIcon, clickableViews);
+
+        main_native.removeAllViews();
+        main_native.addView(adView);
+
+    }
+
 }
 
