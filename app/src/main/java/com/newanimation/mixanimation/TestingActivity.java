@@ -17,7 +17,7 @@ public class TestingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing);
-        BigAnimation.TopAnimation(this, findViewById(R.id.top_animation),"big");
+        BigAnimation.TopAnimation(this, findViewById(R.id.top_animation));
         SmallAnimation.BottomAnimation(this, findViewById(R.id.bottom_animation));//Banner Code
     }
 

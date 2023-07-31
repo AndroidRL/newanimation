@@ -17,20 +17,27 @@ public class QurekaInterActivity extends AppCompatActivity {
         setContentView(R.layout.qureka_inter);
         int A = MyProHelperClass.inter_ads.size() - 1;
         Glide.with(QurekaInterActivity.this).load(MyProHelperClass.inter_ads.get(MyProHelperClass.getRandomNumber(0, A))).into((ImageView) findViewById(R.id.inter_image));
-        ((ImageView) findViewById(R.id.inter_image)).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+        ((ImageView) findViewById(R.id.inter_image)).setOnClickListener(v ->
+                {
+                    if (NextAnimation.qureka_intent == null) {
+                        finish();
+                    } else {
+                        startActivity(NextAnimation.qureka_intent);
+                        finish();
+                    }
+                    MyProHelperClass.BtnAutolink();
+                }
+        );
     }
 
     public void close(View view) {
         if (NextAnimation.qureka_intent == null) {
             finish();
         } else {
-            if (NextAnimation.qureka_finish == 1) {
-                startActivity(NextAnimation.qureka_intent);
-                finish();
-            } else {
-                startActivity(NextAnimation.qureka_intent);
-            }
+            startActivity(NextAnimation.qureka_intent);
+            finish();
         }
+        MyProHelperClass.BtnAutolink();
     }
 
     @Override

@@ -22,6 +22,8 @@ import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxAdView;
 import com.bumptech.glide.Glide;
 import com.facebook.ads.Ad;
+import com.facebook.ads.NativeAdListener;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -30,6 +32,8 @@ import com.unity3d.services.banners.BannerErrorInfo;
 import com.unity3d.services.banners.BannerView;
 import com.unity3d.services.banners.UnityBannerSize;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SmallAnimation {
@@ -48,6 +52,9 @@ public class SmallAnimation {
     /*Facebook*/
     public static com.facebook.ads.AdView regular_facebook_banner_adView = null;
     public static int AutoLoadFBBannerID;
+
+    public static com.facebook.ads.NativeAd facebook_native_ads = null;
+
 
     /*AppLovin*/
     public static MaxAdView regular_applovin_banner_adView = null;
@@ -136,7 +143,10 @@ public class SmallAnimation {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
             RegularGoogleADSBannerShow("r");
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
-            RegularFacebookBannerShow();
+            if (MyProHelperClass.getShowBannerNative().equals("0"))
+                RegularFacebookSmallNative();
+            else
+                RegularFacebookBannerShow();
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
             RegularAppLovingBannerShow();
         } else if (MyProHelperClass.getUnityEnable().equals("1")) {
@@ -402,6 +412,7 @@ public class SmallAnimation {
     private static void MixAdsShow(String value) {
         int A;
         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
+            GoogleSmallBannerLoadDialog();
             A = 1;
         } else {
             A = 0;
@@ -413,9 +424,15 @@ public class SmallAnimation {
                 RegularGoogleADSBannerShow("r");
         } else if (value.equals("f")) {
             if (A == 1)
-                onDemandFacebookBannerShow();
+                if (MyProHelperClass.getShowBannerNative().equals("0"))
+                    onDemandFacebookSmallNative();
+                else
+                    onDemandFacebookBannerShow();
+            else if (MyProHelperClass.getShowBannerNative().equals("0"))
+                RegularFacebookSmallNative();
             else
                 RegularFacebookBannerShow();
+
         } else if (value.equals("a")) {
             if (A == 1)
                 onDemandAppLovingBannerShow();
@@ -596,6 +613,7 @@ public class SmallAnimation {
     }
 
     /*Facebook*/
+    //Banner
     public static void FacebookBannerPreLoad() {
 
         String fb_load_id = null;
@@ -641,6 +659,39 @@ public class SmallAnimation {
         com.facebook.ads.AdView.AdViewLoadConfig loadAdConfig = regular_facebook_banner_adView.buildLoadAdConfig().withAdListener(adListener).build();
         regular_facebook_banner_adView.loadAd(loadAdConfig);
 
+    }
+
+    //Small native
+    public static void FacebookNativeBannerPreLoad() {
+        facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+        NativeAdListener nativeAdListener = new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
+
+            }
+
+            @Override
+            public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                facebook_native_ads = null;
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+
+
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+
+            }
+        };
+        facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
     }
 
     /*AppLoving*/
@@ -787,13 +838,17 @@ public class SmallAnimation {
             }
         }
 
+        if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+            if (facebook_native_ads == null) {
+                FacebookNativeBannerPreLoad();
+            }
+        }
 
         if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
             if (regular_facebook_banner_adView == null) {
                 FacebookBannerPreLoad();
             }
         }
-
 
         if (MyProHelperClass.getAppLovinBanner() != null && !MyProHelperClass.getAppLovinBanner().isEmpty()) {
             if (regular_applovin_banner_adView == null) {
@@ -815,12 +870,19 @@ public class SmallAnimation {
 
     private static void onDemandBanner() {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
+            GoogleSmallBannerLoadDialog();
             onDemandGoogleADSBannerShow();
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
+            GoogleSmallBannerLoadDialog();
+            if (MyProHelperClass.getShowBannerNative().equals("0"))
+                onDemandFacebookSmallNative();
+            else
             onDemandFacebookBannerShow();
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
+            GoogleSmallBannerLoadDialog();
             onDemandAppLovingBannerShow();
         } else if (MyProHelperClass.getUnityEnable().equals("1")) {
+            GoogleSmallBannerLoadDialog();
             onDemandUnityBannerShow();
         } else if (MyProHelperClass.getQurekaADS().equals("1")) {
             QurekaBanner();
@@ -828,6 +890,7 @@ public class SmallAnimation {
             main_banner.removeAllViews();
         }
     }
+
 
     private static void onDemandGoogleADSBannerShow() {
         regular_google_banner_ad_loader = new AdLoader.Builder(main_context, MyProHelperClass.getGoogleBanner()).forNativeAd(nativeAds -> {
@@ -868,6 +931,43 @@ public class SmallAnimation {
         }).build();
         regular_google_banner_ad_loader.loadAd(new AdRequest.Builder().build());
     }
+
+    private static void onDemandFacebookSmallNative() {
+
+        facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+        NativeAdListener nativeAdListener = new NativeAdListener() {
+            @Override
+            public void onMediaDownloaded(Ad ad) {
+
+            }
+
+            @Override
+            public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                facebook_native_ads = null;
+//                FB_Fails_Other_Show();
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+//                if (facebook_native_ads != null && facebook_native_ads.isAdLoaded())
+                FacebookNativePopulateSmallShow();
+//                else
+//                    FB_Fails_Other_Show();
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+
+            }
+        };
+        facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+    }
+
 
     private static void onDemandFacebookBannerShow() {
 
@@ -1014,15 +1114,48 @@ public class SmallAnimation {
     //Google fails
     private static void Google_Fails_Other_Show() {
 
-        if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+        if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+            facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+            NativeAdListener nativeAdListener = new NativeAdListener() {
+                @Override
+                public void onMediaDownloaded(Ad ad) {
+
+                }
+
+                @Override
+                public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                    facebook_native_ads = null;
+                    Google_Fails_FB_Fails_Other_Show();
+                }
+
+                @Override
+                public void onAdLoaded(Ad ad) {
+                    if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                        FacebookNativePopulateSmallShow();
+                    } else {
+                        Google_Fails_FB_Fails_Other_Show();
+                    }
+                }
+
+                @Override
+                public void onAdClicked(Ad ad) {
+
+                }
+
+                @Override
+                public void onLoggingImpression(Ad ad) {
+
+                }
+            };
+            facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+
+        } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
             regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
             com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
                 @Override
                 public void onError(Ad ad, com.facebook.ads.AdError adError) {
                     //Google
                     Google_Fails_FB_Fails_Other_Show();
-
-
                 }
 
                 @Override
@@ -1050,12 +1183,9 @@ public class SmallAnimation {
             };
             com.facebook.ads.AdView.AdViewLoadConfig loadAdConfig = regular_facebook_banner_adView.buildLoadAdConfig().withAdListener(adListener).build();
             regular_facebook_banner_adView.loadAd(loadAdConfig);
-
         } else {
-
             Google_Fails_FB_Fails_Other_Show();
         }
-
     }
 
     private static void Google_Fails_FB_Fails_Other_Show() {
@@ -1138,7 +1268,6 @@ public class SmallAnimation {
                 public void onAdFailedToLoad(@NonNull LoadAdError adError) {
                     Google_Fails_FB_Fails_Other_Show();
 
-
                 }
 
                 @Override
@@ -1187,7 +1316,42 @@ public class SmallAnimation {
             }).withAdListener(new AdListener() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                    if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+
+                    if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                        facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+                        NativeAdListener nativeAdListener = new NativeAdListener() {
+                            @Override
+                            public void onMediaDownloaded(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                                facebook_native_ads = null;
+                                All_Fails_Unity_Show();
+                            }
+
+                            @Override
+                            public void onAdLoaded(Ad ad) {
+                                if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                                    FacebookNativePopulateSmallShow();
+                                } else {
+                                    All_Fails_Unity_Show();
+                                }
+                            }
+
+                            @Override
+                            public void onAdClicked(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onLoggingImpression(Ad ad) {
+
+                            }
+                        };
+                        facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+                    } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
 
                         regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
                         com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
@@ -1238,7 +1402,41 @@ public class SmallAnimation {
                     if (regular_google_native_banner != null) {
                         RegularGoogleBannerPopulateShow(regular_google_native_banner);
                     } else {
-                        if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                        if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                            facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+                            NativeAdListener nativeAdListener = new NativeAdListener() {
+                                @Override
+                                public void onMediaDownloaded(Ad ad) {
+
+                                }
+
+                                @Override
+                                public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                                    facebook_native_ads = null;
+                                    All_Fails_Unity_Show();
+                                }
+
+                                @Override
+                                public void onAdLoaded(Ad ad) {
+                                    if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                                        FacebookNativePopulateSmallShow();
+                                    } else {
+                                        All_Fails_Unity_Show();
+                                    }
+                                }
+
+                                @Override
+                                public void onAdClicked(Ad ad) {
+
+                                }
+
+                                @Override
+                                public void onLoggingImpression(Ad ad) {
+
+                                }
+                            };
+                            facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+                        } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
 
                             regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
                             com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
@@ -1332,7 +1530,6 @@ public class SmallAnimation {
 
     }
 
-
     //Unity Fails
     private static void Unity_Fails_Other_Show() {
 
@@ -1343,7 +1540,41 @@ public class SmallAnimation {
             }).withAdListener(new AdListener() {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError adError) {
-                    if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                    if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                        facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+                        NativeAdListener nativeAdListener = new NativeAdListener() {
+                            @Override
+                            public void onMediaDownloaded(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                                facebook_native_ads = null;
+                                main_banner.removeAllViews();
+                            }
+
+                            @Override
+                            public void onAdLoaded(Ad ad) {
+                                if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                                    FacebookNativePopulateSmallShow();
+                                } else {
+                                    main_banner.removeAllViews();
+                                }
+                            }
+
+                            @Override
+                            public void onAdClicked(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onLoggingImpression(Ad ad) {
+
+                            }
+                        };
+                        facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+                    } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
 
                         regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
                         com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
@@ -1577,7 +1808,41 @@ public class SmallAnimation {
                     if (regular_google_native_banner != null) {
                         RegularGoogleBannerPopulateShow(regular_google_native_banner);
                     } else {
-                        if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                        if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                            facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+                            NativeAdListener nativeAdListener = new NativeAdListener() {
+                                @Override
+                                public void onMediaDownloaded(Ad ad) {
+
+                                }
+
+                                @Override
+                                public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                                    facebook_native_ads = null;
+                                    main_banner.removeAllViews();
+                                }
+
+                                @Override
+                                public void onAdLoaded(Ad ad) {
+                                    if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                                        FacebookNativePopulateSmallShow();
+                                    } else {
+                                        main_banner.removeAllViews();
+                                    }
+                                }
+
+                                @Override
+                                public void onAdClicked(Ad ad) {
+
+                                }
+
+                                @Override
+                                public void onLoggingImpression(Ad ad) {
+
+                                }
+                            };
+                            facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+                        } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
 
                             regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
                             com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
@@ -1803,7 +2068,6 @@ public class SmallAnimation {
 
                     }
                 }
-
                 @Override
                 public void onAdImpression() {
                     super.onAdImpression();
@@ -1817,7 +2081,165 @@ public class SmallAnimation {
             }).build();
             regular_google_banner_ad_loader.loadAd(new AdRequest.Builder().build());
 
-        } else if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+        } else if (MyProHelperClass.getShowBannerNative().equals("0") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+            facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookBanner());
+            NativeAdListener nativeAdListener = new NativeAdListener() {
+                @Override
+                public void onMediaDownloaded(Ad ad) {
+
+                }
+
+                @Override
+                public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                    facebook_native_ads = null;
+                    if (MyProHelperClass.getAppLovinBanner() != null && !MyProHelperClass.getAppLovinBanner().isEmpty()) {
+
+                        regular_applovin_banner_adView = new MaxAdView(MyProHelperClass.getAppLovinBanner(), main_context);
+                        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+                        int dpHeightInPx = (int) (50 * main_context.getResources().getDisplayMetrics().density);
+                        regular_applovin_banner_adView.setLayoutParams(new FrameLayout.LayoutParams(width, dpHeightInPx));
+                        regular_applovin_banner_adView.setListener(new MaxAdViewAdListener() {
+                            @Override
+                            public void onAdExpanded(MaxAd ad) {
+
+                            }
+
+                            @Override
+                            public void onAdCollapsed(MaxAd ad) {
+
+                            }
+
+                            @Override
+                            public void onAdLoaded(MaxAd ad) {
+                                if (regular_applovin_banner_adView != null) {
+                                    main_banner.removeAllViews();
+                                    main_banner.addView(regular_applovin_banner_adView);
+                                } else {
+                                    main_banner.removeAllViews();
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onAdDisplayed(MaxAd ad) {
+
+                            }
+
+                            @Override
+                            public void onAdHidden(MaxAd ad) {
+
+                            }
+
+                            @Override
+                            public void onAdClicked(MaxAd ad) {
+
+                            }
+
+                            @Override
+                            public void onAdLoadFailed(String adUnitId, MaxError error) {
+                                regular_applovin_banner_adView = null;
+                                main_banner.removeAllViews();
+
+                            }
+
+                            @Override
+                            public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+                            }
+                        });
+                        regular_applovin_banner_adView.loadAd();
+                        regular_applovin_banner_adView.startAutoRefresh();
+
+                    } else {
+                        main_banner.removeAllViews();
+                    }
+                }
+
+                @Override
+                public void onAdLoaded(Ad ad) {
+                    if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                        FacebookNativePopulateSmallShow();
+                    } else {
+                        if (MyProHelperClass.getAppLovinBanner() != null && !MyProHelperClass.getAppLovinBanner().isEmpty()) {
+
+                            regular_applovin_banner_adView = new MaxAdView(MyProHelperClass.getAppLovinBanner(), main_context);
+                            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+                            int dpHeightInPx = (int) (50 * main_context.getResources().getDisplayMetrics().density);
+                            regular_applovin_banner_adView.setLayoutParams(new FrameLayout.LayoutParams(width, dpHeightInPx));
+                            regular_applovin_banner_adView.setListener(new MaxAdViewAdListener() {
+                                @Override
+                                public void onAdExpanded(MaxAd ad) {
+
+                                }
+
+                                @Override
+                                public void onAdCollapsed(MaxAd ad) {
+
+                                }
+
+                                @Override
+                                public void onAdLoaded(MaxAd ad) {
+                                    if (regular_applovin_banner_adView != null) {
+                                        main_banner.removeAllViews();
+                                        main_banner.addView(regular_applovin_banner_adView);
+                                    } else {
+                                        main_banner.removeAllViews();
+
+                                    }
+
+                                }
+
+                                @Override
+                                public void onAdDisplayed(MaxAd ad) {
+
+                                }
+
+                                @Override
+                                public void onAdHidden(MaxAd ad) {
+
+                                }
+
+                                @Override
+                                public void onAdClicked(MaxAd ad) {
+
+                                }
+
+                                @Override
+                                public void onAdLoadFailed(String adUnitId, MaxError error) {
+                                    regular_applovin_banner_adView = null;
+                                    main_banner.removeAllViews();
+
+                                }
+
+                                @Override
+                                public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+                                }
+                            });
+                            regular_applovin_banner_adView.loadAd();
+                            regular_applovin_banner_adView.startAutoRefresh();
+
+                        } else {
+                            main_banner.removeAllViews();
+                        }
+                    }
+                }
+
+                @Override
+                public void onAdClicked(Ad ad) {
+
+                }
+
+                @Override
+                public void onLoggingImpression(Ad ad) {
+
+                }
+            };
+            facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
+
+
+        } else if (MyProHelperClass.getShowBannerNative().equals("1") && MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
 
             regular_facebook_banner_adView = new com.facebook.ads.AdView(main_context, MyProHelperClass.getFacebookBanner(), com.facebook.ads.AdSize.BANNER_HEIGHT_50);
             com.facebook.ads.AdListener adListener = new com.facebook.ads.AdListener() {
@@ -2096,4 +2518,61 @@ public class SmallAnimation {
         main_banner.removeAllViews();
         main_banner.addView(load_view);
     }
+
+    private static void GoogleSmallBannerLoadDialog() {
+
+        LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.load_google_native_banner, main_banner, false);
+        ShimmerFrameLayout layouts = load_view.findViewById(R.id.shimmer_view_container);
+        layouts.startShimmer();
+        main_banner.removeAllViews();
+        main_banner.addView(load_view);
+    }
+
+
+    private static void RegularFacebookSmallNative() {
+        if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+            FacebookNativePopulateSmallShow();
+        } else {
+            RegularGoogleADSBannerShow("f");
+        }
+        AllAdsPreLoadsBanner("f");
+    }
+
+    public static void FacebookNativePopulateSmallShow() {
+
+        LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_small_native, main_banner, false);
+
+        facebook_native_ads.unregisterView();
+
+        // Create native UI using the ad metadata.
+        com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
+        TextView nativeAdTitle = adView.findViewById(R.id.native_ad_title);
+        TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
+        TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
+        TextView nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+
+        // Set the Text.
+        nativeAdTitle.setText(facebook_native_ads.getAdvertiserName());
+        nativeAdBody.setText(facebook_native_ads.getAdBodyText());
+        nativeAdCallToAction.setVisibility(facebook_native_ads.hasCallToAction() ? View.VISIBLE : View.INVISIBLE);
+        nativeAdCallToAction.setText(facebook_native_ads.getAdCallToAction());
+        nativeAdCallToAction.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(MyProHelperClass.getGooglebutton_color())));
+        sponsoredLabel.setText(facebook_native_ads.getSponsoredTranslation());
+
+        // Create a list of clickable views
+        List<View> clickableViews = new ArrayList<>();
+        clickableViews.add(nativeAdTitle);
+        clickableViews.add(nativeAdCallToAction);
+
+        // Register the Title and CTA button to listen for clicks.
+        facebook_native_ads.registerViewForInteraction(adView, nativeAdIcon, clickableViews);
+
+        main_banner.removeAllViews();
+        main_banner.addView(adView);
+
+    }
+
 }

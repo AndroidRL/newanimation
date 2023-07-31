@@ -69,7 +69,7 @@ public class MyProHelperClass extends Application {
         });
         /*Facebook*/
         AudienceNetworkAds.initialize(this);
-//        AdSettings.setTestMode(true);
+      //  AdSettings.setTestMode(true);
 
         /*App Lovin*/
         AppLovinSdk.getInstance(this).setMediationProvider("max");
@@ -251,6 +251,23 @@ public class MyProHelperClass extends Application {
     /**
      * Facebook
      */
+
+    public static void setShowBannerNative(String ShowBannerNative) {
+        editor.putString("ShowBannerNative", ShowBannerNative).commit();
+    } // Native //Banner
+
+    public static String getShowBannerNative() {
+        return sharedPreferences.getString("ShowBannerNative", "0");
+    }
+
+    public static void setNativeViewSize(String NativeViewSize) {
+        editor.putString("NativeViewSize", NativeViewSize).commit();
+    } // Native //Banner
+
+    public static String getNativeViewSize() {
+        return sharedPreferences.getString("NativeViewSize", "0");
+    }
+
     public static void setFacebookEnable(String FacebookEnable) {
         editor.putString("FacebookEnable", FacebookEnable).commit();
     }

@@ -224,7 +224,6 @@ public class Splash extends AppCompatActivity {
                                 MyProHelperClass.Autolink();
                             }
 
-
                             /**
                              * App Loving
                              */
@@ -351,6 +350,22 @@ public class Splash extends AppCompatActivity {
                             } else {
                                 MyProHelperClass.setmix_ad_inter(null);
                             }
+
+                            /**
+                             * Banner or native
+                             */
+                            if (response.getString("banner_replace_native") != null && !response.getString("banner_replace_native").isEmpty()) {
+                                MyProHelperClass.setShowBannerNative(response.getString("banner_replace_native"));
+                            } else {
+                                MyProHelperClass.setShowBannerNative(null);
+                            }
+
+                            if (response.getString("native_size") != null && !response.getString("native_size").isEmpty()) {
+                                MyProHelperClass.setNativeViewSize(response.getString("native_size"));
+                            } else {
+                                MyProHelperClass.setNativeViewSize(null);
+                            }
+
 
                             /**
                              *Extra Data
@@ -1295,10 +1310,17 @@ public class Splash extends AppCompatActivity {
         }
 
         /*Facebook Banner*/
-        if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
-            SmallAnimation.AutoLoadFBBannerID = 1;
-            SmallAnimation.FacebookBannerPreLoad();
+        if (MyProHelperClass.getShowBannerNative().equals("0")){
+            if (MyProHelperClass.getNative_preload() != null && !MyProHelperClass.getNative_preload().isEmpty()) {
+                SmallAnimation.FacebookNativeBannerPreLoad();
+            }
+        }else {
+            if (MyProHelperClass.getFacebookBanner() != null && !MyProHelperClass.getFacebookBanner().isEmpty()) {
+                SmallAnimation.AutoLoadFBBannerID = 1;
+                SmallAnimation.FacebookBannerPreLoad();
+            }
         }
+
 
         /*AppLoving Banner*/
         if (MyProHelperClass.getAppLovinBanner() != null && !MyProHelperClass.getAppLovinBanner().isEmpty()) {
