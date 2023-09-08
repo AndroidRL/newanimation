@@ -70,7 +70,7 @@
                                     android:gravity="left"
                                     android:maxLines="1"
                                     android:singleLine="true"
-                                    android:text="Ad will be load"
+                                    android:text="Ad will be loading..."
                                     android:textColor="#000"
                                     android:textSize="14.0sp"
                                     android:textStyle="bold" />
@@ -113,20 +113,7 @@
                             android:textSize="13.0sp"
                             android:textStyle="bold" />
                     </LinearLayout>
-
-
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/gnt_outline_shape"
-                    android:backgroundTint="#000"
-                    android:padding="2dp"
-                    android:text="Ad"
-                    android:textColor="#fff"
-                    android:textSize="10sp" />
-
 
             </RelativeLayout>
         </LinearLayout>

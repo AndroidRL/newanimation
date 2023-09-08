@@ -3,7 +3,7 @@
     android:id="@+id/ad_view_small_banner"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F2F2F2">
+    android:background="#F6F5F5">
 
     <LinearLayout
         android:id="@+id/linear_ads_shows_small_banner"

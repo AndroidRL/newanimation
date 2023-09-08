@@ -22,6 +22,8 @@ import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxAdView;
 import com.bumptech.glide.Glide;
 import com.facebook.ads.Ad;
+import com.facebook.ads.AdOptionsView;
+import com.facebook.ads.NativeAdLayout;
 import com.facebook.ads.NativeAdListener;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
@@ -224,16 +226,26 @@ public class SmallAnimation {
     }
 
     private static void Google_Fails_Facebook_Banner_Show() {
-        if (regular_facebook_banner_adView != null) {
-            main_banner.removeAllViews();
-            main_banner.addView(regular_facebook_banner_adView);
+
+        if (MyProHelperClass.getShowBannerNative().equals("0")) {
+            if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                FacebookNativePopulateSmallShow();
+            } else {
+                Google_Facebook_Fails_AppLovin_Unity_Banner_Show();
+            }
         } else {
-            Google_Facebook_Fails_AppLovin_Unity_Banner_Show();
+            if (regular_facebook_banner_adView != null) {
+                main_banner.removeAllViews();
+                main_banner.addView(regular_facebook_banner_adView);
+            } else {
+                Google_Facebook_Fails_AppLovin_Unity_Banner_Show();
+            }
         }
         AllAdsPreLoadsBanner("f");
     }
 
     private static void Google_Facebook_Fails_AppLovin_Unity_Banner_Show() {
+
         if (regular_applovin_banner_adView != null) {
             main_banner.removeAllViews();
             main_banner.addView(regular_applovin_banner_adView);
@@ -247,6 +259,8 @@ public class SmallAnimation {
         if (regular_unity_banner_adView != null) {
             main_banner.removeAllViews();
             main_banner.addView(regular_unity_banner_adView);
+        } else {
+            QurekaBanner();
         }
         AllAdsPreLoadsBanner("u");
     }
@@ -319,11 +333,19 @@ public class SmallAnimation {
     }
 
     private static void Applovin_Google_Fails_Facebook_Unity_Banner_Show() {
-        if (regular_facebook_banner_adView != null) {
-            main_banner.removeAllViews();
-            main_banner.addView(regular_facebook_banner_adView);
+        if (MyProHelperClass.getShowBannerNative().equals("0")) {
+            if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                FacebookNativePopulateSmallShow();
+            } else {
+                Google_Facebook_AppLovin_Fails_Unity_Banner_Show();
+            }
         } else {
-            Google_Facebook_AppLovin_Fails_Unity_Banner_Show();
+            if (regular_facebook_banner_adView != null) {
+                main_banner.removeAllViews();
+                main_banner.addView(regular_facebook_banner_adView);
+            } else {
+                Google_Facebook_AppLovin_Fails_Unity_Banner_Show();
+            }
         }
         AllAdsPreLoadsBanner("f");
     }
@@ -340,11 +362,19 @@ public class SmallAnimation {
     }
 
     private static void Unity_Google_Fails_Facebook_Applovin_Banner_Show() {
-        if (regular_facebook_banner_adView != null) {
-            main_banner.removeAllViews();
-            main_banner.addView(regular_facebook_banner_adView);
+        if (MyProHelperClass.getShowBannerNative().equals("0")) {
+            if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
+                FacebookNativePopulateSmallShow();
+            } else {
+                Unity_Google_Facebook_Fails_Applovin_Banner_Show();
+            }
         } else {
-            Unity_Google_Facebook_Fails_Applovin_Banner_Show();
+            if (regular_facebook_banner_adView != null) {
+                main_banner.removeAllViews();
+                main_banner.addView(regular_facebook_banner_adView);
+            } else {
+                Unity_Google_Facebook_Fails_Applovin_Banner_Show();
+            }
         }
         AllAdsPreLoadsBanner("f");
     }
@@ -353,6 +383,8 @@ public class SmallAnimation {
         if (regular_applovin_banner_adView != null) {
             main_banner.removeAllViews();
             main_banner.addView(regular_applovin_banner_adView);
+        } else {
+            QurekaBanner();
         }
         AllAdsPreLoadsBanner("a");
     }
@@ -424,10 +456,11 @@ public class SmallAnimation {
                 RegularGoogleADSBannerShow("r");
         } else if (value.equals("f")) {
             if (A == 1)
-                if (MyProHelperClass.getShowBannerNative().equals("0"))
+                if (MyProHelperClass.getShowBannerNative().equals("0")) {
                     onDemandFacebookSmallNative();
-                else
+                } else {
                     onDemandFacebookBannerShow();
+                }
             else if (MyProHelperClass.getShowBannerNative().equals("0"))
                 RegularFacebookSmallNative();
             else
@@ -673,6 +706,7 @@ public class SmallAnimation {
             @Override
             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                 facebook_native_ads = null;
+
             }
 
             @Override
@@ -874,10 +908,11 @@ public class SmallAnimation {
             onDemandGoogleADSBannerShow();
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
             GoogleSmallBannerLoadDialog();
-            if (MyProHelperClass.getShowBannerNative().equals("0"))
+            if (MyProHelperClass.getShowBannerNative().equals("0")) {
                 onDemandFacebookSmallNative();
-            else
-            onDemandFacebookBannerShow();
+            } else {
+                onDemandFacebookBannerShow();
+            }
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
             GoogleSmallBannerLoadDialog();
             onDemandAppLovingBannerShow();
@@ -944,15 +979,15 @@ public class SmallAnimation {
             @Override
             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                 facebook_native_ads = null;
-//                FB_Fails_Other_Show();
+                FB_Fails_Other_Show();
             }
 
             @Override
             public void onAdLoaded(Ad ad) {
-//                if (facebook_native_ads != null && facebook_native_ads.isAdLoaded())
-                FacebookNativePopulateSmallShow();
-//                else
-//                    FB_Fails_Other_Show();
+                if (facebook_native_ads != null && facebook_native_ads.isAdLoaded())
+                    FacebookNativePopulateSmallShow();
+                else
+                    FB_Fails_Other_Show();
             }
 
             @Override
@@ -2068,6 +2103,7 @@ public class SmallAnimation {
 
                     }
                 }
+
                 @Override
                 public void onAdImpression() {
                     super.onAdImpression();
@@ -2115,7 +2151,7 @@ public class SmallAnimation {
                                     main_banner.removeAllViews();
                                     main_banner.addView(regular_applovin_banner_adView);
                                 } else {
-                                    main_banner.removeAllViews();
+                                    QurekaBanner();
 
                                 }
 
@@ -2139,7 +2175,8 @@ public class SmallAnimation {
                             @Override
                             public void onAdLoadFailed(String adUnitId, MaxError error) {
                                 regular_applovin_banner_adView = null;
-                                main_banner.removeAllViews();
+                                QurekaBanner();
+                                ;
 
                             }
 
@@ -2152,7 +2189,7 @@ public class SmallAnimation {
                         regular_applovin_banner_adView.startAutoRefresh();
 
                     } else {
-                        main_banner.removeAllViews();
+                        QurekaBanner();
                     }
                 }
 
@@ -2269,7 +2306,7 @@ public class SmallAnimation {
                                     main_banner.removeAllViews();
                                     main_banner.addView(regular_applovin_banner_adView);
                                 } else {
-                                    main_banner.removeAllViews();
+                                    QurekaBanner();
 
                                 }
 
@@ -2293,7 +2330,7 @@ public class SmallAnimation {
                             @Override
                             public void onAdLoadFailed(String adUnitId, MaxError error) {
                                 regular_applovin_banner_adView = null;
-                                main_banner.removeAllViews();
+                                QurekaBanner();
 
                             }
 
@@ -2306,7 +2343,7 @@ public class SmallAnimation {
                         regular_applovin_banner_adView.startAutoRefresh();
 
                     } else {
-                        main_banner.removeAllViews();
+                        QurekaBanner();
 
                     }
                 }
@@ -2420,8 +2457,7 @@ public class SmallAnimation {
                         main_banner.removeAllViews();
                         main_banner.addView(regular_applovin_banner_adView);
                     } else {
-                        main_banner.removeAllViews();
-
+                        QurekaBanner();
                     }
 
                 }
@@ -2457,8 +2493,7 @@ public class SmallAnimation {
             regular_applovin_banner_adView.startAutoRefresh();
 
         } else {
-            main_banner.removeAllViews();
-
+            QurekaBanner();
         }
 
     }
@@ -2476,8 +2511,7 @@ public class SmallAnimation {
                         main_banner.removeAllViews();
                         main_banner.addView(regular_unity_banner_adView);
                     } else {
-                        main_banner.removeAllViews();
-
+                        QurekaBanner();
                     }
                 }
 
@@ -2501,22 +2535,24 @@ public class SmallAnimation {
             regular_unity_banner_adView.load();
 
         } else {
-            main_banner.removeAllViews();
-
+            QurekaBanner();
         }
 
     }
 
     private static void QurekaBanner() {
-        LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_banner, main_banner, false);
-        ImageView image = load_view.findViewById(R.id.q_image);
-        LinearLayout ad_unit = load_view.findViewById(R.id.ad_unit_qureka);
-        int A = MyProHelperClass.banner_ads.size() - 1;
-        Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, A))).into(image);
-        ad_unit.setOnClickListener(v -> MyProHelperClass.BtnAutolink());
-        main_banner.removeAllViews();
-        main_banner.addView(load_view);
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+
+            LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_banner, false);
+            Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+            load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+            main_banner.removeAllViews();
+            main_banner.addView(load_view);
+
+        }else {
+            main_banner.removeAllViews();
+        }
     }
 
     private static void GoogleSmallBannerLoadDialog() {
@@ -2543,9 +2579,15 @@ public class SmallAnimation {
 
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_small_native, main_banner, false);
+        NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_small_native, main_banner, false);
 
         facebook_native_ads.unregisterView();
+
+        // Add the AdOptionsView
+        LinearLayout adChoicesContainer = adView.findViewById(R.id.ad_choices_container);
+        AdOptionsView adOptionsView = new AdOptionsView(main_context, facebook_native_ads, adView);
+        adChoicesContainer.removeAllViews();
+        adChoicesContainer.addView(adOptionsView, 0);
 
         // Create native UI using the ad metadata.
         com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);

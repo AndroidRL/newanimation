@@ -201,12 +201,13 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="@color/fix_black"
-            android:paddingHorizontal="3dp"
+            android:background="@drawable/gnt_outline_shape"
+            android:backgroundTint="#000"
+            android:padding="2dp"
             android:text="Ad"
             android:textColor="#fff"
             android:textSize="10sp" />

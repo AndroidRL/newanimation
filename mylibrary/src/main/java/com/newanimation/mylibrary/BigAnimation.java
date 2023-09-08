@@ -1,5 +1,9 @@
 package com.newanimation.mylibrary;
 
+import static com.newanimation.mylibrary.MyProHelperClass.getRandomNumber;
+import static com.newanimation.mylibrary.MyProHelperClass.native_ads;
+import static com.newanimation.mylibrary.MyProHelperClass.round_ads;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.nativeAds.MaxNativeAdListener;
@@ -22,6 +28,8 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.bumptech.glide.Glide;
 import com.facebook.ads.Ad;
+import com.facebook.ads.AdOptionsView;
+import com.facebook.ads.NativeAdLayout;
 import com.facebook.ads.NativeAdListener;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.ads.AdListener;
@@ -144,10 +152,8 @@ public class BigAnimation {
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
             GoogleSmallNativeLoadDialog();
             StopPreAppLovingNative();
-        } else if (MyProHelperClass.getUnityEnable().equals("1")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreUnityNative();
         } else if (MyProHelperClass.getQurekaADS().equals("1")) {
+            GoogleSmallNativeLoadDialog();
             QurekaNative();
         } else {
             main_native.removeAllViews();
@@ -285,6 +291,8 @@ public class BigAnimation {
         if (appLoving_native_ads != null) {
             main_native.removeAllViews();
             main_native.addView(max_nativeAdView);
+        }else {
+            QurekaNative();
         }
         AllAdsPreLoadsNative("a");
     }
@@ -328,10 +336,16 @@ public class BigAnimation {
 
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        // LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_native_layout, main_native, false);
-        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_medium_native, main_native, false);
+        NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_medium_native, main_native, false);
 
         facebook_native_ads.unregisterView();
+
+        // Add the AdOptionsView
+        LinearLayout adChoicesContainer = adView.findViewById(R.id.ad_choices_container);
+        AdOptionsView adOptionsView = new AdOptionsView(main_context, facebook_native_ads, adView);
+        adChoicesContainer.removeAllViews();
+        adChoicesContainer.addView(adOptionsView, 0);
+
 
         // Create native UI using the ad metadata.
         com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
@@ -367,11 +381,14 @@ public class BigAnimation {
 
     public static void FacebookNativePopulateShow() {
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_big_native, main_native, false);
-//        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_medium_native_layout, main_native, false);
-
+        NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_big_native, main_native, false);
         facebook_native_ads.unregisterView();
+
+        // Add the AdOptionsView
+        LinearLayout adChoicesContainer = adView.findViewById(R.id.ad_choices_container);
+        AdOptionsView adOptionsView = new AdOptionsView(main_context, facebook_native_ads, adView);
+        adChoicesContainer.removeAllViews();
+        adChoicesContainer.addView(adOptionsView, 0);
 
         // Create native UI using the ad metadata.
         com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
@@ -381,6 +398,7 @@ public class BigAnimation {
         TextView nativeAdBody = adView.findViewById(R.id.native_ad_body);
         TextView sponsoredLabel = adView.findViewById(R.id.native_ad_sponsored_label);
         TextView nativeAdCallToAction = adView.findViewById(R.id.native_ad_call_to_action);
+
 
         // Set the Text.
         nativeAdTitle.setText(facebook_native_ads.getAdvertiserName());
@@ -430,6 +448,8 @@ public class BigAnimation {
                 FacebookNativePopulateSmallShow();
             }
 
+        }else {
+            QurekaNative();
         }
         AllAdsPreLoadsNative("f");
     }
@@ -795,7 +815,6 @@ public class BigAnimation {
             public void onMediaDownloaded(Ad ad) {
 
             }
-
             @Override
             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                 facebook_native_ads = null;
@@ -862,62 +881,6 @@ public class BigAnimation {
         }).build().loadAd(new AdRequest.Builder().build());
     }
 
-
-    public static void RegularGoogleBannerPopulateShow
-            (com.google.android.gms.ads.nativead.NativeAd nativeAd) {
-        View layout_ad_view = LayoutInflater.from(main_context).inflate(R.layout.ad_google_native_banner, null);
-        com.google.android.gms.ads.nativead.NativeAdView native_ad_view = layout_ad_view.findViewById(R.id.ad_view_small_banner);
-        native_ad_view.setHeadlineView(native_ad_view.findViewById(R.id.ad_headline_small_banner));
-        native_ad_view.setBodyView(native_ad_view.findViewById(R.id.ad_body_small_banner));
-        native_ad_view.setCallToActionView(native_ad_view.findViewById(R.id.ad_call_to_action_small_banner));
-
-        native_ad_view.setIconView(native_ad_view.findViewById(R.id.ad_app_icon_small_banner));
-        ((TextView) Objects.requireNonNull(native_ad_view.getHeadlineView())).setText(nativeAd.getHeadline());
-        ((TextView) Objects.requireNonNull(native_ad_view.getBodyView())).setText(nativeAd.getBody());
-        ((TextView) Objects.requireNonNull(native_ad_view.getCallToActionView())).setText(nativeAd.getCallToAction());
-        ((TextView) Objects.requireNonNull(native_ad_view.getCallToActionView())).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(MyProHelperClass.getGooglebutton_color())));
-
-        if (nativeAd.getIcon() == null) {
-            Objects.requireNonNull(native_ad_view.getIconView()).setVisibility(View.GONE);
-        } else {
-            ((ImageView) Objects.requireNonNull(native_ad_view.getIconView())).setImageDrawable(nativeAd.getIcon().getDrawable());
-            native_ad_view.getIconView().setVisibility(View.VISIBLE);
-        }
-        native_ad_view.setNativeAd(nativeAd);
-        main_native.removeAllViews();
-        main_native.addView(layout_ad_view);
-    }
-
-    private static void StopPreUnityNative() {
-        regular_unity_banner_adView = new BannerView((Activity) main_context, MyProHelperClass.getUnityBannerID(), new UnityBannerSize(320, 50));
-        regular_unity_banner_adView.setListener(new BannerView.IListener() {
-            @Override
-            public void onBannerLoaded(BannerView bannerAdView) {
-                if (regular_unity_banner_adView != null) {
-                    main_native.removeAllViews();
-                    main_native.addView(regular_unity_banner_adView);
-                }
-            }
-
-            @Override
-            public void onBannerFailedToLoad(BannerView bannerAdView, BannerErrorInfo errorInfo) {
-                regular_unity_banner_adView = null;
-                main_native.removeAllViews();
-            }
-
-            @Override
-            public void onBannerClick(BannerView bannerAdView) {
-
-            }
-
-            @Override
-            public void onBannerLeftApplication(BannerView bannerAdView) {
-            }
-        });
-        regular_unity_banner_adView.load();
-
-    }
-
     private static void StopPreLoadNativeMixAds() {
         if (MyProHelperClass.getmix_ad_native().length() == 0) {
             main_native.removeAllViews();
@@ -976,9 +939,6 @@ public class BigAnimation {
         } else if (value.equals("a")) {
             GoogleSmallNativeLoadDialog();
             StopPreAppLovingNative();
-        } else if (value.equals("u")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreUnityNative();
         } else if (value.equals("z")) {
             QurekaNative();
         } else {
@@ -1028,9 +988,16 @@ public class BigAnimation {
     }
 
     public static void FacebookNativeLoadDialog() {
+        if (Ad_Size.equals("small")) {
 
+            LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.load_google_native_banner, main_native, false);
+            ShimmerFrameLayout layouts = load_view.findViewById(R.id.shimmer_view_container);
+            layouts.startShimmer();
+            main_native.removeAllViews();
+            main_native.addView(load_view);
 
-        if (Ad_Size.equals("medium")) {
+        } else if (Ad_Size.equals("medium")) {
 
             LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.load_fb_medium_native, main_native, false);
@@ -1052,14 +1019,18 @@ public class BigAnimation {
     }
 
     private static void GoogleNativePopulaterLargeShow(com.google.android.gms.ads.nativead.NativeAd native_ads) {
+
         NativeAdView nativeAdView = (NativeAdView) main_context.getLayoutInflater().inflate(R.layout.ad_google_big_native, (ViewGroup) null);
-        nativeAdView.setMediaView((MediaView) nativeAdView.findViewById(R.id.ad_media));
-        ((MediaView) nativeAdView.findViewById(R.id.ad_media)).setImageScaleType(ImageView.ScaleType.CENTER_INSIDE);
         nativeAdView.setHeadlineView(nativeAdView.findViewById(R.id.ad_headline));
         nativeAdView.setBodyView(nativeAdView.findViewById(R.id.ad_body));
+
+
+        nativeAdView.setMediaView((MediaView) nativeAdView.findViewById(R.id.ad_media));
+        ((MediaView) nativeAdView.findViewById(R.id.ad_media)).setImageScaleType(ImageView.ScaleType.CENTER_INSIDE);
         nativeAdView.setCallToActionView(nativeAdView.findViewById(R.id.ad_call_to_action));
         nativeAdView.setIconView(nativeAdView.findViewById(R.id.ad_app_icon));
         nativeAdView.getMediaView().setMediaContent(native_ads.getMediaContent());
+
         try {
             ((TextView) nativeAdView.getHeadlineView()).setText(native_ads.getHeadline());
             if (native_ads.getBody() == null) {
@@ -1246,7 +1217,7 @@ public class BigAnimation {
                 @Override
                 public void onNativeAdLoadFailed(final String adUnitId, final MaxError error) {
                     appLoving_native_ads = null;
-                    main_native.removeAllViews();
+                    QurekaNative();
                 }
 
                 @Override
@@ -1257,9 +1228,7 @@ public class BigAnimation {
             appLoving_native_ads_loader.loadAd();
 
         } else {
-
-            main_native.removeAllViews();
-
+            QurekaNative();
         }
 
     }
@@ -1341,8 +1310,7 @@ public class BigAnimation {
                             @Override
                             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                                 facebook_native_ads = null;
-                                main_native.removeAllViews();
-
+                                QurekaNative();
                             }
 
                             @Override
@@ -1402,7 +1370,7 @@ public class BigAnimation {
                 @Override
                 public void onError(Ad ad, com.facebook.ads.AdError adError) {
                     facebook_native_ads = null;
-                    main_native.removeAllViews();
+                    QurekaNative();
 
                 }
 
@@ -1439,33 +1407,26 @@ public class BigAnimation {
 
         } else {
 
-            main_native.removeAllViews();
+            QurekaNative();
 
         }
 
 
     }
-
-    private static void QurekaNative() {
-        LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_native, main_native, false);
-        ImageView image = load_view.findViewById(R.id.q_image);
-        RelativeLayout ad_unit = load_view.findViewById(R.id.ad_unit_qureka);
-        int A = MyProHelperClass.native_ads.size() - 1;
-        Glide.with(main_context).load(MyProHelperClass.native_ads.get(MyProHelperClass.getRandomNumber(0, A))).into(image);
-        ad_unit.setOnClickListener(v -> MyProHelperClass.BtnAutolink());
-        main_native.removeAllViews();
-        main_native.addView(load_view);
-    }
-
-
     public static void FacebookNativePopulateSmallShow() {
 
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        LinearLayout adView = (LinearLayout) inflater.inflate(R.layout.ad_fb_small_native, main_native, false);
+        NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_small_native, main_native, false);
 
         facebook_native_ads.unregisterView();
+
+        // Add the AdOptionsView
+        LinearLayout adChoicesContainer = adView.findViewById(R.id.ad_choices_container);
+        AdOptionsView adOptionsView = new AdOptionsView(main_context, facebook_native_ads, adView);
+        adChoicesContainer.removeAllViews();
+        adChoicesContainer.addView(adOptionsView, 0);
+
 
         // Create native UI using the ad metadata.
         com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
@@ -1492,6 +1453,61 @@ public class BigAnimation {
 
         main_native.removeAllViews();
         main_native.addView(adView);
+
+    }
+
+    /**
+     * App Qureka ADS
+     */
+    private static void QurekaNative() {
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+
+            if (Ad_Size.equals("small")) {
+
+                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_native, false);
+                Glide.with(main_context).load(MyProHelperClass.banner_ads.get(getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+                load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                main_native.removeAllViews();
+                main_native.addView(load_view);
+
+            } else if (Ad_Size.equals("medium")) {
+
+                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_medium_native, main_native, false);
+
+                Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
+                int getNumber = getRandomNumber(0, native_ads.size() - 1);
+                Glide.with(main_context).load(native_ads.get(getNumber).getImage()).into((ImageView) load_view.findViewById(R.id.q_image));
+                ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
+                ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
+
+
+                load_view.findViewById(R.id.qureka_medium_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                main_native.removeAllViews();
+                main_native.addView(load_view);
+
+
+            } else if (Ad_Size.equals("big")) {
+                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_big_native, main_native, false);
+
+                Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
+                int getNumber = getRandomNumber(0, native_ads.size() - 1);
+                Glide.with(main_context).load(native_ads.get(getNumber).getImage()).into((ImageView) load_view.findViewById(R.id.q_image));
+                ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
+                ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
+
+                load_view.findViewById(R.id.qureka_big_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                main_native.removeAllViews();
+                main_native.addView(load_view);
+            }
+
+        }else {
+            main_native.removeAllViews();
+        }
 
     }
 
