@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.facebook.ads.NativeAdLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ad_unit"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_190sdp"
+    android:layout_height="wrap_content"
     android:background="#F6F5F5"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/gnt_outline_shape"
-            android:backgroundTint="@color/blue_color"
-            android:padding="2dp"
-            android:text="Ad"
-            android:textColor="#fff"
-            android:textSize="10sp" />
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="10dp"
                 android:paddingStart="@dimen/_5sdp"
+                android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <com.facebook.ads.MediaView
@@ -66,12 +54,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ad_choices_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal" />
 
             </LinearLayout>
 
@@ -98,6 +80,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:lines="1"
+                        android:text=""
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp" />
 
@@ -108,6 +91,7 @@
                         android:ellipsize="end"
                         android:gravity="center_vertical"
                         android:lines="2"
+                        android:text=""
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
@@ -121,7 +105,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:background="@drawable/app_btn"
-                    android:backgroundTint="@color/blue_color"
+                    android:backgroundTint="@color/fix_black"
                     android:gravity="center"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
@@ -131,5 +115,24 @@
                     android:visibility="visible" />
             </RelativeLayout>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gnt_outline_shape"
+             android:backgroundTint="@color/fix_black"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="@color/fix_white"
+            android:textSize="10sp" />
+
+        <LinearLayout
+            android:id="@+id/ad_choices_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="horizontal" />
+
     </RelativeLayout>
-</LinearLayout>
+</com.facebook.ads.NativeAdLayout>

@@ -20,6 +20,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
+import com.facebook.ads.AdSettings;
 import com.facebook.ads.AudienceNetworkAds;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -42,8 +43,9 @@ public class MyProHelperClass extends Application {
     public static int Google_banner_number;
 
     public static ArrayList<Integer> banner_ads = new ArrayList<>();
-    public static ArrayList<Integer> native_ads = new ArrayList<>();
-    public static ArrayList<Integer> inter_ads = new ArrayList<>();
+    public static ArrayList<QurekaModel> native_ads = new ArrayList<>();
+    public static ArrayList<QurekaModel> inter_ads = new ArrayList<>();
+    public static ArrayList<Integer> round_ads = new ArrayList<>();
 
 
     public static synchronized MyProHelperClass getInstanceHelp() {
@@ -69,7 +71,7 @@ public class MyProHelperClass extends Application {
         });
         /*Facebook*/
         AudienceNetworkAds.initialize(this);
-      //  AdSettings.setTestMode(true);
+//        AdSettings.setTestMode(true);
 
         /*App Lovin*/
         AppLovinSdk.getInstance(this).setMediationProvider("max");
@@ -79,16 +81,16 @@ public class MyProHelperClass extends Application {
             }
         });
 
-        sharedPreferences = getSharedPreferences("babaji", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("ADS_CODE", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         super.onCreate();
-        AllArrlist();
 
+        AllArrayList();
 
     }
 
-    private void AllArrlist() {
+    private void AllArrayList() {
 
         banner_ads.add(R.drawable.q_banner_1);
         banner_ads.add(R.drawable.q_banner_2);
@@ -98,25 +100,32 @@ public class MyProHelperClass extends Application {
         banner_ads.add(R.drawable.q_banner_6);
         banner_ads.add(R.drawable.q_banner_7);
 
-        native_ads.add(R.drawable.q_native_1);
-        native_ads.add(R.drawable.q_native_2);
-        native_ads.add(R.drawable.q_native_3);
-        native_ads.add(R.drawable.q_native_4);
-        native_ads.add(R.drawable.q_native_5);
-        native_ads.add(R.drawable.q_native_6);
-        native_ads.add(R.drawable.q_native_7);
-        native_ads.add(R.drawable.q_native_8);
-        native_ads.add(R.drawable.q_native_9);
-        native_ads.add(R.drawable.q_native_10);
+        native_ads.add(new QurekaModel(R.drawable.q_native_1, "SSC, Bank Po kaliyar karna hai?", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_2, "50,000 coin k liye....", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_3, "Play quiz 50,000 coin earn.", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_4, "50,000 coin k liye 10+2 quiz live hai..", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_5, "Play quiz 10+2 AND Earn up to 50,000 coin ", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_6, "PLAY BANK PO 50,000 COINS", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_7, "10+2 EXAM QUIZ FOR 50,000 COIN IS LIVE", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_8, "HISTORY QUIZ FOR 15,000 COINS", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_9, "PLAY GK QUIZ Earn upto 50,000 coins", "Not App Install, Click and play game now..."));
+        native_ads.add(new QurekaModel(R.drawable.q_native_10, "PLAY QUIZZES Earn upto 50,000 coins daily", "Not App Install, Click and play game now..."));
 
 
-        inter_ads.add(R.drawable.q_inter_1);
-        inter_ads.add(R.drawable.q_inter_2);
-        inter_ads.add(R.drawable.q_inter_3);
-        inter_ads.add(R.drawable.q_inter_4);
-        inter_ads.add(R.drawable.q_inter_5);
-        inter_ads.add(R.drawable.q_inter_6);
-        inter_ads.add(R.drawable.q_inter_7);
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_1, "MEGA QUIZ FOR 5,00,000 COIN OPEN", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_2, "PLAY TECH QUIZ & EARN UP TO 15,000 COIN", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_3, "PLAY GK QUIZ AND Earn up to 50,000 coins", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_4, "Play Quizzes In Categories Earn up to 50,000 coins", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_5, "Play IPL QUIZ NOW & Earn up to 50,000 coins", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_6, "Play Cricket Quiz and win up tp 50,000 coins", "Not App Install, Click and play game now..."));
+        inter_ads.add(new QurekaModel(R.drawable.q_inter_7, "History quiz for 15,000 COIN LIVE NOW", "Not App Install, Click and play game now..."));
+
+        round_ads.add(R.drawable.q_round_1);
+        round_ads.add(R.drawable.q_round_2);
+        round_ads.add(R.drawable.q_round_3);
+        round_ads.add(R.drawable.q_round_4);
+        round_ads.add(R.drawable.q_round_5);
+        round_ads.add(R.drawable.q_round_6);
 
     }
 
@@ -531,22 +540,40 @@ public class MyProHelperClass extends Application {
     }
 
     /**
-     * Skip Country
+     * All Fail show qureka
+     * Fix Ad
      */
-    public static void setSkip_country_on_off(String skip_country_on_off) {
-        editor.putString("skip_country_on_off", skip_country_on_off).commit();
+
+    public static void setQurekaShow_AfterFails(String QurekaShow_AfterFails) {
+        editor.putString("QurekaShow_AfterFails", QurekaShow_AfterFails).commit();
     }
 
-    public static String getSkip_country_on_off() {
-        return sharedPreferences.getString("skip_country_on_off", null);
+    public static String getQurekaShow_AfterFails() {
+        return sharedPreferences.getString("QurekaShow_AfterFails", null);
     }
 
-    public static void setSkip_country_list(String skip_country_list) {
-        editor.putString("skip_country_list", skip_country_list).commit();
+    public static void setQurekaFixAds(String QurekaFixAds) {
+        editor.putString("QurekaFixAds", QurekaFixAds).commit();
     }
 
-    public static String getSkip_country_list() {
-        return sharedPreferences.getString("skip_country_list", null);
+    public static String getQurekaFixAds() {
+        return sharedPreferences.getString("QurekaFixAds", null);
+    }
+
+    public static void setQurekaInterSkipTime(String QurekaInterSkipTime) {
+        editor.putString("QurekaInterSkipTime", QurekaInterSkipTime).commit();
+    }
+
+    public static String getQurekaInterSkipTime() {
+        return sharedPreferences.getString("QurekaInterSkipTime", "0");
+    }
+
+    public static void setQurekaCloseBTNAutoOpenLink(String QurekaCloseBTNAutoOpenLink) {
+        editor.putString("QurekaCloseBTNAutoOpenLink", QurekaCloseBTNAutoOpenLink).commit();
+    }
+
+    public static String getQurekaCloseBTNAutoOpenLink() {
+        return sharedPreferences.getString("QurekaCloseBTNAutoOpenLink", null);
     }
 
 
@@ -739,6 +766,42 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("Banner_preload", null);
     }
 
+    /**
+     * Facebook Sdk
+     */
+
+    public static void setFacebookSDK(String FacebookSDK) {
+        editor.putString("FacebookSDK", FacebookSDK).commit();
+    }
+
+    public static String getFacebookSDK() {
+        return sharedPreferences.getString("FacebookSDK", null);
+    }
+
+    public static void setACCESS_TOKEN(String ACCESS_TOKEN) {
+        editor.putString("ACCESS_TOKEN", ACCESS_TOKEN).commit();
+    }
+
+    public static String getACCESS_TOKEN() {
+        return sharedPreferences.getString("ACCESS_TOKEN", null);
+    }
+
+    public static void setAPP_SECRET(String APP_SECRET) {
+        editor.putString("APP_SECRET", APP_SECRET).commit();
+    }
+
+    public static String getAPP_SECRET() {
+        return sharedPreferences.getString("APP_SECRET", null);
+    }
+
+    public static void setACCOUNT_ID(String ACCOUNT_ID) {
+        editor.putString("ACCOUNT_ID", ACCOUNT_ID).commit();
+    }
+
+    public static String getACCOUNT_ID() {
+        return sharedPreferences.getString("ACCOUNT_ID", null);
+    }
+
 
     public static void LinkopenChromeCustomTabUrl(Context context, String Link) {
 
@@ -746,7 +809,7 @@ public class MyProHelperClass extends Application {
 
             if (isAppInstalled("com.android.chrome", context)) {
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.purple_700, null));
+                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.fix_black, null));
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.intent.setPackage("com.android.chrome");
                 customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -755,7 +818,7 @@ public class MyProHelperClass extends Application {
 
             } else {
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.purple_700, null));
+                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.fix_black, null));
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 customTabsIntent.launchUrl(context, Uri.parse(Link));
@@ -799,7 +862,7 @@ public class MyProHelperClass extends Application {
         try {
             if (MyProHelperClass.isAppInstalled("com.android.chrome", context)) {
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.purple_700, null));
+                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.fix_black, null));
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.intent.setPackage("com.android.chrome");
                 customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -807,7 +870,7 @@ public class MyProHelperClass extends Application {
 
             } else {
                 CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.purple_700, null));
+                builder.setToolbarColor(ResourcesCompat.getColor(context.getResources(), R.color.fix_black, null));
                 CustomTabsIntent customTabsIntent = builder.build();
                 customTabsIntent.intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 customTabsIntent.launchUrl(context, Uri.parse(Link));

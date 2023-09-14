@@ -3,7 +3,7 @@
     android:id="@+id/ad_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_105sdp"
-    android:background="#fff">
+    android:background="#F6F5F5">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -126,7 +126,7 @@
                                 android:gravity="center"
                                 android:includeFontPadding="false"
                                 android:text="SPONSORED"
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="10dp" />
                         </RelativeLayout>
 
@@ -151,7 +151,7 @@
                                 android:maxLines="1"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -171,7 +171,7 @@
                                 android:includeFontPadding="false"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="12sp"
                                 android:visibility="visible" />
 
@@ -206,7 +206,7 @@
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text="Install"
-                    android:textColor="#fff"
+                    android:textColor="@color/fix_white"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -214,18 +214,16 @@
 
         </LinearLayout>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="#000"
-            android:paddingVertical="2dp"
-            android:paddingStart="2dp"
-            android:paddingEnd="5dp"
+            android:background="@drawable/gnt_outline_shape"
+            android:backgroundTint="@color/fix_black"
+            android:padding="2dp"
             android:text="Ad"
-            android:textColor="#fff"
+            android:textColor="@color/fix_white"
             android:textSize="10sp" />
-
 
     </RelativeLayout>
 </com.google.android.gms.ads.nativead.NativeAdView>

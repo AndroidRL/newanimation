@@ -38,10 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/mina_btn"
         android:layout_centerInParent="true"
-        android:paddingHorizontal="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         android:fontFamily="sans-serif"
         android:gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
         android:text="@string/internet_message"
         android:textColor="#7C7C7C"
         android:textSize="14sp" />

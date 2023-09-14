@@ -3,7 +3,7 @@
     android:id="@+id/ad_view_small_banner"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#F2F2F2">
+    android:background="#F6F5F5">
 
     <LinearLayout
         android:id="@+id/linear_ads_shows_small_banner"
@@ -118,13 +118,13 @@
                         android:layout_marginRight="5.0dip"
                         android:layout_marginBottom="5.0dip"
                         android:background="@drawable/app_btn"
-                        android:backgroundTint="#000"
+                        android:backgroundTint="@color/fix_black"
                         android:gravity="center"
                         android:paddingLeft="05dp"
                         android:paddingRight="05dp"
                         android:singleLine="true"
                         android:text="Install"
-                        android:textColor="#fff"
+                        android:textColor="@color/fix_white"
                         android:textSize="13.0sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -135,10 +135,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/gnt_outline_shape"
-                android:backgroundTint="#000"
+                android:backgroundTint="@color/fix_black"
                 android:padding="2dp"
                 android:text="Ad"
-                android:textColor="#fff"
+                android:textColor="@color/fix_white"
                 android:textSize="10sp" />
 
         </RelativeLayout>

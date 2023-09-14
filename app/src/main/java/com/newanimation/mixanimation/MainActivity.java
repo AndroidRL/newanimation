@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BigAnimation.TopAnimation(this, findViewById(R.id.top_animation));//Native Code
         SmallAnimation.BottomAnimation(this, findViewById(R.id.bottom_animation));//Banner Code
-    }
+     }
 
     public void ADS(View view) {
         NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class), 0);//Next Interstitial

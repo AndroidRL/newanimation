@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.facebook.ads.NativeAdLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ad_unit"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_105sdp"
-    android:background="@color/fix_white"
+    android:background="#F6F5F5"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -47,6 +47,7 @@
                             android:layout_gravity="center_horizontal"
                             android:padding="@dimen/_3sdp"
                             android:visibility="visible" />
+
 
                     </RelativeLayout>
 
@@ -129,7 +130,7 @@
                                 android:includeFontPadding="false"
                                 android:singleLine="true"
                                 android:text="SPONSORED"
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="10dp" />
                         </RelativeLayout>
 
@@ -154,7 +155,7 @@
                                 android:maxLines="1"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -174,7 +175,7 @@
                                 android:includeFontPadding="false"
                                 android:singleLine="true"
                                 android:text=""
-                                android:textColor="#000"
+                                android:textColor="@color/fix_black"
                                 android:textSize="12sp"
                                 android:visibility="visible" />
 
@@ -205,12 +206,12 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:background="@drawable/app_btn"
-                    android:backgroundTint="@color/blue_color"
+                    android:backgroundTint="@color/fix_black"
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text="Install"
-                    android:textColor="#fff"
+                    android:textColor="@color/fix_white"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -221,14 +222,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="@color/blue_color"
+            android:background="@color/fix_black"
+            android:backgroundTint="@color/fix_black"
             android:paddingVertical="2dp"
             android:paddingStart="2dp"
             android:paddingEnd="5dp"
             android:text="Ad"
-            android:textColor="#fff"
+            android:textColor="@color/fix_white"
             android:textSize="10sp" />
 
+        <LinearLayout
+            android:id="@+id/ad_choices_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="end"
+            android:orientation="horizontal" />
+
     </RelativeLayout>
-</LinearLayout>
+</com.facebook.ads.NativeAdLayout>

@@ -56,19 +56,11 @@ public class ExitScreen extends Activity {
         dialog.setContentView(R.layout.back_dialog_exit);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-        dialog.findViewById(R.id.no_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        dialog.findViewById(R.id.no_btn).setOnClickListener(view -> dialog.dismiss());
 
-        dialog.findViewById(R.id.yes_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                yes();
-                dialog.dismiss();
-            }
+        dialog.findViewById(R.id.yes_btn).setOnClickListener(view -> {
+            yes();
+            dialog.dismiss();
         });
         dialog.show();
     }

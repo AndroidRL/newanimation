@@ -74,7 +74,7 @@
                             android:layout_height="@dimen/_15sdp"
                             android:layout_marginStart="15dp"
                             android:layout_marginTop="5dp"
-                            android:text="Ad Loading..."
+                            android:text="Ad will be loading..."
                             android:textSize="@dimen/_12sdp"
                             android:textColor="@color/black"
                             app:layout_constraintStart_toEndOf="@+id/item_profile_img"
