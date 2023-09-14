@@ -9,7 +9,11 @@ import com.newanimation.mylibrary.Splash;
 
 public class SplashActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     public static String Token = "73a06ccf11f1736e29076e4387de472c494e9d06";
+=======
+    public static String Token = "e9b06db6a7c3dc0d4704550b393740c9ea3785fe";
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

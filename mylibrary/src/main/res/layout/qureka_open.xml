@@ -3,7 +3,11 @@
     android:id="@+id/full_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#00000000"
+=======
+    android:background="#D0000000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,6 +37,20 @@
                 android:textStyle="bold"
                 android:textSize="18sp" />
 
+<<<<<<< HEAD
+=======
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:lines="1"
+                android:text="Ad"
+                android:textColor="#535353"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
         </LinearLayout>
 
@@ -95,29 +113,49 @@
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text="SPONSORED"
+<<<<<<< HEAD
                     android:textColor="@color/fix_black"
+=======
+                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:textSize="10dp" />
 
                 <TextView
                     android:id="@+id/ad_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text=""
                     android:textColor="@color/fix_black"
+=======
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:text=""
+                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/ad_dis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:ellipsize="end"
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text=""
                     android:textColor="@color/fix_black"
                     android:textSize="12sp"
+=======
+                    android:includeFontPadding="false"
+                    android:text="Not App Install, Click and play game now.."
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:visibility="visible" />
 
             </LinearLayout>
@@ -125,6 +163,7 @@
 
         </LinearLayout>
 
+<<<<<<< HEAD
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -134,6 +173,8 @@
             android:text="Ad"
             android:textColor="@color/fix_white"
             android:textSize="10sp" />
+=======
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
     </RelativeLayout>
 

@@ -57,7 +57,11 @@
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text="SPONSORED"
+<<<<<<< HEAD
                     android:textColor="@color/fix_black"
+=======
+                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:textSize="10dp" />
 
                 <TextView
@@ -66,7 +70,11 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="MEGA QUIZ COIN"
+<<<<<<< HEAD
                     android:textColor="@color/fix_black"
+=======
+                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:textSize="14sp" />
 
                 <TextView
@@ -76,7 +84,11 @@
                     android:includeFontPadding="false"
                     android:singleLine="true"
                     android:text="Not App Install, Click and play game now.."
+<<<<<<< HEAD
                     android:textColor="@color/fix_black"
+=======
+                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:textSize="12sp"
                     android:visibility="visible" />
 
@@ -98,7 +110,11 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:text="Play Now"
+<<<<<<< HEAD
             android:textColor="@color/fix_white"
+=======
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="17sp"
             android:textStyle="bold" />
 
@@ -106,10 +122,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="2dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="10sp" />
 
 

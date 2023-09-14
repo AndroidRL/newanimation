@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/fix_white"
+=======
+    android:background="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
     android:orientation="vertical"
     tools:context=".MainActivity">
 

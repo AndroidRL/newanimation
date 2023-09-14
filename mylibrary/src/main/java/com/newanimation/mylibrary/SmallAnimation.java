@@ -2545,6 +2545,7 @@ public class SmallAnimation {
     }
 
     private static void QurekaBanner() {
+<<<<<<< HEAD
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1")) {
             int A = MyProHelperClass.getRandomNumber(0, 1);
             if (A == 0) {
@@ -2571,6 +2572,18 @@ public class SmallAnimation {
             }
 
         } else {
+=======
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+
+            LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_banner, false);
+            Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+            load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+            main_banner.removeAllViews();
+            main_banner.addView(load_view);
+
+        }else {
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             main_banner.removeAllViews();
         }
     }

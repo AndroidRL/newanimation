@@ -565,7 +565,11 @@ public class MyProHelperClass extends Application {
     }
 
     public static String getQurekaInterSkipTime() {
+<<<<<<< HEAD
         return sharedPreferences.getString("QurekaInterSkipTime", "0");
+=======
+        return sharedPreferences.getString("QurekaInterSkipTime", null);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
     }
 
     public static void setQurekaCloseBTNAutoOpenLink(String QurekaCloseBTNAutoOpenLink) {

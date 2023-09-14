@@ -219,7 +219,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
+=======
+            android:backgroundTint="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:padding="2dp"
             android:text="Ad"
             android:textColor="@color/fix_white"

@@ -21,6 +21,7 @@ public class QurekaFixAnimation {
         if (MyProHelperClass.getQurekaFixAds().equals("1")) {
             if (Ad_Size == 0) {
                 //Small Native Ad
+<<<<<<< HEAD
                 int A = MyProHelperClass.getRandomNumber(0, 1);
                 if (A == 0) {
                     LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -44,6 +45,14 @@ public class QurekaFixAnimation {
                     main_native.removeAllViews();
                     main_native.addView(load_view);
                 }
+=======
+                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_native, false);
+                Glide.with(main_context).load(MyProHelperClass.banner_ads.get(getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+                load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                main_native.removeAllViews();
+                main_native.addView(load_view);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
             } else if (Ad_Size == 1) {
                 //Medium Native Ad
@@ -84,6 +93,7 @@ public class QurekaFixAnimation {
 
     public static void QurekaBottomAnimation(Context context, RelativeLayout main_banner) {
         if (MyProHelperClass.getQurekaFixAds().equals("1")) {
+<<<<<<< HEAD
             int A = MyProHelperClass.getRandomNumber(0, 1);
             if (A == 0) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -108,6 +118,14 @@ public class QurekaFixAnimation {
                 main_banner.addView(load_view);
             }
 
+=======
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_banner, false);
+            Glide.with(context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+            load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+            main_banner.removeAllViews();
+            main_banner.addView(load_view);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
         }
     }
 

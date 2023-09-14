@@ -206,7 +206,11 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:background="@drawable/app_btn"
+<<<<<<< HEAD
                     android:backgroundTint="@color/fix_black"
+=======
+                    android:backgroundTint="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:singleLine="true"
@@ -222,8 +226,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="@color/fix_black"
             android:backgroundTint="@color/fix_black"
+=======
+            android:background="@color/blue_color"
+            android:backgroundTint="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:paddingVertical="2dp"
             android:paddingStart="2dp"
             android:paddingEnd="5dp"

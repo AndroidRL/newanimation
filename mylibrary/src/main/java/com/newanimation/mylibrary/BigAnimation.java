@@ -1460,6 +1460,7 @@ public class BigAnimation {
      * App Qureka ADS
      */
     private static void QurekaNative() {
+<<<<<<< HEAD
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
 
             if (Ad_Size.equals("small")) {
@@ -1487,6 +1488,18 @@ public class BigAnimation {
                     main_native.removeAllViews();
                     main_native.addView(load_view);
                 }
+=======
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+
+            if (Ad_Size.equals("small")) {
+
+                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_native, false);
+                Glide.with(main_context).load(MyProHelperClass.banner_ads.get(getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
+                load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                main_native.removeAllViews();
+                main_native.addView(load_view);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
             } else if (Ad_Size.equals("medium")) {
 

@@ -10,7 +10,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.view.Window;
+=======
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -289,23 +292,39 @@ public class Splash extends AppCompatActivity {
                             if (response.getString("all_ads_show_qureka") != null && !response.getString("all_ads_show_qureka").isEmpty()) {
                                 MyProHelperClass.setQurekaShow_AfterFails(response.getString("all_ads_show_qureka"));  //All Ads Fail after show qureka
                             } else {
+<<<<<<< HEAD
                                 MyProHelperClass.setQurekaShow_AfterFails("0");
+=======
+                                MyProHelperClass.setQurekaShow_AfterFails(null);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                             }
 
                             if (response.getString("fix_qureka_show") != null && !response.getString("fix_qureka_show").isEmpty()) {
                                 MyProHelperClass.setQurekaFixAds(response.getString("fix_qureka_show"));  //Fix ads show
                             } else {
+<<<<<<< HEAD
                                 MyProHelperClass.setQurekaFixAds("0");
+=======
+                                MyProHelperClass.setQurekaFixAds(null);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                             }
                             if (response.getString("qureka_inter_ad_skip_time") != null && !response.getString("qureka_inter_ad_skip_time").isEmpty()) {
                                 MyProHelperClass.setQurekaInterSkipTime(response.getString("qureka_inter_ad_skip_time"));  //Fix ads show
                             } else {
+<<<<<<< HEAD
                                 MyProHelperClass.setQurekaInterSkipTime("0");
+=======
+                                MyProHelperClass.setQurekaInterSkipTime(null);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                             }
                             if (response.getString("qureka_inter_ad_close_btn_click") != null && !response.getString("qureka_inter_ad_close_btn_click").isEmpty()) {
                                 MyProHelperClass.setQurekaCloseBTNAutoOpenLink(response.getString("qureka_inter_ad_close_btn_click"));  //Fix ads show
                             } else {
+<<<<<<< HEAD
                                 MyProHelperClass.setQurekaCloseBTNAutoOpenLink("0");
+=======
+                                MyProHelperClass.setQurekaCloseBTNAutoOpenLink(null);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                             }
 
                             /**
@@ -745,6 +764,7 @@ public class Splash extends AppCompatActivity {
 
     private static void QurekaOpen() {
 
+<<<<<<< HEAD
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
 
 
@@ -755,6 +775,14 @@ public class Splash extends AppCompatActivity {
             dialog.setContentView(R.layout.qureka_open);
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
+=======
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+
+            Dialog dialog = new Dialog(contextx);
+            dialog.setContentView(R.layout.qureka_open);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.setCancelable(false);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
             dialog.findViewById(R.id.next_view).setOnClickListener(v -> NextIntent(contextx, intentx));
             dialog.findViewById(R.id.Ad_click).setOnClickListener(v -> {

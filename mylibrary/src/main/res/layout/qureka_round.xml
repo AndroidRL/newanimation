@@ -25,10 +25,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
 
@@ -54,10 +61,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="9sp" />
 
 
@@ -83,10 +97,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="2dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="10sp" />
 
 
@@ -112,10 +133,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="2dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="10sp" />
 
 
@@ -141,10 +169,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="2dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="10sp" />
 
 
@@ -161,10 +196,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
         <ImageView
@@ -199,10 +241,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
         <ImageView
@@ -237,10 +286,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
         <ImageView
@@ -275,10 +331,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
         <ImageView
@@ -313,10 +376,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/gnt_outline_shape"
+<<<<<<< HEAD
             android:backgroundTint="@color/fix_black"
             android:padding="1dp"
             android:text="Ad"
             android:textColor="@color/fix_white"
+=======
+            android:backgroundTint="#000"
+            android:padding="1dp"
+            android:text="Ad"
+            android:textColor="#fff"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
             android:textSize="8sp" />
 
         <ImageView

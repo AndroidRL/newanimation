@@ -71,7 +71,11 @@
                                     android:maxLines="1"
                                     android:singleLine="true"
                                     android:text="Ad will be loading..."
+<<<<<<< HEAD
                                     android:textColor="@color/fix_black"
+=======
+                                    android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                                     android:textSize="14.0sp"
                                     android:textStyle="bold" />
 

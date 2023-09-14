@@ -34,6 +34,26 @@
         android:src="@drawable/close"
         app:tint="@color/fix_white" />
 
+
+    <TextView
+        android:id="@+id/txt_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/app_btn"
+        android:backgroundTint="#2B2A2A"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="Skip 4"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+
     <TextView
         android:id="@+id/txt_skip"
         android:layout_width="wrap_content"
@@ -99,7 +119,11 @@
                 android:includeFontPadding="false"
                 android:singleLine="true"
                 android:text="SPONSORED"
+<<<<<<< HEAD
                 android:textColor="@color/fix_black"
+=======
+                android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                 android:textSize="10dp" />
 
             <TextView
@@ -109,7 +133,11 @@
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:text=""
+<<<<<<< HEAD
                 android:textColor="@color/fix_black"
+=======
+                android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                 android:textSize="14sp" />
 
             <TextView
@@ -118,7 +146,11 @@
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
                 android:text="Not App Install, Click and play game now.."
+<<<<<<< HEAD
                 android:textColor="@color/fix_black"
+=======
+                android:textColor="#000"
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
                 android:textSize="12sp"
                 android:singleLine="true"
                 android:ellipsize="end"

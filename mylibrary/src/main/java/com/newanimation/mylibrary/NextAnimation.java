@@ -1788,7 +1788,11 @@ public class NextAnimation {
      * Qureka
      */
     private static void QurekaInter() {
+<<<<<<< HEAD
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
+=======
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1")) {
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
 
             MyProHelperClass.stopLoader(dialog);
             qureka_intent = main_intent;

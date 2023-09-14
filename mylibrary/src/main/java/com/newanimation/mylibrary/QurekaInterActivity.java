@@ -25,6 +25,7 @@ public class QurekaInterActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         int A = MyProHelperClass.getRandomNumber(0,1);
         if (A == 0){
             setContentView(R.layout.qureka_inter);
@@ -32,6 +33,9 @@ public class QurekaInterActivity extends AppCompatActivity {
             setContentView(R.layout.qureka_inter_2);
         }
 
+=======
+        setContentView(R.layout.qureka_inter);
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
         txtSkip = (TextView) findViewById(R.id.txt_skip);
         txtSkip.setText("Skip " + MyProHelperClass.getQurekaInterSkipTime());
         getNumber = MyProHelperClass.getRandomNumber(0, MyProHelperClass.inter_ads.size() - 1);
@@ -83,11 +87,14 @@ public class QurekaInterActivity extends AppCompatActivity {
     }
 
     private void startCounter() {
+<<<<<<< HEAD
         if (counter == 0) {
             findViewById(R.id.close).setVisibility(View.VISIBLE);
             findViewById(R.id.txt_skip).setVisibility(View.GONE);
             return;
         }
+=======
+>>>>>>> c1a761bbed8c7b3977b0747bb9f23d6e414d6f38
         new Handler().postDelayed(() -> {
             int A = counter - 1;
             txtSkip.setText("Skip " + A);
