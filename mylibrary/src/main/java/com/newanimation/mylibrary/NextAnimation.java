@@ -24,11 +24,10 @@ import com.unity3d.ads.UnityAdsShowOptions;
 
 public class NextAnimation {
 
-    public static int intent_status;
 
-    public static Intent qureka_intent;
-
-
+    /**
+     * Object
+     */
     /*Google*/
     public static com.google.android.gms.ads.interstitial.InterstitialAd google_InterstitialAd;
     public static com.google.android.gms.ads.interstitial.InterstitialAd google_InterstitialAd_1;
@@ -52,10 +51,9 @@ public class NextAnimation {
     /*Helper*/
     public static Activity main_context;
     public static Intent main_intent;
-    public static int auto_notShow_adsBack = 0;
-
     public static Dialog dialog;
-
+    public static int intent_status;
+    public static Intent qureka_intent;
 
     /**
      * INTERSTITIAL ADS CODE START
@@ -90,16 +88,16 @@ public class NextAnimation {
                 if (MyProHelperClass.getInterPreLoad().equals("0")) {
                     dialog = MyProHelperClass.startLoader(main_context);
                     if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                        StopPreLoadMixAds();
+                        onDemandMixAds();
                     } else {
-                        StopPreLoad();
+                        onDemand();
                     }
                 } else {
                     NextIntent();
                     if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
                         MixAds();
                     } else {
-                        RegularADS();
+                        PreLoadADS();
                     }
                 }
                 return;
@@ -112,9 +110,9 @@ public class NextAnimation {
         if (MyProHelperClass.getInterPreLoad().equals("0")) {
             dialog = MyProHelperClass.startLoader(main_context);
             if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                StopPreLoadMixAds();
+                onDemandMixAds();
             } else {
-                StopPreLoad();
+                onDemand();
             }
             return;
         }
@@ -124,37 +122,23 @@ public class NextAnimation {
         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
             MixAds();
         } else {
-            RegularADS();
+            PreLoadADS();
         }
     }
 
-    private static void QurekaInter() {
-        qureka_intent = main_intent;
-        if (main_intent == null) {
-            main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
-            main_context.finish();
-        } else {
-            if (intent_status == 0) {
-                main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
-            } else if (intent_status == 1) {
-                main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
-                main_context.finish();
-            }
-        }
-    }
 
     /**
-     * Not preload ads
+     * onDemand ads
      */
-    private static void StopPreLoad() {
+    private static void onDemand() {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
-            NotPreGoogle();
+            onDemandGoogle();
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
-            NotPreFacebook();
+            onDemandFacebook();
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
-            NotPreAppLoving();
+            onDemandAppLoving();
         } else if (MyProHelperClass.getUnityEnable().equals("1")) {
-            NotPreUnity();
+            onDemandUnity();
         } else if (MyProHelperClass.get_q_link_btn_on_off().equals("1")) {
             //only open link
             MyProHelperClass.stopLoader(dialog);
@@ -173,11 +157,11 @@ public class NextAnimation {
     /**
      * Regular Ads
      */
-    private static void RegularADS() {
+    private static void PreLoadADS() {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
-            GoogleADSShow("r");
+            RegularGoogleADSShow("r");
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
-            FacebookADSShow();
+             RegularFacebookADSShow();
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
             RegularAppLovingShow();
         } else if (MyProHelperClass.getUnityEnable().equals("1")) {
@@ -223,16 +207,16 @@ public class NextAnimation {
                     if (MyProHelperClass.getInterPreLoad().equals("0")) {
                         dialog = MyProHelperClass.startLoader(main_context);
                         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                            StopPreLoadMixAds();
+                            onDemandMixAds();
                         } else {
-                            StopPreLoad();
+                            onDemand();
                         }
                     } else {
                         NextIntent();
                         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
                             MixAds();
                         } else {
-                            RegularADS();
+                            PreLoadADS();
                         }
                     }
                     return;
@@ -245,9 +229,9 @@ public class NextAnimation {
             if (MyProHelperClass.getInterPreLoad().equals("0")) {
                 dialog = MyProHelperClass.startLoader(main_context);
                 if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                    StopPreLoadMixAds();
+                    onDemandMixAds();
                 } else {
-                    StopPreLoad();
+                    onDemand();
                 }
                 return;
             }
@@ -257,7 +241,7 @@ public class NextAnimation {
             if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
                 MixAds();
             } else {
-                RegularADS();
+                PreLoadADS();
             }
         } else {
             NextIntent();
@@ -265,10 +249,10 @@ public class NextAnimation {
     }
 
     /**
-     * Ads Show
+     * PreLoad Ads Show
      */
     /*Google Inter Show*/
-    private static void GoogleADSShow(String adview) {
+    private static void RegularGoogleADSShow(String adview) {
         if (MyProHelperClass.Google_inter_number == 1) {
             GoogleInterShow(adview);
         } else if (MyProHelperClass.Google_inter_number == 2) {
@@ -292,7 +276,6 @@ public class NextAnimation {
             }
         }
     }
-
     private static void GoogleInterShow(String adview) {
         if (google_InterstitialAd != null) {
             google_InterstitialAd.show(main_context);
@@ -300,7 +283,6 @@ public class NextAnimation {
                 @Override
                 public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                     super.onAdFailedToShowFullScreenContent(adError);
-//                     AllAdsPreLoadsInter("g");
                     AllGoogle_Fails_OtherAdShow(adview);
                 }
 
@@ -312,19 +294,17 @@ public class NextAnimation {
                 @Override
                 public void onAdDismissedFullScreenContent() {
                     super.onAdDismissedFullScreenContent();
-//                     AllAdsPreLoadsInter("g");
 
                 }
 
             });
         } else {
-            //             AllAdsPreLoadsInter("g");
+
             AllGoogle_Fails_OtherAdShow(adview);
         }
         AutoGoogleInterID = 1;
         AllAdsPreLoadsInter("g");
     }
-
     private static void Google_Fails_Facebook_AppLoving_Unity_Show() {
         try {
             if (facebook_interstitialAd != null) {
@@ -359,7 +339,6 @@ public class NextAnimation {
         AllAdsPreLoadsInter("a");
 
     }
-
     /*Google Inter Show 1 ID*/
     private static void googleInterShow1(String adview) {
         if (google_InterstitialAd_1 != null) {
@@ -387,7 +366,6 @@ public class NextAnimation {
         AllAdsPreLoadsInter("g1");
 
     }
-
     /*Google Inter Show 2 ID*/
     private static void googleInterShow2(String adview) {
         if (google_InterstitialAd_2 != null) {
@@ -418,7 +396,6 @@ public class NextAnimation {
         AllAdsPreLoadsInter("g2");
 
     }
-
     /*Google Inter Show 3 ID*/
     private static void googleInterShow3(String adview) {
         if (google_InterstitialAd_3 != null) {
@@ -447,7 +424,6 @@ public class NextAnimation {
         AllAdsPreLoadsInter("g3");
 
     }
-
     private static void AllAds_Fails_Unity_Show() {
 
         if (UnityAdLoadChecker) {
@@ -455,6 +431,7 @@ public class NextAnimation {
                 @Override
                 public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
                     AllAdsPreLoadsInter("u");
+                    QurekaInter();
 
                 }
 
@@ -474,9 +451,10 @@ public class NextAnimation {
                     AllAdsPreLoadsInter("u");
                 }
             });
+        } else {
+            QurekaInter();
         }
     }
-
     private static void AllGoogle_Fails_OtherAdShow(String adview) {
         if (adview.equals("r")) {
             Google_Fails_Facebook_AppLoving_Unity_Show();
@@ -490,16 +468,15 @@ public class NextAnimation {
     }
 
     /*Facebook Inter Show*/
-    private static void FacebookADSShow() {
+    private static void  RegularFacebookADSShow() {
         if (facebook_interstitialAd != null && facebook_interstitialAd.isAdLoaded()) {
             facebook_interstitialAd.show();
         } else {
-            GoogleADSShow("f");
+            RegularGoogleADSShow("f");
         }
         AllAdsPreLoadsInter("f");
 
     }
-
     private static void Facebook_Fails_RegularAppLovingShow() {
         try {
 
@@ -528,10 +505,10 @@ public class NextAnimation {
                 if (applovin_interstitialAd.isReady()) {
                     applovin_interstitialAd.showAd();
                 } else {
-                    GoogleADSShow("a");
+                    RegularGoogleADSShow("a");
                 }
             } else {
-                GoogleADSShow("a");
+                RegularGoogleADSShow("a");
             }
 
         } catch (Exception e) {
@@ -558,11 +535,10 @@ public class NextAnimation {
             UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                 @Override
                 public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                    GoogleADSShow("u");
+                    RegularGoogleADSShow("u");
                     AllAdsPreLoadsInter("u");
 
                 }
-
                 @Override
                 public void onUnityAdsShowStart(String placementId) {
 
@@ -581,7 +557,7 @@ public class NextAnimation {
                 }
             });
         } else {
-            GoogleADSShow("u");
+            RegularGoogleADSShow("u");
         }
     }
 
@@ -601,6 +577,8 @@ public class NextAnimation {
                 if (applovin_interstitialAd.isReady()) {
                     applovin_interstitialAd.showAd();
                 }
+            } else {
+                QurekaInter();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -661,9 +639,9 @@ public class NextAnimation {
 
     private static void MixAdsShow(String value) {
         if (value.equals("g")) {
-            GoogleADSShow("r");
+            RegularGoogleADSShow("r");
         } else if (value.equals("f")) {
-            FacebookADSShow();
+             RegularFacebookADSShow();
         } else if (value.equals("a")) {
             RegularAppLovingShow();
         } else if (value.equals("u")) {
@@ -680,7 +658,7 @@ public class NextAnimation {
     }
 
     /**
-     * PreLoad
+     * Only PreLoad Method
      */
     /*Google*/
     public static void GoogleInterPreload() {
@@ -890,7 +868,6 @@ public class NextAnimation {
             @Override
             public void onUnityAdsAdLoaded(String placementId) {
                 UnityAdLoadChecker = true;
-
             }
 
             @Override
@@ -985,130 +962,11 @@ public class NextAnimation {
     }
 
     /**
-     * Without pre load
+     * On Demand Ads Code
      */
 
-    private static void NotPreUnity() {
-        UnityAds.load(MyProHelperClass.getUnityInterID(), new IUnityAdsLoadListener() {
-            @Override
-            public void onUnityAdsAdLoaded(String placementId) {
-                MyProHelperClass.stopLoader(dialog);
-                UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
-                    @Override
-                    public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                        onDemand_Unity_fail_other_ad_show();
-                    }
-
-                    @Override
-                    public void onUnityAdsShowStart(String placementId) {
-
-
-                    }
-
-                    @Override
-                    public void onUnityAdsShowClick(String placementId) {
-
-                    }
-
-                    @Override
-                    public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
-                        NextIntent();
-                    }
-                });
-
-            }
-
-            @Override
-            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                NextIntent();
-            }
-        });
-    }
-
-
-    private static void NotPreAppLoving() {
-        applovin_interstitialAd = new MaxInterstitialAd(MyProHelperClass.getAppLovinInter(), (Activity) main_context);
-        applovin_interstitialAd.setListener(new MaxAdListener() {
-            @Override
-            public void onAdLoaded(MaxAd ad) {
-                if (applovin_interstitialAd.isReady()) {
-                    MyProHelperClass.stopLoader(dialog);
-                    applovin_interstitialAd.showAd();
-                }
-            }
-
-            @Override
-            public void onAdDisplayed(MaxAd ad) {
-            }
-
-            @Override
-            public void onAdHidden(MaxAd ad) {
-                NextIntent();
-            }
-
-            @Override
-            public void onAdClicked(MaxAd ad) {
-            }
-
-            @Override
-            public void onAdLoadFailed(String adUnitId, MaxError error) {
-                applovin_interstitialAd = null;
-                onDemand_Applovin_fail_OtherAds_Show();
-            }
-
-            @Override
-            public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-
-            }
-        });
-        applovin_interstitialAd.loadAd();
-    }
-
-
-    private static void NotPreFacebook() {
-        facebook_interstitialAd = new com.facebook.ads.InterstitialAd(main_context, MyProHelperClass.getFacebookInter());
-        InterstitialAdListener adListener = new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-
-            }
-
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-                NextIntent();
-            }
-
-            @Override
-            public void onError(Ad ad, com.facebook.ads.AdError adError) {
-                facebook_interstitialAd = null;
-
-                onDemand_facebook_interstitial_fail_others();
-
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                if (facebook_interstitialAd != null && facebook_interstitialAd.isAdLoaded()) {
-                    MyProHelperClass.stopLoader(dialog);
-                    facebook_interstitialAd.show();
-                }
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-
-            }
-        };
-        facebook_interstitialAd.loadAd(facebook_interstitialAd.buildLoadAdConfig().withAdListener(adListener).build());
-    }
-
-
-    private static void NotPreGoogle() {
+    /*Google*/
+    private static void onDemandGoogle() {
         AdRequest adRequest = new AdRequest.Builder().build();
         google_InterstitialAd.load(main_context, MyProHelperClass.getGoogleInter(), adRequest, new InterstitialAdLoadCallback() {
             @Override
@@ -1152,28 +1010,135 @@ public class NextAnimation {
         });
     }
 
-    public static void NextIntent() {
-        MyProHelperClass.stopLoader(dialog);
-        if (main_intent == null) {
-            main_context.finish();
-        } else {
-            if (intent_status == 0) {
-                main_context.startActivity(main_intent);
-            } else if (intent_status == 1) {
-                main_context.startActivity(main_intent);
-                main_context.finish();
+    /*Facebook*/
+    private static void onDemandFacebook() {
+        facebook_interstitialAd = new com.facebook.ads.InterstitialAd(main_context, MyProHelperClass.getFacebookInter());
+        InterstitialAdListener adListener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+
             }
-        }
+
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                NextIntent();
+            }
+
+            @Override
+            public void onError(Ad ad, com.facebook.ads.AdError adError) {
+                facebook_interstitialAd = null;
+
+                onDemand_facebook_interstitial_fail_others();
+
+            }
+
+            @Override
+            public void onAdLoaded(Ad ad) {
+                if (facebook_interstitialAd != null && facebook_interstitialAd.isAdLoaded()) {
+                    MyProHelperClass.stopLoader(dialog);
+                    facebook_interstitialAd.show();
+                }
+            }
+
+            @Override
+            public void onAdClicked(Ad ad) {
+
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+
+            }
+        };
+        facebook_interstitialAd.loadAd(facebook_interstitialAd.buildLoadAdConfig().withAdListener(adListener).build());
     }
 
-    private static void StopPreLoadMixAds() {
+    /*App Loving*/
+    private static void onDemandAppLoving() {
+        applovin_interstitialAd = new MaxInterstitialAd(MyProHelperClass.getAppLovinInter(), (Activity) main_context);
+        applovin_interstitialAd.setListener(new MaxAdListener() {
+            @Override
+            public void onAdLoaded(MaxAd ad) {
+                if (applovin_interstitialAd.isReady()) {
+                    MyProHelperClass.stopLoader(dialog);
+                    applovin_interstitialAd.showAd();
+                }
+            }
+
+            @Override
+            public void onAdDisplayed(MaxAd ad) {
+            }
+
+            @Override
+            public void onAdHidden(MaxAd ad) {
+                NextIntent();
+            }
+
+            @Override
+            public void onAdClicked(MaxAd ad) {
+            }
+
+            @Override
+            public void onAdLoadFailed(String adUnitId, MaxError error) {
+                applovin_interstitialAd = null;
+                onDemand_Applovin_fail_OtherAds_Show();
+            }
+
+            @Override
+            public void onAdDisplayFailed(MaxAd ad, MaxError error) {
+
+            }
+        });
+        applovin_interstitialAd.loadAd();
+    }
+
+    /*Unity*/
+    private static void onDemandUnity() {
+        UnityAds.load(MyProHelperClass.getUnityInterID(), new IUnityAdsLoadListener() {
+            @Override
+            public void onUnityAdsAdLoaded(String placementId) {
+                MyProHelperClass.stopLoader(dialog);
+                UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
+                    @Override
+                    public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
+                        onDemand_Unity_fail_other_ad_show();
+                    }
+
+                    @Override
+                    public void onUnityAdsShowStart(String placementId) {
+
+
+                    }
+
+                    @Override
+                    public void onUnityAdsShowClick(String placementId) {
+
+                    }
+
+                    @Override
+                    public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
+                        NextIntent();
+                    }
+                });
+
+            }
+
+            @Override
+            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                NextIntent();
+            }
+        });
+    }
+
+    /*On Demand Mix*/
+    private static void onDemandMixAds() {
         if (MyProHelperClass.getmix_ad_inter().length() != 0) {
             if (MyProHelperClass.getmix_ad_inter().length() == 1) {
-                StopPreLoadMix1Ads(MyProHelperClass.getmix_ad_inter()); //1 ads
+                onDemandMix1Ads(MyProHelperClass.getmix_ad_inter()); //1 ads
             } else if (MyProHelperClass.getmix_ad_inter().length() == 2) {
-                StopPreLoadMix2Ads(MyProHelperClass.getmix_ad_inter());  // 2 ads
+                onDemandMix2Ads(MyProHelperClass.getmix_ad_inter());  // 2 ads
             } else {
-                StopPreLoadMixUnlimitedAdsInter(MyProHelperClass.getmix_ad_inter()); // Unlimited
+                onDemandMixUnlimitedAdsInter(MyProHelperClass.getmix_ad_inter()); // Unlimited
             }
         } else {
             MyProHelperClass.stopLoader(dialog);
@@ -1181,15 +1146,15 @@ public class NextAnimation {
         }
     }
 
-    private static void StopPreLoadMixAdsShow(String value) {
+    private static void onDemandMixAdsShow(String value) {
         if (value.equals("g")) {
-            NotPreGoogle();
+            onDemandGoogle();
         } else if (value.equals("f")) {
-            NotPreFacebook();
+            onDemandFacebook();
         } else if (value.equals("a")) {
-            NotPreAppLoving();
+            onDemandAppLoving();
         } else if (value.equals("u")) {
-            NotPreUnity();
+            onDemandUnity();
         } else if (value.equals("q")) {
             NextIntent();
             MyProHelperClass.BtnAutolink();
@@ -1202,32 +1167,32 @@ public class NextAnimation {
         }
     }
 
-    private static void StopPreLoadMix1Ads(String s) {
-        StopPreLoadMixAdsShow(String.valueOf(s.charAt(0)));
+    private static void onDemandMix1Ads(String s) {
+        onDemandMixAdsShow(String.valueOf(s.charAt(0)));
     }
 
-    private static void StopPreLoadMix2Ads(String s) {
+    private static void onDemandMix2Ads(String s) {
         if (MyProHelperClass.getmix_ad_counter_inter() != 5000) {
             mix_adsInter++;
             if (MyProHelperClass.getmix_ad_counter_inter() + 1 == mix_adsInter) {
-                StopPreLoadMixAdsShow(String.valueOf(s.charAt(1)));
+                onDemandMixAdsShow(String.valueOf(s.charAt(1)));
                 mix_adsInter = 0;
             } else {
-                StopPreLoadMixAdsShow(String.valueOf(s.charAt(0)));
+                onDemandMixAdsShow(String.valueOf(s.charAt(0)));
             }
         } else {
             if (mix_adsInter == 0) {
                 mix_adsInter = 1;
-                StopPreLoadMixAdsShow(String.valueOf(s.charAt(0)));
+                onDemandMixAdsShow(String.valueOf(s.charAt(0)));
             } else if (mix_adsInter == 1) {
                 mix_adsInter = 0;
-                StopPreLoadMixAdsShow(String.valueOf(s.charAt(1)));
+                onDemandMixAdsShow(String.valueOf(s.charAt(1)));
             }
         }
     }
 
-    private static void StopPreLoadMixUnlimitedAdsInter(String s) {
-        StopPreLoadMixAdsShow(String.valueOf(s.charAt(mix_adsInter)));
+    private static void onDemandMixUnlimitedAdsInter(String s) {
+        onDemandMixAdsShow(String.valueOf(s.charAt(mix_adsInter)));
         if (MyProHelperClass.getmix_ad_inter().length() - 1 == mix_adsInter) {
             mix_adsInter = 0;
         } else {
@@ -1235,6 +1200,7 @@ public class NextAnimation {
         }
     }
 
+    /*on Demand Fails Method*/
     public static void onDemand_google_interstitial_fail_others() {
 
         if (MyProHelperClass.getFacebookInter() != null && !MyProHelperClass.getFacebookInter().isEmpty()) {
@@ -1284,7 +1250,6 @@ public class NextAnimation {
 
 
     }
-
 
     private static void onDemand_facebook_interstitial_fail_others() {
 
@@ -1340,7 +1305,6 @@ public class NextAnimation {
 
     }
 
-
     private static void Applovin_Unity_Fail_Show() {
         if (MyProHelperClass.getAppLovinInter() != null && !MyProHelperClass.getAppLovinInter().isEmpty()) {
 
@@ -1379,7 +1343,7 @@ public class NextAnimation {
                                 UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                     @Override
                                     public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                                        NextIntent();
+                                        QurekaInter();
                                     }
 
                                     @Override
@@ -1398,16 +1362,15 @@ public class NextAnimation {
                                         NextIntent();
                                     }
                                 });
-
                             }
 
                             @Override
                             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                                NextIntent();
+                                QurekaInter();
                             }
                         });
                     } else {
-                        NextIntent();
+                        QurekaInter();
                     }
                 }
 
@@ -1429,7 +1392,7 @@ public class NextAnimation {
                     UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                         @Override
                         public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                            NextIntent();
+                            QurekaInter();
                         }
 
                         @Override
@@ -1453,17 +1416,16 @@ public class NextAnimation {
 
                 @Override
                 public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                    NextIntent();
+                    QurekaInter();
                 }
             });
 
 
         } else {
-            NextIntent();
+            QurekaInter();
         }
 
     }
-
 
     private static void onDemand_Applovin_fail_OtherAds_Show() {
 
@@ -1516,7 +1478,6 @@ public class NextAnimation {
 
         }
 
-
     }
 
     private static void onDemand_Applovin_fail_google_fail_other_ad_show() {
@@ -1546,7 +1507,8 @@ public class NextAnimation {
                                 UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                                     @Override
                                     public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                                        NextIntent();
+                                        QurekaInter();
+
                                     }
 
                                     @Override
@@ -1570,11 +1532,12 @@ public class NextAnimation {
 
                             @Override
                             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                                NextIntent();
+                                QurekaInter();
+
                             }
                         });
                     } else {
-                        NextIntent();
+                        QurekaInter();
                     }
                 }
 
@@ -1607,7 +1570,8 @@ public class NextAnimation {
                     UnityAds.show((Activity) main_context, MyProHelperClass.getUnityInterID(), new UnityAdsShowOptions(), new IUnityAdsShowListener() {
                         @Override
                         public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
-                            NextIntent();
+                            QurekaInter();
+
                         }
 
                         @Override
@@ -1631,18 +1595,18 @@ public class NextAnimation {
 
                 @Override
                 public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                    NextIntent();
+                    QurekaInter();
+
                 }
             });
 
         } else {
-            NextIntent();
+            QurekaInter();
         }
 
     }
 
     private static void onDemand_Unity_fail_other_ad_show() {
-
 
         if (MyProHelperClass.getGoogleInter() != null && !MyProHelperClass.getGoogleInter().isEmpty()) {
 
@@ -1739,7 +1703,7 @@ public class NextAnimation {
                             @Override
                             public void onAdLoadFailed(String adUnitId, MaxError error) {
                                 applovin_interstitialAd = null;
-                                NextIntent();
+                                QurekaInter();
                             }
 
                             @Override
@@ -1749,7 +1713,8 @@ public class NextAnimation {
                         });
                         applovin_interstitialAd.loadAd();
                     } else {
-                        NextIntent();
+                        QurekaInter();
+
                     }
 
                 }
@@ -1803,7 +1768,7 @@ public class NextAnimation {
                 @Override
                 public void onAdLoadFailed(String adUnitId, MaxError error) {
                     applovin_interstitialAd = null;
-                    NextIntent();
+                    QurekaInter();
                 }
 
                 @Override
@@ -1813,11 +1778,51 @@ public class NextAnimation {
             });
             applovin_interstitialAd.loadAd();
         } else {
-            NextIntent();
+            QurekaInter();
 
         }
 
     }
 
+    /**
+     * Qureka
+     */
+    private static void QurekaInter() {
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
+
+            MyProHelperClass.stopLoader(dialog);
+            qureka_intent = main_intent;
+            if (main_intent == null) {
+                main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
+                main_context.finish();
+            } else {
+                if (intent_status == 0) {
+                    main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
+                } else if (intent_status == 1) {
+                    main_context.startActivity(new Intent(main_context, QurekaInterActivity.class));
+                    main_context.finish();
+                }
+            }
+        }else {
+            NextIntent();
+        }
+    }
+
+    /**
+     * Helper
+     */
+    public static void NextIntent() {
+        MyProHelperClass.stopLoader(dialog);
+        if (main_intent == null) {
+            main_context.finish();
+        } else {
+            if (intent_status == 0) {
+                main_context.startActivity(main_intent);
+            } else if (intent_status == 1) {
+                main_context.startActivity(main_intent);
+                main_context.finish();
+            }
+        }
+    }
 
 }

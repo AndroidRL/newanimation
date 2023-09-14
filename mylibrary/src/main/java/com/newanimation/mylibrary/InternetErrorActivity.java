@@ -13,7 +13,6 @@ public class InternetErrorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_internet_error);
     }
-
     public void check_internet(View view) {
         if (MyProHelperClass.isOnline(this)) {
             finish();

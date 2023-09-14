@@ -118,7 +118,7 @@
                         android:gravity="center"
                         android:includeFontPadding="false"
                         android:text="SPONSORED"
-                        android:textColor="#000"
+                        android:textColor="@color/fix_black"
                         android:textSize="10dp" />
                 </RelativeLayout>
 
@@ -143,7 +143,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text=""
-                        android:textColor="#000"
+                        android:textColor="@color/fix_black"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -163,7 +163,7 @@
                         android:includeFontPadding="false"
                         android:singleLine="true"
                         android:text=""
-                        android:textColor="#000"
+                        android:textColor="@color/fix_black"
                         android:textSize="12sp"
                         android:visibility="visible" />
 
@@ -197,18 +197,19 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:text="Install"
-            android:textColor="#fff"
+            android:textColor="@color/fix_white"
             android:textSize="17sp"
             android:textStyle="bold" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:background="@color/fix_black"
-            android:paddingHorizontal="3dp"
+            android:background="@drawable/gnt_outline_shape"
+            android:backgroundTint="@color/fix_black"
+            android:padding="2dp"
             android:text="Ad"
-            android:textColor="#fff"
+            android:textColor="@color/fix_white"
             android:textSize="10sp" />
 
 

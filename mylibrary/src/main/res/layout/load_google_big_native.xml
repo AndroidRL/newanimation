@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/_3sdp"
-                android:text="Ad Loading..."
+                android:text="Ad will be loading..."
                 android:textColor="#000000"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />

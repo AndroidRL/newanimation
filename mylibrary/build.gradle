@@ -74,4 +74,10 @@ dependencies {
 
     //Sdp
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    //Facebook SDK
+    implementation 'com.madgag:sc-light-jdk15on:1.47.0.2'
+    implementation 'com.facebook.business.sdk:facebook-java-business-sdk:[8.0.3,)'
+    implementation 'com.google.guava:guava:27.0.1-android'
+
 }

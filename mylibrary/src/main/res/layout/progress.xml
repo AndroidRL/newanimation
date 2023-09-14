@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/ads_load"
-        android:textColor="#fff"
+        android:textColor="@color/fix_white"
         android:textSize="18sp" />
 
 </LinearLayout>

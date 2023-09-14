@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ad_view"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/qureka_medium_native"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_105sdp"
     android:background="#F6F5F5">
@@ -30,22 +30,16 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
 
                         <ImageView
+                            android:id="@+id/q_image"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="200dp"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:visibility="visible" />
-
-                        <com.google.android.gms.ads.nativead.MediaView
-                            android:id="@+id/ad_media"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_105sdp"
-                            android:layout_gravity="center_horizontal"
-                            android:padding="@dimen/_3sdp"
-                            android:visibility="visible" />
+                            android:scaleType="fitXY"
+                            android:src="@drawable/q_native_1" />
 
                     </RelativeLayout>
 
@@ -97,102 +91,57 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/ad_app_icon"
+                        android:id="@+id/round"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:adjustViewBounds="true"
-                        android:scaleType="fitXY" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/q_round_1" />
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:gravity="center"
+                        android:paddingStart="5dp"
                         android:orientation="vertical">
 
-                        <RelativeLayout
-                            android:id="@+id/ad_notification"
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="0dp">
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="SPONSORED"
+                            android:textColor="@color/fix_black"
+                            android:textSize="10dp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp"
-                                android:gravity="center"
-                                android:includeFontPadding="false"
-                                android:text="SPONSORED"
-                                android:textColor="@color/fix_black"
-                                android:textSize="10dp" />
-                        </RelativeLayout>
+                        <TextView
+                            android:id="@+id/txt_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="MEGA QUIZ COIN"
+                            android:textColor="@color/fix_black"
+                            android:textSize="14sp" />
 
-                        <LinearLayout
-                            android:id="@+id/mmm"
+                        <TextView
+                            android:id="@+id/txt_dis"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/ad_notification"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="5dp"
-                            android:orientation="horizontal">
+                            android:includeFontPadding="false"
+                            android:singleLine="true"
+                            android:text="Not App Install"
+                            android:textColor="@color/fix_black"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
 
-                            <TextView
-                                android:id="@+id/ad_headline"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left|center_vertical|center_horizontal|center"
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:gravity="left"
-                                android:includeFontPadding="false"
-                                android:maxLines="1"
-                                android:singleLine="true"
-                                android:text=""
-                                android:textColor="@color/fix_black"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/mmm"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/ad_body"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_weight="1"
-                                android:includeFontPadding="false"
-                                android:singleLine="true"
-                                android:text=""
-                                android:textColor="@color/fix_black"
-                                android:textSize="12sp"
-                                android:visibility="visible" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="16dp"
-                                android:layout_marginLeft="3dp"
-                                android:gravity="center"
-                                android:paddingLeft="5dp"
-                                android:paddingRight="5dp"
-                                android:text="Sponsored"
-                                android:textColor="@android:color/white"
-                                android:textSize="9sp"
-                                android:textStyle="normal"
-                                android:visibility="gone" />
-                        </LinearLayout>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/ad_call_to_action"
+                    android:id="@+id/q_btn"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:layout_below="@+id/lin_as_header"
@@ -205,7 +154,7 @@
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:singleLine="true"
-                    android:text="Install"
+                    android:text="Play Now"
                     android:textColor="@color/fix_white"
                     android:textSize="17sp"
                     android:textStyle="bold" />
@@ -226,4 +175,4 @@
             android:textSize="10sp" />
 
     </RelativeLayout>
-</com.google.android.gms.ads.nativead.NativeAdView>
+</LinearLayout>
