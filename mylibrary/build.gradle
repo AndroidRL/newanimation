@@ -84,13 +84,32 @@ dependencies {
 
     /*App Loving Mediation */
     implementation 'com.applovin.mediation:facebook-adapter:6.15.0.0'
+<<<<<<< HEAD
 //    implementation 'com.applovin.mediation:google-ad-manager-adapter:22.3.0.0'
 //    implementation 'com.applovin.mediation:google-adapter:22.4.0.0'
 //    implementation 'com.applovin.mediation:unityads-adapter:4.7.1.0'
+=======
+    implementation 'com.applovin.mediation:google-ad-manager-adapter:22.3.0.0'
+    implementation 'com.applovin.mediation:google-adapter:22.4.0.0'
+    implementation 'com.applovin.mediation:unityads-adapter:4.7.1.0'
+>>>>>>> 5413a52c5b87574bf61674c5d07d625ecd305862
 
     /*Google Mediation*/
     implementation 'com.google.ads.mediation:facebook:6.16.0.0'
     implementation 'com.google.ads.mediation:applovin:11.11.3.0'
     implementation 'com.google.ads.mediation:unity:4.8.0.0'
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+//    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+=======
+    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+>>>>>>> e49c6cbf3049db1b11db941ed432b871a575e3c1
+=======
+    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+>>>>>>> e49c6cbf3049db1b11db941ed432b871a575e3c1
+
+>>>>>>> 5413a52c5b87574bf61674c5d07d625ecd305862
 }
