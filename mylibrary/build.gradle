@@ -94,7 +94,11 @@ dependencies {
     implementation 'com.google.ads.mediation:unity:4.8.0.0'
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+=======
+    implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
+>>>>>>> e49c6cbf3049db1b11db941ed432b871a575e3c1
 =======
     implementation 'com.facebook.infer.annotation:infer-annotation:0.18.0'
 >>>>>>> e49c6cbf3049db1b11db941ed432b871a575e3c1
