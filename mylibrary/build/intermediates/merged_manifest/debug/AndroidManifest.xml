@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.newanimation.mylibrary" >
+
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
+    <application android:name="com.newanimation.mylibrary.MyProHelperClass" >
+        <activity
+            android:name="com.newanimation.mylibrary.InternetErrorActivity"
+            android:exported="false" />
+        <activity android:name="com.newanimation.mylibrary.UpdateAppActivity" />
+        <activity android:name="com.newanimation.mylibrary.Splash" />
+        <activity android:name="com.newanimation.mylibrary.QurekaInterActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true" />
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="VvMHQ8qTbnOUx1SS7gTV2dloZMX_RremcudgIVezo_tO0TSDTLUUkG5malJ63camEvhEOrnyLgkJm2gSniHLr2" />
+        <meta-data
+            android:name="applovin.sdk.verbose_logging"
+            android:value="true" />
+    </application>
+
+</manifest>
