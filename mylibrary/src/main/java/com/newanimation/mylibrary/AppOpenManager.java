@@ -5,6 +5,7 @@ import static androidx.lifecycle.Lifecycle.Event.ON_START;
 import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,6 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
 
     public interface OnAppOpenClose {
         void OnAppOpenFailToLoad();
-
         void OnAppOpenClose();
     }
 
