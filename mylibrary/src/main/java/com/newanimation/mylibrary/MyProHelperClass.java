@@ -20,7 +20,6 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
-import com.facebook.ads.AdSettings;
 import com.facebook.ads.AudienceNetworkAds;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -47,6 +46,8 @@ public class MyProHelperClass extends Application {
     public static ArrayList<QurekaModel> inter_ads = new ArrayList<>();
     public static ArrayList<Integer> round_ads = new ArrayList<>();
 
+    public static boolean q_openAds_show = true;
+    public static boolean g_openAds_show = true;
 
     public static synchronized MyProHelperClass getInstanceHelp() {
         MyProHelperClass application;
@@ -59,6 +60,7 @@ public class MyProHelperClass extends Application {
     public static MyProHelperClass getInstant() {
         return instance;
     }
+
 
     @Override
     public void onCreate() {
@@ -576,6 +578,14 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("QurekaCloseBTNAutoOpenLink", null);
     }
 
+    public static void setClose_intent_open_link(String Close_intent_open_link) {
+        editor.putString("Close_intent_open_link", Close_intent_open_link).commit();
+    }
+
+    public static String getClose_intent_open_link() {
+        return sharedPreferences.getString("Close_intent_open_link", null);
+    }
+
 
     /**
      * MIX ADS
@@ -882,6 +892,7 @@ public class MyProHelperClass extends Application {
     }
 
     public static void BtnAutolink() {
+        MyProHelperClass.q_openAds_show = false;
         String[] Auto_Link = MyProHelperClass.get_q_link_array().split(",");
         if (Auto_Link.length == 1) {
             LinkOpenChromeCustomTabUrl(instance, Auto_Link[0]);

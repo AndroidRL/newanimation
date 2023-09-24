@@ -27,7 +27,7 @@ public class TestingActivity extends AppCompatActivity {
     }
 
     public void ADS(View view) {
-        NextAnimation.NextSliderAnimation(this, new Intent(this, MainActivity.class),0);
+        NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class),0);
     }
 
 
