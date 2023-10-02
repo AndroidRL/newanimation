@@ -166,7 +166,10 @@
             android:id="@+id/ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="#E4E3E3"
+=======
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
             android:gravity="center"
             android:padding="2dp"
             android:text="Advertisement"

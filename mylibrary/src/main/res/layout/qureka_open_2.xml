@@ -4,10 +4,16 @@
     android:id="@+id/full_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#96000000"
     android:orientation="vertical">
 
 
+=======
+    android:background="#00000000"
+    android:orientation="vertical">
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
     <LinearLayout
         android:id="@+id/next_view"
         android:layout_width="280dp"
@@ -135,7 +141,11 @@
             android:id="@+id/ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="#E4E3E3"
+=======
+            android:background="#F6F4F4"
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
             android:gravity="center"
             android:padding="2dp"
             android:text="Advertisement"
@@ -188,6 +198,10 @@
 
     </RelativeLayout>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
     <RelativeLayout
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
