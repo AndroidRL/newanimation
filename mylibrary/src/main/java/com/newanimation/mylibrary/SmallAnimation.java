@@ -2547,32 +2547,120 @@ public class SmallAnimation {
     private static void QurekaBanner() {
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1")) {
             int A = MyProHelperClass.getRandomNumber(0, 1);
-            if (A == 0) {
-                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_banner, false);
-                Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
-                load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
-                main_banner.removeAllViews();
-                main_banner.addView(load_view);
-            } else {
+            switch (A) {
+                case 0: {
+                    LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_small_native, main_banner, false);
+                    Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
 
-                LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native_2, main_banner, false);
+                    ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                    ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportSmall(load_view));
+                    load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
 
-                Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
-                int getNumber = getRandomNumber(0, native_ads.size() - 1);
-                ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
-                ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
+                    main_banner.removeAllViews();
+                    main_banner.addView(load_view);
+                    break;
+                }
+                default: {
 
-                load_view.findViewById(R.id.qureka_big_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
-                load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
-                main_banner.removeAllViews();
-                main_banner.addView(load_view);
+                    LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_small_native_2, main_banner, false);
+
+                    Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
+                    int getNumber = getRandomNumber(0, native_ads.size() - 1);
+                    ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
+                    ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
+
+                    ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                    ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportSmall(load_view));
+                    load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+
+                    load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                    main_banner.removeAllViews();
+                    main_banner.addView(load_view);
+                    break;
+                }
             }
 
         } else {
             main_banner.removeAllViews();
         }
+    }
+
+    //Small Ads
+    public static void AdReportSmall(RelativeLayout load_view) {
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.VISIBLE);
+        ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+        //All Close
+        ((ImageView) load_view.findViewById(R.id.close)).setOnClickListener(v -> {
+            ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        });
+
+        //Main Btn Click
+        ((LinearLayout) load_view.findViewById(R.id.btn_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+        ((LinearLayout) load_view.findViewById(R.id.btn_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+
+        //Back
+        ((ImageView) load_view.findViewById(R.id.back_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+
+        });
+        ((ImageView) load_view.findViewById(R.id.back_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.GONE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+        });
+
+        //Hide Click
+        ((TextView) load_view.findViewById(R.id.hide_p_1)).setOnClickListener(v -> AdsNextSmall("Irrelevant", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_2)).setOnClickListener(v -> AdsNextSmall("Repetitive", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_3)).setOnClickListener(v -> AdsNextSmall("Interrupted me", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_4)).setOnClickListener(v -> AdsNextSmall("Unexpected", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_5)).setOnClickListener(v -> AdsNextSmall("Too many ads", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_6)).setOnClickListener(v -> AdsNextSmall("Offensive", "h", load_view));
+
+        //Report Click
+        ((TextView) load_view.findViewById(R.id.report_p_1)).setOnClickListener(v -> AdsNextSmall("Sexually inappropriate", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_2)).setOnClickListener(v -> AdsNextSmall("Illegal", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_3)).setOnClickListener(v -> AdsNextSmall("Offensive", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_4)).setOnClickListener(v -> AdsNextSmall("Spam", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_5)).setOnClickListener(v -> AdsNextSmall("Disagreeable", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_6)).setOnClickListener(v -> AdsNextSmall("Other", "r", load_view));
+    }
+    public static void AdsNextSmall(String problem, String type, RelativeLayout load_view) {
+
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.ll_done_problem)).setVisibility(View.VISIBLE);
+
+        if (type.equals("h")) {
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.hide_problem)).setText(problem);
+        } else {
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.report_problem)).setText(problem);
+        }
+
     }
 
     private static void GoogleSmallBannerLoadDialog() {

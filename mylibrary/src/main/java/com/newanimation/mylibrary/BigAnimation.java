@@ -19,8 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.nativeAds.MaxNativeAdListener;
@@ -41,9 +39,6 @@ import com.google.android.gms.ads.VideoOptions;
 import com.google.android.gms.ads.nativead.MediaView;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.android.gms.ads.nativead.NativeAdView;
-import com.unity3d.services.banners.BannerErrorInfo;
-import com.unity3d.services.banners.BannerView;
-import com.unity3d.services.banners.UnityBannerSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,27 +62,21 @@ public class BigAnimation {
     public static MaxNativeAdView max_nativeAdView;
     public static MaxAd appLoving_native_ads = null;
 
-    /*Unity*/
-    public static BannerView regular_unity_banner_adView;
-
     /*Helper*/
-    public static RelativeLayout main_native;
     public static Activity main_context;
 
     /*Mix*/
     public static int auto_notShow_ads_native = 0;
     public static int mix_ads_native = 0;
     public static int auto_native_show_id = 0;
-
     public static String Ad_Size = "medium";
 
 
     /**
      * NATIVE ADS CODE START
      */
-    public static void TopAnimation(Activity context1, RelativeLayout main_native1) {
+    public static void TopAnimation(Activity context1, RelativeLayout main_native) {
         main_context = context1;
-        main_native = main_native1;
         Ad_Size = MyProHelperClass.getNativeViewSize();   /*Google*/  //Small //Medium  //Big  /*Facebook*/ //Medium //Big
 
         if (!MyProHelperClass.isOnline(context1)) {
@@ -99,6 +88,7 @@ public class BigAnimation {
         if (MyProHelperClass.getCounter_Native() == 0) {
             return;
         }
+
         /*Skip Ads*/
         if (MyProHelperClass.getCounter_Native() != 5000) {
             auto_notShow_ads_native++;
@@ -106,15 +96,15 @@ public class BigAnimation {
                 auto_notShow_ads_native = 0;
                 if (MyProHelperClass.getNative_preload().equals("0")) {
                     if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                        StopPreLoadNativeMixAds();
+                        StopPreLoadNativeMixAds(main_native);
                     } else {
-                        StopPreLoadNative();
+                        StopPreLoadNative(main_native);
                     }
                 } else {
                     if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                        NativeMixAds();
+                        NativeMixAds(main_native);
                     } else {
-                        RegularAds();
+                        RegularAds(main_native);
                     }
                 }
                 return;
@@ -125,50 +115,49 @@ public class BigAnimation {
         //on Demand
         if (MyProHelperClass.getNative_preload().equals("0")) {
             if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-                StopPreLoadNativeMixAds();
+                StopPreLoadNativeMixAds(main_native);
             } else {
-                StopPreLoadNative();
+                StopPreLoadNative(main_native);
             }
             return;
         }
 
         /*Mix Ads*/
         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
-            NativeMixAds();
+            NativeMixAds(main_native);
         } else {
-            RegularAds();
+            RegularAds(main_native);
         }
 
     }
 
-
-    private static void StopPreLoadNative() {
+    private static void StopPreLoadNative(RelativeLayout main_native) {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreGoogleNative();
+            GoogleSmallNativeLoadDialog(main_native);
+            StopPreGoogleNative(main_native);
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
-            FacebookNativeLoadDialog();
-            StopPreFacebookNative();
+            FacebookNativeLoadDialog(main_native);
+            StopPreFacebookNative(main_native);
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreAppLovingNative();
+            GoogleSmallNativeLoadDialog(main_native);
+            StopPreAppLovingNative(main_native);
         } else if (MyProHelperClass.getQurekaADS().equals("1")) {
-            GoogleSmallNativeLoadDialog();
-            QurekaNative();
+            GoogleSmallNativeLoadDialog(main_native);
+            QurekaNative(main_native);
         } else {
             main_native.removeAllViews();
         }
     }
 
-    private static void RegularAds() {
+    private static void RegularAds(RelativeLayout main_native) {
         if (MyProHelperClass.getGoogleEnable().equals("1")) {
-            GoogleADSNativeShow("r");
+            GoogleADSNativeShow("r", main_native);
         } else if (MyProHelperClass.getFacebookEnable().equals("1")) {
-            FacebookNativeShow();
+            FacebookNativeShow(main_native);
         } else if (MyProHelperClass.getAppLovinEnable().equals("1")) {
-            AppLovingNativeShow();
+            AppLovingNativeShow(main_native);
         } else if (MyProHelperClass.getQurekaADS().equals("1")) {
-            QurekaNative();
+            QurekaNative(main_native);
         } else {
             main_native.removeAllViews();
         }
@@ -178,160 +167,160 @@ public class BigAnimation {
      * Regular Ads Show
      */
     /*Google*/
-    private static void GoogleADSNativeShow(String checker) {
+    private static void GoogleADSNativeShow(String checker, RelativeLayout main_native) {
         if (MyProHelperClass.Google_native_number == 1) {
-            RegularGoogleNativeShow(checker);
+            RegularGoogleNativeShow(checker, main_native);
         } else if (MyProHelperClass.Google_native_number == 2) {
             if (auto_native_show_id == 0) {
                 auto_native_show_id = 1;
-                RegularGoogleNativeShow1(checker);
+                RegularGoogleNativeShow1(checker, main_native);
             } else {
                 auto_native_show_id = 0;
-                RegularGoogleNativeShow2(checker);
+                RegularGoogleNativeShow2(checker, main_native);
             }
         } else if (MyProHelperClass.Google_native_number == 3) {
             if (auto_native_show_id == 0) {
                 auto_native_show_id = 1;
-                RegularGoogleNativeShow1(checker);
+                RegularGoogleNativeShow1(checker, main_native);
             } else if (auto_native_show_id == 1) {
                 auto_native_show_id = 2;
-                RegularGoogleNativeShow2(checker);
+                RegularGoogleNativeShow2(checker, main_native);
             } else {
                 auto_native_show_id = 0;
-                RegularGoogleNativeShow3(checker);
+                RegularGoogleNativeShow3(checker, main_native);
             }
         }
     }
 
-    private static void RegularGoogleNativeShow(String checker) {
+    private static void RegularGoogleNativeShow(String checker, RelativeLayout main_native) {
         if (google_native_ads != null) {
 
             if (Ad_Size.equals("small")) {
-                GoogleNativePopulaterSmallShow(google_native_ads);
+                GoogleNativePopulaterSmallShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("medium")) {
-                GoogleNativePopulaterMediumShow(google_native_ads);
+                GoogleNativePopulaterMediumShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("big")) {
-                GoogleNativePopulaterLargeShow(google_native_ads);
+                GoogleNativePopulaterLargeShow(google_native_ads, main_native);
             }
         } else {
-            AllGoogle_Fails_Other_Ads_Show(checker);
+            AllGoogle_Fails_Other_Ads_Show(checker, main_native);
         }
-        AllAdsPreLoadsNative("g");
+        AllAdsPreLoadsNative("g", main_native);
     }
 
 
-    private static void RegularGoogleNativeShow1(String checker) {
+    private static void RegularGoogleNativeShow1(String checker, RelativeLayout main_native) {
         if (google_native_ads1 != null) {
             if (Ad_Size.equals("small")) {
-                GoogleNativePopulaterSmallShow(google_native_ads);
+                GoogleNativePopulaterSmallShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("medium")) {
-                GoogleNativePopulaterMediumShow(google_native_ads);
+                GoogleNativePopulaterMediumShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("big")) {
-                GoogleNativePopulaterLargeShow(google_native_ads);
+                GoogleNativePopulaterLargeShow(google_native_ads, main_native);
             }
         } else {
-            AllGoogle_Fails_Other_Ads_Show(checker);
+            AllGoogle_Fails_Other_Ads_Show(checker, main_native);
         }
-        AllAdsPreLoadsNative("g1");
+        AllAdsPreLoadsNative("g1", main_native);
     }
 
-    private static void RegularGoogleNativeShow2(String checker) {
+    private static void RegularGoogleNativeShow2(String checker, RelativeLayout main_native) {
         if (google_native_ads2 != null) {
             if (Ad_Size.equals("small")) {
-                GoogleNativePopulaterSmallShow(google_native_ads);
+                GoogleNativePopulaterSmallShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("medium")) {
-                GoogleNativePopulaterMediumShow(google_native_ads);
+                GoogleNativePopulaterMediumShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("big")) {
-                GoogleNativePopulaterLargeShow(google_native_ads);
+                GoogleNativePopulaterLargeShow(google_native_ads, main_native);
             }
         } else {
-            AllGoogle_Fails_Other_Ads_Show(checker);
+            AllGoogle_Fails_Other_Ads_Show(checker, main_native);
         }
-        AllAdsPreLoadsNative("g2");
+        AllAdsPreLoadsNative("g2", main_native);
     }
 
-    private static void RegularGoogleNativeShow3(String checker) {
+    private static void RegularGoogleNativeShow3(String checker, RelativeLayout main_native) {
         if (google_native_ads3 != null) {
 
             if (Ad_Size.equals("small")) {
-                GoogleNativePopulaterSmallShow(google_native_ads);
+                GoogleNativePopulaterSmallShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("medium")) {
-                GoogleNativePopulaterMediumShow(google_native_ads);
+                GoogleNativePopulaterMediumShow(google_native_ads, main_native);
             } else if (Ad_Size.equals("big")) {
-                GoogleNativePopulaterLargeShow(google_native_ads);
+                GoogleNativePopulaterLargeShow(google_native_ads, main_native);
             }
         } else {
-            AllGoogle_Fails_Other_Ads_Show(checker);
+            AllGoogle_Fails_Other_Ads_Show(checker, main_native);
         }
-        AllAdsPreLoadsNative("g3");
+        AllAdsPreLoadsNative("g3", main_native);
     }
 
-    private static void Google_Fails_Facebook_Show() {
+    private static void Google_Fails_Facebook_Show(RelativeLayout main_native) {
         if (facebook_native_ads != null) {
 
             if (Ad_Size.equals("medium")) {
-                FacebookNativePopulateMediumShow();
+                FacebookNativePopulateMediumShow(main_native);
             } else if (Ad_Size.equals("big")) {
-                FacebookNativePopulateShow();
+                FacebookNativePopulateShow(main_native);
 
             } else if (Ad_Size.equals("small")) {
 
-                FacebookNativePopulateSmallShow();
+                FacebookNativePopulateSmallShow(main_native);
 
             }
 
         } else {
-            Google_Facebook_Fails_AppLoving_Show();
+            Google_Facebook_Fails_AppLoving_Show(main_native);
         }
-        AllAdsPreLoadsNative("f");
+        AllAdsPreLoadsNative("f", main_native);
     }
 
 
-    private static void Google_Facebook_Fails_AppLoving_Show() {
+    private static void Google_Facebook_Fails_AppLoving_Show(RelativeLayout main_native) {
         if (appLoving_native_ads != null) {
             main_native.removeAllViews();
             main_native.addView(max_nativeAdView);
-        }else {
-            QurekaNative();
+        } else {
+            QurekaNative(main_native);
         }
-        AllAdsPreLoadsNative("a");
+        AllAdsPreLoadsNative("a", main_native);
     }
 
-    private static void AllGoogle_Fails_Other_Ads_Show(String checker) {
+    private static void AllGoogle_Fails_Other_Ads_Show(String checker, RelativeLayout main_native) {
         if (checker.equals("r")) {
-            Google_Fails_Facebook_Show();
+            Google_Fails_Facebook_Show(main_native);
         } else if (checker.equals("f")) {
-            Google_Facebook_Fails_AppLoving_Show();
+            Google_Facebook_Fails_AppLoving_Show(main_native);
         } else if (checker.equals("a")) {
-            AppLoving_Google_Fails_facebook_Show();
+            AppLoving_Google_Fails_facebook_Show(main_native);
         }
     }
 
     /*Facebook*/
-    private static void FacebookNativeShow() {
+    private static void FacebookNativeShow(RelativeLayout main_native) {
         if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
 
             if (Ad_Size.equals("medium")) {
 
-                FacebookNativePopulateMediumShow();
+                FacebookNativePopulateMediumShow(main_native);
 
             } else if (Ad_Size.equals("big")) {
 
-                FacebookNativePopulateShow();
+                FacebookNativePopulateShow(main_native);
 
             } else if (Ad_Size.equals("small")) {
 
-                FacebookNativePopulateSmallShow();
+                FacebookNativePopulateSmallShow(main_native);
 
             }
 
         } else {
-            GoogleADSNativeShow("f");
+            GoogleADSNativeShow("f", main_native);
         }
-        AllAdsPreLoadsNative("f");
+        AllAdsPreLoadsNative("f", main_native);
     }
 
-    private static void FacebookNativePopulateMediumShow() {
+    private static void FacebookNativePopulateMediumShow(RelativeLayout main_native) {
 
 
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -374,12 +363,12 @@ public class BigAnimation {
         // Register the Title and CTA button to listen for clicks.
         facebook_native_ads.registerViewForInteraction(adView, nativeAdMedia, nativeAdIcon, clickableViews);
 
-        main_native.removeAllViews();
+//        main_native.removeAllViews();
         main_native.addView(adView);
 
     }
 
-    public static void FacebookNativePopulateShow() {
+    public static void FacebookNativePopulateShow(RelativeLayout main_native) {
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_big_native, main_native, false);
         facebook_native_ads.unregisterView();
@@ -417,87 +406,87 @@ public class BigAnimation {
         // Register the Title and CTA button to listen for clicks.
         facebook_native_ads.registerViewForInteraction(adView, nativeAdMedia, nativeAdIcon, clickableViews);
 
-        main_native.removeAllViews();
+//        main_native.removeAllViews();
         main_native.addView(adView);
 
     }
 
     /*AppLoving*/
-    private static void AppLovingNativeShow() {
+    private static void AppLovingNativeShow(RelativeLayout main_native) {
         if (appLoving_native_ads != null) {
             main_native.removeAllViews();
             main_native.addView(max_nativeAdView);
         } else {
-            GoogleADSNativeShow("a");
+            GoogleADSNativeShow("a", main_native);
         }
-        AllAdsPreLoadsNative("a");
+        AllAdsPreLoadsNative("a", main_native);
     }
 
-    private static void AppLoving_Google_Fails_facebook_Show() {
+    private static void AppLoving_Google_Fails_facebook_Show(RelativeLayout main_native) {
         if (facebook_native_ads != null) {
             if (Ad_Size.equals("medium")) {
 
-                FacebookNativePopulateMediumShow();
+                FacebookNativePopulateMediumShow(main_native);
 
             } else if (Ad_Size.equals("big")) {
 
-                FacebookNativePopulateShow();
+                FacebookNativePopulateShow(main_native);
 
             } else if (Ad_Size.equals("small")) {
 
-                FacebookNativePopulateSmallShow();
+                FacebookNativePopulateSmallShow(main_native);
             }
 
-        }else {
-            QurekaNative();
+        } else {
+            QurekaNative(main_native);
         }
-        AllAdsPreLoadsNative("f");
+        AllAdsPreLoadsNative("f", main_native);
     }
 
     /**
      * Mix Ads Show
      */
     /*Mix Ads Helper*/
-    private static void NativeMixAds() {
+    private static void NativeMixAds(RelativeLayout main_native) {
         if (MyProHelperClass.getmix_ad_native().length() == 0) {
             main_native.removeAllViews();
         } else {
             if (MyProHelperClass.getmix_ad_native().length() == 1) {
-                Mix1AdsNative(MyProHelperClass.getmix_ad_native());  // 1 ads
+                Mix1AdsNative(MyProHelperClass.getmix_ad_native(), main_native);  // 1 ads
             } else if (MyProHelperClass.getmix_ad_native().length() == 2) {
-                Mix2AdsNative(MyProHelperClass.getmix_ad_native());  // 2 ads
+                Mix2AdsNative(MyProHelperClass.getmix_ad_native(), main_native);  // 2 ads
             } else {
-                MixUnlimitedAdsNative(MyProHelperClass.getmix_ad_native()); // Unlimited
+                MixUnlimitedAdsNative(MyProHelperClass.getmix_ad_native(), main_native); // Unlimited
             }
         }
     }
 
-    private static void Mix1AdsNative(String s) {
-        MixAdsShowNative(String.valueOf(s.charAt(0)));
+    private static void Mix1AdsNative(String s, RelativeLayout main_native) {
+        MixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
     }
 
-    private static void Mix2AdsNative(String s) {
+    private static void Mix2AdsNative(String s, RelativeLayout main_native) {
         if (MyProHelperClass.getmix_ad_counter_native() != 5000) {
             mix_ads_native++;
             if (MyProHelperClass.getmix_ad_counter_native() + 1 == mix_ads_native) {
-                MixAdsShowNative(String.valueOf(s.charAt(1)));
+                MixAdsShowNative(String.valueOf(s.charAt(1)), main_native);
                 mix_ads_native = 0;
             } else {
-                MixAdsShowNative(String.valueOf(s.charAt(0)));
+                MixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
             }
         } else {
             if (mix_ads_native == 0) {
                 mix_ads_native = 1;
-                MixAdsShowNative(String.valueOf(s.charAt(0)));
+                MixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
             } else if (mix_ads_native == 1) {
                 mix_ads_native = 0;
-                MixAdsShowNative(String.valueOf(s.charAt(1)));
+                MixAdsShowNative(String.valueOf(s.charAt(1)), main_native);
             }
         }
     }
 
-    private static void MixUnlimitedAdsNative(String s) {
-        MixAdsShowNative(String.valueOf(s.charAt(mix_ads_native)));
+    private static void MixUnlimitedAdsNative(String s, RelativeLayout main_native) {
+        MixAdsShowNative(String.valueOf(s.charAt(mix_ads_native)), main_native);
         if (MyProHelperClass.getmix_ad_native().length() - 1 == mix_ads_native) {
             mix_ads_native = 0;
         } else {
@@ -505,15 +494,15 @@ public class BigAnimation {
         }
     }
 
-    private static void MixAdsShowNative(String value) {
+    private static void MixAdsShowNative(String value, RelativeLayout main_native) {
         if (value.equals("g")) {
-            GoogleADSNativeShow("r");
+            GoogleADSNativeShow("r", main_native);
         } else if (value.equals("f")) {
-            FacebookNativeShow();
+            FacebookNativeShow(main_native);
         } else if (value.equals("a")) {
-            AppLovingNativeShow();
+            AppLovingNativeShow(main_native);
         } else if (value.equals("z")) {
-            QurekaNative();
+            QurekaNative(main_native);
         } else {
             main_native.removeAllViews();
         }
@@ -702,7 +691,7 @@ public class BigAnimation {
     }
 
     /*All Preload*/
-    public static void AllAdsPreLoadsNative(String refresh) {
+    public static void AllAdsPreLoadsNative(String refresh, RelativeLayout main_native) {
         if (refresh.equals("g")) {
             google_native_ads = null;
         } else if (refresh.equals("g1")) {
@@ -777,7 +766,7 @@ public class BigAnimation {
      * Stop pre load
      */
 
-    private static void StopPreAppLovingNative() {
+    private static void StopPreAppLovingNative(RelativeLayout main_native) {
 
         appLoving_native_ads_loader = new MaxNativeAdLoader(MyProHelperClass.getAppLovinNative(), main_context);
         appLoving_native_ads_loader.setNativeAdListener(new MaxNativeAdListener() {
@@ -797,7 +786,7 @@ public class BigAnimation {
             @Override
             public void onNativeAdLoadFailed(final String adUnitId, final MaxError error) {
                 appLoving_native_ads = null;
-                Stop_Preload_apploving_fails_other_show();
+                Stop_Preload_apploving_fails_other_show(main_native);
             }
 
             @Override
@@ -808,17 +797,18 @@ public class BigAnimation {
         appLoving_native_ads_loader.loadAd();
     }
 
-    private static void StopPreFacebookNative() {
+    private static void StopPreFacebookNative(RelativeLayout main_native) {
         facebook_native_ads = new com.facebook.ads.NativeAd(main_context, MyProHelperClass.getFacebookNative());
         NativeAdListener nativeAdListener = new NativeAdListener() {
             @Override
             public void onMediaDownloaded(Ad ad) {
 
             }
+
             @Override
             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                 facebook_native_ads = null;
-                Stop_Preload_facebook_fails_other_show();
+                Stop_Preload_facebook_fails_other_show(main_native);
             }
 
             @Override
@@ -826,15 +816,15 @@ public class BigAnimation {
                 if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
                     if (Ad_Size.equals("medium")) {
 
-                        FacebookNativePopulateMediumShow();
+                        FacebookNativePopulateMediumShow(main_native);
 
                     } else if (Ad_Size.equals("big")) {
 
-                        FacebookNativePopulateShow();
+                        FacebookNativePopulateShow(main_native);
 
                     } else if (Ad_Size.equals("small")) {
 
-                        FacebookNativePopulateSmallShow();
+                        FacebookNativePopulateSmallShow(main_native);
                     }
 
                 }
@@ -853,17 +843,18 @@ public class BigAnimation {
         facebook_native_ads.loadAd(facebook_native_ads.buildLoadAdConfig().withAdListener(nativeAdListener).build());
     }
 
-    private static void StopPreGoogleNative() {
+    private static void StopPreGoogleNative(RelativeLayout main_native) {
         AdLoader.Builder builder = new AdLoader.Builder(main_context, MyProHelperClass.getGoogleNative());
         builder.forNativeAd(nativeAd -> {
             google_native_ads = nativeAd;
             if (google_native_ads != null) {
+
                 if (Ad_Size.equals("small")) {
-                    GoogleNativePopulaterSmallShow(google_native_ads);
+                    GoogleNativePopulaterSmallShow(google_native_ads, main_native);
                 } else if (Ad_Size.equals("medium")) {
-                    GoogleNativePopulaterMediumShow(google_native_ads);
+                    GoogleNativePopulaterMediumShow(google_native_ads, main_native);
                 } else if (Ad_Size.equals("big")) {
-                    GoogleNativePopulaterLargeShow(google_native_ads);
+                    GoogleNativePopulaterLargeShow(google_native_ads, main_native);
                 }
             }
         });
@@ -871,7 +862,7 @@ public class BigAnimation {
         builder.withAdListener(new AdListener() {
             public void onAdFailedToLoad(LoadAdError loadAdError) {
                 super.onAdFailedToLoad(loadAdError);
-                Stop_Preload_google_fails_other_show();
+                Stop_Preload_google_fails_other_show(main_native);
 
             }
 
@@ -881,47 +872,47 @@ public class BigAnimation {
         }).build().loadAd(new AdRequest.Builder().build());
     }
 
-    private static void StopPreLoadNativeMixAds() {
+    private static void StopPreLoadNativeMixAds(RelativeLayout main_native) {
         if (MyProHelperClass.getmix_ad_native().length() == 0) {
             main_native.removeAllViews();
         } else {
             if (MyProHelperClass.getmix_ad_native().length() == 1) {
-                StopPreLoadMix1AdsNative(MyProHelperClass.getmix_ad_native());  // 1 ads
+                StopPreLoadMix1AdsNative(MyProHelperClass.getmix_ad_native(), main_native);  // 1 ads
             } else if (MyProHelperClass.getmix_ad_native().length() == 2) {
-                StopPreLoadMix2AdsNative(MyProHelperClass.getmix_ad_native());  // 2 ads
+                StopPreLoadMix2AdsNative(MyProHelperClass.getmix_ad_native(), main_native);  // 2 ads
             } else {
-                StopPreLoadMixUnlimitedAdsNative(MyProHelperClass.getmix_ad_native()); // Unlimited
+                StopPreLoadMixUnlimitedAdsNative(MyProHelperClass.getmix_ad_native(), main_native); // Unlimited
             }
         }
     }
 
-    private static void StopPreLoadMix1AdsNative(String s) {
-        StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)));
+    private static void StopPreLoadMix1AdsNative(String s, RelativeLayout main_native) {
+        StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
     }
 
 
-    private static void StopPreLoadMix2AdsNative(String s) {
+    private static void StopPreLoadMix2AdsNative(String s, RelativeLayout main_native) {
         if (MyProHelperClass.getmix_ad_counter_native() != 5000) {
             mix_ads_native++;
             if (MyProHelperClass.getmix_ad_counter_native() + 1 == mix_ads_native) {
-                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(1)));
+                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(1)), main_native);
                 mix_ads_native = 0;
             } else {
-                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)));
+                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
             }
         } else {
             if (mix_ads_native == 0) {
                 mix_ads_native = 1;
-                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)));
+                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(0)), main_native);
             } else if (mix_ads_native == 1) {
                 mix_ads_native = 0;
-                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(1)));
+                StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(1)), main_native);
             }
         }
     }
 
-    private static void StopPreLoadMixUnlimitedAdsNative(String s) {
-        StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(mix_ads_native)));
+    private static void StopPreLoadMixUnlimitedAdsNative(String s, RelativeLayout main_native) {
+        StopPreLoadMixAdsShowNative(String.valueOf(s.charAt(mix_ads_native)), main_native);
         if (MyProHelperClass.getmix_ad_native().length() - 1 == mix_ads_native) {
             mix_ads_native = 0;
         } else {
@@ -929,24 +920,24 @@ public class BigAnimation {
         }
     }
 
-    private static void StopPreLoadMixAdsShowNative(String value) {
+    private static void StopPreLoadMixAdsShowNative(String value, RelativeLayout main_native) {
         if (value.equals("g")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreGoogleNative();
+            GoogleSmallNativeLoadDialog(main_native);
+            StopPreGoogleNative(main_native);
         } else if (value.equals("f")) {
-            FacebookNativeLoadDialog();
-            StopPreFacebookNative();
+            FacebookNativeLoadDialog(main_native);
+            StopPreFacebookNative(main_native);
         } else if (value.equals("a")) {
-            GoogleSmallNativeLoadDialog();
-            StopPreAppLovingNative();
+            GoogleSmallNativeLoadDialog(main_native);
+            StopPreAppLovingNative(main_native);
         } else if (value.equals("z")) {
-            QurekaNative();
+            QurekaNative(main_native);
         } else {
             main_native.removeAllViews();
         }
     }
 
-    public static void GoogleSmallNativeLoadDialog() {
+    public static void GoogleSmallNativeLoadDialog(RelativeLayout main_native) {
 
         if (Ad_Size.equals("small")) {
             LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -974,20 +965,12 @@ public class BigAnimation {
             main_native.removeAllViews();
             main_native.addView(load_view);
 
-        } else if (Ad_Size.equals("small")) {
-            LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.load_google_native_banner, main_native, false);
-            ShimmerFrameLayout layouts = load_view.findViewById(R.id.shimmer_view_container);
-            layouts.startShimmer();
-            main_native.removeAllViews();
-            main_native.addView(load_view);
-
         }
 
 
     }
 
-    public static void FacebookNativeLoadDialog() {
+    public static void FacebookNativeLoadDialog(RelativeLayout main_native) {
         if (Ad_Size.equals("small")) {
 
             LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -1018,7 +1001,7 @@ public class BigAnimation {
         }
     }
 
-    private static void GoogleNativePopulaterLargeShow(com.google.android.gms.ads.nativead.NativeAd native_ads) {
+    private static void GoogleNativePopulaterLargeShow(com.google.android.gms.ads.nativead.NativeAd native_ads, RelativeLayout main_native) {
 
         NativeAdView nativeAdView = (NativeAdView) main_context.getLayoutInflater().inflate(R.layout.ad_google_big_native, (ViewGroup) null);
         nativeAdView.setHeadlineView(nativeAdView.findViewById(R.id.ad_headline));
@@ -1070,7 +1053,7 @@ public class BigAnimation {
         main_native.addView(nativeAdView);
     }
 
-    private static void GoogleNativePopulaterMediumShow(com.google.android.gms.ads.nativead.NativeAd nativeAd) {
+    private static void GoogleNativePopulaterMediumShow(com.google.android.gms.ads.nativead.NativeAd nativeAd, RelativeLayout main_native) {
         NativeAdView nativeAdView = (NativeAdView) main_context.getLayoutInflater().inflate(R.layout.ad_google_medium_native, (ViewGroup) null);
         nativeAdView.setMediaView((MediaView) nativeAdView.findViewById(R.id.ad_media));
         ((MediaView) nativeAdView.findViewById(R.id.ad_media)).setImageScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -1116,7 +1099,7 @@ public class BigAnimation {
         main_native.addView(nativeAdView);
     }
 
-    private static void GoogleNativePopulaterSmallShow(com.google.android.gms.ads.nativead.NativeAd nativeAd) {
+    private static void GoogleNativePopulaterSmallShow(com.google.android.gms.ads.nativead.NativeAd nativeAd, RelativeLayout main_native) {
         View layout_ad_view = LayoutInflater.from(main_context).inflate(R.layout.ad_google_native_banner, null);
         com.google.android.gms.ads.nativead.NativeAdView native_ad_view = layout_ad_view.findViewById(R.id.ad_view_small_banner);
         native_ad_view.setHeadlineView(native_ad_view.findViewById(R.id.ad_headline_small_banner));
@@ -1141,7 +1124,7 @@ public class BigAnimation {
     }
 
     //On demand Google fail code
-    private static void Stop_Preload_google_fails_other_show() {
+    private static void Stop_Preload_google_fails_other_show(RelativeLayout main_native) {
 
         if (MyProHelperClass.getFacebookNative() != null && !MyProHelperClass.getFacebookNative().isEmpty()) {
 
@@ -1154,7 +1137,7 @@ public class BigAnimation {
 
                 @Override
                 public void onError(Ad ad, com.facebook.ads.AdError adError) {
-                    Stop_preload_google_fails_facebook_fail_other_show();
+                    Stop_preload_google_fails_facebook_fail_other_show(main_native);
 
                 }
 
@@ -1163,15 +1146,15 @@ public class BigAnimation {
                     if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
                         if (Ad_Size.equals("medium")) {
 
-                            FacebookNativePopulateMediumShow();
+                            FacebookNativePopulateMediumShow(main_native);
 
                         } else if (Ad_Size.equals("big")) {
 
-                            FacebookNativePopulateShow();
+                            FacebookNativePopulateShow(main_native);
 
                         } else if (Ad_Size.equals("small")) {
 
-                            FacebookNativePopulateSmallShow();
+                            FacebookNativePopulateSmallShow(main_native);
                         }
 
                     }
@@ -1191,11 +1174,11 @@ public class BigAnimation {
 
         } else {
 
-            Stop_preload_google_fails_facebook_fail_other_show();
+            Stop_preload_google_fails_facebook_fail_other_show(main_native);
         }
     }
 
-    private static void Stop_preload_google_fails_facebook_fail_other_show() {
+    private static void Stop_preload_google_fails_facebook_fail_other_show(RelativeLayout main_native) {
 
         if (MyProHelperClass.getAppLovinNative() != null && !MyProHelperClass.getAppLovinNative().isEmpty()) {
 
@@ -1217,7 +1200,7 @@ public class BigAnimation {
                 @Override
                 public void onNativeAdLoadFailed(final String adUnitId, final MaxError error) {
                     appLoving_native_ads = null;
-                    QurekaNative();
+                    QurekaNative(main_native);
                 }
 
                 @Override
@@ -1228,28 +1211,26 @@ public class BigAnimation {
             appLoving_native_ads_loader.loadAd();
 
         } else {
-            QurekaNative();
+            QurekaNative(main_native);
         }
 
     }
 
     //On demand Facebook fail code
-    private static void Stop_Preload_facebook_fails_other_show() {
+    private static void Stop_Preload_facebook_fails_other_show(RelativeLayout main_native) {
 
         if (MyProHelperClass.getGoogleNative() != null && !MyProHelperClass.getGoogleNative().isEmpty()) {
 
             AdLoader.Builder builder = new AdLoader.Builder(main_context, MyProHelperClass.getGoogleNative());
-            builder.forNativeAd(new com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener() {
-                public void onNativeAdLoaded(com.google.android.gms.ads.nativead.NativeAd nativeAd) {
-                    google_native_ads = nativeAd;
-                    if (google_native_ads != null) {
-                        if (Ad_Size.equals("small")) {
-                            GoogleNativePopulaterSmallShow(google_native_ads);
-                        } else if (Ad_Size.equals("medium")) {
-                            GoogleNativePopulaterMediumShow(google_native_ads);
-                        } else if (Ad_Size.equals("big")) {
-                            GoogleNativePopulaterLargeShow(google_native_ads);
-                        }
+            builder.forNativeAd(nativeAd -> {
+                google_native_ads = nativeAd;
+                if (google_native_ads != null) {
+                    if (Ad_Size.equals("small")) {
+                        GoogleNativePopulaterSmallShow(google_native_ads, main_native);
+                    } else if (Ad_Size.equals("medium")) {
+                        GoogleNativePopulaterMediumShow(google_native_ads, main_native);
+                    } else if (Ad_Size.equals("big")) {
+                        GoogleNativePopulaterLargeShow(google_native_ads, main_native);
                     }
                 }
             });
@@ -1257,7 +1238,7 @@ public class BigAnimation {
             builder.withAdListener(new AdListener() {
                 public void onAdFailedToLoad(LoadAdError loadAdError) {
                     super.onAdFailedToLoad(loadAdError);
-                    Stop_preload_google_fails_facebook_fail_other_show();
+                    Stop_preload_google_fails_facebook_fail_other_show(main_native);
                 }
 
                 public void onAdClicked() {
@@ -1267,14 +1248,14 @@ public class BigAnimation {
 
         } else {
 
-            Stop_preload_google_fails_facebook_fail_other_show();
+            Stop_preload_google_fails_facebook_fail_other_show(main_native);
 
         }
     }
 
 
     //On demand Applovin fail code
-    private static void Stop_Preload_apploving_fails_other_show() {
+    private static void Stop_Preload_apploving_fails_other_show(RelativeLayout main_native) {
 
         if (MyProHelperClass.getGoogleNative() != null && !MyProHelperClass.getGoogleNative().isEmpty()) {
 
@@ -1284,11 +1265,11 @@ public class BigAnimation {
                     google_native_ads = nativeAd;
                     if (google_native_ads != null) {
                         if (Ad_Size.equals("small")) {
-                            GoogleNativePopulaterSmallShow(google_native_ads);
+                            GoogleNativePopulaterSmallShow(google_native_ads, main_native);
                         } else if (Ad_Size.equals("medium")) {
-                            GoogleNativePopulaterMediumShow(google_native_ads);
+                            GoogleNativePopulaterMediumShow(google_native_ads, main_native);
                         } else if (Ad_Size.equals("big")) {
-                            GoogleNativePopulaterLargeShow(google_native_ads);
+                            GoogleNativePopulaterLargeShow(google_native_ads, main_native);
                         }
                     }
                 }
@@ -1310,7 +1291,7 @@ public class BigAnimation {
                             @Override
                             public void onError(Ad ad, com.facebook.ads.AdError adError) {
                                 facebook_native_ads = null;
-                                QurekaNative();
+                                QurekaNative(main_native);
                             }
 
                             @Override
@@ -1318,15 +1299,15 @@ public class BigAnimation {
                                 if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
                                     if (Ad_Size.equals("medium")) {
 
-                                        FacebookNativePopulateMediumShow();
+                                        FacebookNativePopulateMediumShow(main_native);
 
                                     } else if (Ad_Size.equals("big")) {
 
-                                        FacebookNativePopulateShow();
+                                        FacebookNativePopulateShow(main_native);
 
                                     } else if (Ad_Size.equals("small")) {
 
-                                        FacebookNativePopulateSmallShow();
+                                        FacebookNativePopulateSmallShow(main_native);
                                     }
 
                                 }
@@ -1370,7 +1351,7 @@ public class BigAnimation {
                 @Override
                 public void onError(Ad ad, com.facebook.ads.AdError adError) {
                     facebook_native_ads = null;
-                    QurekaNative();
+                    QurekaNative(main_native);
 
                 }
 
@@ -1379,15 +1360,15 @@ public class BigAnimation {
                     if (facebook_native_ads != null && facebook_native_ads.isAdLoaded()) {
                         if (Ad_Size.equals("medium")) {
 
-                            FacebookNativePopulateMediumShow();
+                            FacebookNativePopulateMediumShow(main_native);
 
                         } else if (Ad_Size.equals("big")) {
 
-                            FacebookNativePopulateShow();
+                            FacebookNativePopulateShow(main_native);
 
                         } else if (Ad_Size.equals("small")) {
 
-                            FacebookNativePopulateSmallShow();
+                            FacebookNativePopulateSmallShow(main_native);
                         }
 
                     }
@@ -1407,18 +1388,17 @@ public class BigAnimation {
 
         } else {
 
-            QurekaNative();
+            QurekaNative(main_native);
 
         }
 
 
     }
-    public static void FacebookNativePopulateSmallShow() {
+
+    public static void FacebookNativePopulateSmallShow(RelativeLayout main_native) {
 
         LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         NativeAdLayout adView = (NativeAdLayout) inflater.inflate(R.layout.ad_fb_small_native, main_native, false);
-
         facebook_native_ads.unregisterView();
 
         // Add the AdOptionsView
@@ -1426,7 +1406,6 @@ public class BigAnimation {
         AdOptionsView adOptionsView = new AdOptionsView(main_context, facebook_native_ads, adView);
         adChoicesContainer.removeAllViews();
         adChoicesContainer.addView(adOptionsView, 0);
-
 
         // Create native UI using the ad metadata.
         com.facebook.ads.MediaView nativeAdIcon = adView.findViewById(R.id.native_ad_icon);
@@ -1451,7 +1430,7 @@ public class BigAnimation {
         // Register the Title and CTA button to listen for clicks.
         facebook_native_ads.registerViewForInteraction(adView, nativeAdIcon, clickableViews);
 
-        main_native.removeAllViews();
+//        main_native.removeAllViews();
         main_native.addView(adView);
 
     }
@@ -1459,30 +1438,39 @@ public class BigAnimation {
     /**
      * App Qureka ADS
      */
-    private static void QurekaNative() {
-        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
+    private static void QurekaNative(RelativeLayout main_native) {
+        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1")) {
 
             if (Ad_Size.equals("small")) {
 
                 int A = MyProHelperClass.getRandomNumber(0, 1);
                 if (A == 0) {
                     LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native, main_native, false);
+                    RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_small_native, main_native, false);
+
                     Glide.with(main_context).load(MyProHelperClass.banner_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.banner_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.q_banner));
-                    load_view.findViewById(R.id.ad_unit_qureka).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+
+                    ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                    ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportSmall(load_view));
+                    load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+
                     main_native.removeAllViews();
                     main_native.addView(load_view);
-                } else {
 
+                } else {
                     LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_small_native_2, main_native, false);
+                    RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_small_native_2, main_native, false);
 
                     Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
                     int getNumber = getRandomNumber(0, native_ads.size() - 1);
                     ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
                     ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
 
-                    load_view.findViewById(R.id.qureka_big_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                    ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                    ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportSmall(load_view));
+                    load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+
+
                     load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
                     main_native.removeAllViews();
                     main_native.addView(load_view);
@@ -1491,7 +1479,7 @@ public class BigAnimation {
             } else if (Ad_Size.equals("medium")) {
 
                 LayoutInflater inflater = (LayoutInflater) main_context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                LinearLayout load_view = (LinearLayout) inflater.inflate(R.layout.qureka_medium_native, main_native, false);
+                RelativeLayout load_view = (RelativeLayout) inflater.inflate(R.layout.qureka_medium_native, main_native, false);
 
                 Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
                 int getNumber = getRandomNumber(0, native_ads.size() - 1);
@@ -1499,8 +1487,10 @@ public class BigAnimation {
                 ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
                 ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
 
+                ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportMedium(load_view));
 
-                load_view.findViewById(R.id.qureka_medium_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
                 load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
                 main_native.removeAllViews();
                 main_native.addView(load_view);
@@ -1513,20 +1503,254 @@ public class BigAnimation {
                 Glide.with(main_context).load(round_ads.get(getRandomNumber(0, round_ads.size() - 1))).into((ImageView) load_view.findViewById(R.id.round));
                 int getNumber = getRandomNumber(0, native_ads.size() - 1);
                 Glide.with(main_context).load(native_ads.get(getNumber).getImage()).into((ImageView) load_view.findViewById(R.id.q_image));
+
                 ((TextView) load_view.findViewById(R.id.txt_title)).setText(native_ads.get(getNumber).getTitle());
                 ((TextView) load_view.findViewById(R.id.txt_dis)).setText(native_ads.get(getNumber).getDis());
 
-                load_view.findViewById(R.id.qureka_big_native).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
+                ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+                ((LinearLayout) load_view.findViewById(R.id.ad_report)).setOnClickListener(v -> AdReportBig(load_view));
+
+                load_view.findViewById(R.id.ad_show).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
                 load_view.findViewById(R.id.q_btn).setOnClickListener(v -> MyProHelperClass.BtnAutolink());
                 main_native.removeAllViews();
                 main_native.addView(load_view);
             }
 
-        }else {
+        } else {
             main_native.removeAllViews();
         }
 
     }
 
+    //Big Ads
+    public static void AdReportBig(RelativeLayout load_view) {
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.VISIBLE);
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+
+        //All Close
+        ((ImageView) load_view.findViewById(R.id.close)).setOnClickListener(v -> {
+            ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        });
+
+        //Main Btn Click
+        ((LinearLayout) load_view.findViewById(R.id.btn_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+        ((LinearLayout) load_view.findViewById(R.id.btn_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+
+        //Back
+        ((ImageView) load_view.findViewById(R.id.back_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+
+        });
+        ((ImageView) load_view.findViewById(R.id.back_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.GONE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+        });
+
+        //Hide Click
+        ((TextView) load_view.findViewById(R.id.hide_p_1)).setOnClickListener(v -> AdsNextBig("Irrelevant", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_2)).setOnClickListener(v -> AdsNextBig("Repetitive", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_3)).setOnClickListener(v -> AdsNextBig("Interrupted me", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_4)).setOnClickListener(v -> AdsNextBig("Unexpected", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_5)).setOnClickListener(v -> AdsNextBig("Too many ads", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_6)).setOnClickListener(v -> AdsNextBig("Offensive", "h", load_view));
+
+        //Report Click
+        ((TextView) load_view.findViewById(R.id.report_p_1)).setOnClickListener(v -> AdsNextBig("Sexually inappropriate", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_2)).setOnClickListener(v -> AdsNextBig("Illegal", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_3)).setOnClickListener(v -> AdsNextBig("Offensive", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_4)).setOnClickListener(v -> AdsNextBig("Spam", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_5)).setOnClickListener(v -> AdsNextBig("Disagreeable", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_6)).setOnClickListener(v -> AdsNextBig("Other", "r", load_view));
+    }
+
+    public static void AdsNextBig(String problem, String type, RelativeLayout load_view) {
+
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.ll_done_problem)).setVisibility(View.VISIBLE);
+
+        if (type.equals("h")) {
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.hide_problem)).setText(problem);
+        } else {
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.report_problem)).setText(problem);
+        }
+
+    }
+
+    //Medium Ads
+    public static void AdReportMedium(RelativeLayout load_view) {
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.VISIBLE);
+        ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+        //All Close
+        ((ImageView) load_view.findViewById(R.id.close)).setOnClickListener(v -> {
+            ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        });
+
+        //Main Btn Click
+        ((LinearLayout) load_view.findViewById(R.id.btn_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+        ((LinearLayout) load_view.findViewById(R.id.btn_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+
+        //Back
+        ((ImageView) load_view.findViewById(R.id.back_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+
+        });
+        ((ImageView) load_view.findViewById(R.id.back_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.GONE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+        });
+
+        //Hide Click
+        ((TextView) load_view.findViewById(R.id.hide_p_1)).setOnClickListener(v -> AdsNextMedium("Irrelevant", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_2)).setOnClickListener(v -> AdsNextMedium("Repetitive", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_3)).setOnClickListener(v -> AdsNextMedium("Interrupted me", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_4)).setOnClickListener(v -> AdsNextMedium("Unexpected", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_5)).setOnClickListener(v -> AdsNextMedium("Too many ads", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_6)).setOnClickListener(v -> AdsNextMedium("Offensive", "h", load_view));
+
+        //Report Click
+        ((TextView) load_view.findViewById(R.id.report_p_1)).setOnClickListener(v -> AdsNextMedium("Sexually inappropriate", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_2)).setOnClickListener(v -> AdsNextMedium("Illegal", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_3)).setOnClickListener(v -> AdsNextMedium("Offensive", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_4)).setOnClickListener(v -> AdsNextMedium("Spam", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_5)).setOnClickListener(v -> AdsNextMedium("Disagreeable", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_6)).setOnClickListener(v -> AdsNextMedium("Other", "r", load_view));
+    }
+
+    public static void AdsNextMedium(String problem, String type, RelativeLayout load_view) {
+
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.ll_done_problem)).setVisibility(View.VISIBLE);
+
+        if (type.equals("h")) {
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.hide_problem)).setText(problem);
+        } else {
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.report_problem)).setText(problem);
+        }
+
+    }
+
+    //Small Ads
+    public static void AdReportSmall(RelativeLayout load_view) {
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.VISIBLE);
+        ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+        //All Close
+        ((ImageView) load_view.findViewById(R.id.close)).setOnClickListener(v -> {
+            ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.VISIBLE);
+            ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        });
+
+        //Main Btn Click
+        ((LinearLayout) load_view.findViewById(R.id.btn_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+        ((LinearLayout) load_view.findViewById(R.id.btn_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.GONE);
+
+        });
+
+        //Back
+        ((ImageView) load_view.findViewById(R.id.back_hide)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+
+        });
+        ((ImageView) load_view.findViewById(R.id.back_report)).setOnClickListener(v -> {
+            ((LinearLayout) load_view.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report)).setVisibility(View.GONE);
+            ((ImageView) load_view.findViewById(R.id.close)).setVisibility(View.VISIBLE);
+
+        });
+
+        //Hide Click
+        ((TextView) load_view.findViewById(R.id.hide_p_1)).setOnClickListener(v -> AdsNextSmall("Irrelevant", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_2)).setOnClickListener(v -> AdsNextSmall("Repetitive", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_3)).setOnClickListener(v -> AdsNextSmall("Interrupted me", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_4)).setOnClickListener(v -> AdsNextSmall("Unexpected", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_5)).setOnClickListener(v -> AdsNextSmall("Too many ads", "h", load_view));
+        ((TextView) load_view.findViewById(R.id.hide_p_6)).setOnClickListener(v -> AdsNextSmall("Offensive", "h", load_view));
+
+        //Report Click
+        ((TextView) load_view.findViewById(R.id.report_p_1)).setOnClickListener(v -> AdsNextSmall("Sexually inappropriate", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_2)).setOnClickListener(v -> AdsNextSmall("Illegal", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_3)).setOnClickListener(v -> AdsNextSmall("Offensive", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_4)).setOnClickListener(v -> AdsNextSmall("Spam", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_5)).setOnClickListener(v -> AdsNextSmall("Disagreeable", "r", load_view));
+        ((TextView) load_view.findViewById(R.id.report_p_6)).setOnClickListener(v -> AdsNextSmall("Other", "r", load_view));
+    }
+
+    public static void AdsNextSmall(String problem, String type, RelativeLayout load_view) {
+
+        ((RelativeLayout) load_view.findViewById(R.id.ad_show)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.problem)).setVisibility(View.GONE);
+        ((RelativeLayout) load_view.findViewById(R.id.ll_done_problem)).setVisibility(View.VISIBLE);
+
+        if (type.equals("h")) {
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.hide_problem)).setText(problem);
+        } else {
+            ((LinearLayout) load_view.findViewById(R.id.ll_report_done)).setVisibility(View.VISIBLE);
+            ((LinearLayout) load_view.findViewById(R.id.ll_hide_done)).setVisibility(View.GONE);
+            ((TextView) load_view.findViewById(R.id.report_problem)).setText(problem);
+        }
+
+    }
 }
 

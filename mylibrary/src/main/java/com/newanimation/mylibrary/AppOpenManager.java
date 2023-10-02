@@ -1,6 +1,7 @@
 package com.newanimation.mylibrary;
 
 import static androidx.lifecycle.Lifecycle.Event.ON_START;
+import static com.newanimation.mylibrary.MyProHelperClass.g_openAds_show;
 
 import android.app.Activity;
 import android.app.Application;
@@ -72,36 +73,39 @@ public class AppOpenManager implements Application.ActivityLifecycleCallbacks, L
     }
 
     public void showAdIfAvailable() {
-        if (!isShowingAd && isAdAvailable()) {
-            FullScreenContentCallback fullScreenContentCallback =
-                    new FullScreenContentCallback() {
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Set the reference to null so isAdAvailable() returns false.
-                            AppOpenManager.this.appOpenAd = null;
-                            isShowingAd = false;
-                            fetchAd();
-                            onAppOpenClose.OnAppOpenClose();
-                        }
+        if (g_openAds_show) {
+            if (!isShowingAd && isAdAvailable()) {
+                FullScreenContentCallback fullScreenContentCallback =
+                        new FullScreenContentCallback() {
+                            @Override
+                            public void onAdDismissedFullScreenContent() {
+                                // Set the reference to null so isAdAvailable() returns false.
+                                AppOpenManager.this.appOpenAd = null;
+                                isShowingAd = false;
+                                fetchAd();
+                                onAppOpenClose.OnAppOpenClose();
+                            }
 
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(AdError adError) {
-                        }
+                            @Override
+                            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                            }
 
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            isShowingAd = true;
-                        }
-                    };
+                            @Override
+                            public void onAdShowedFullScreenContent() {
+                                isShowingAd = true;
+                            }
+                        };
 
-            appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
-            appOpenAd.show(activity);
+                appOpenAd.setFullScreenContentCallback(fullScreenContentCallback);
+                appOpenAd.show(activity);
 
+            } else {
+                fetchAd();
+            }
         } else {
-            fetchAd();
+            MyProHelperClass.g_openAds_show = true;
         }
     }
-
 
     private AdRequest getAdRequest() {
         return new AdRequest.Builder().build();

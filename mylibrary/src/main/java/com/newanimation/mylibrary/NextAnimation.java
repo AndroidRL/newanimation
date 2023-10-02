@@ -1,5 +1,7 @@
 package com.newanimation.mylibrary;
 
+import static com.newanimation.mylibrary.MyProHelperClass.getClose_intent_open_link;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -118,7 +120,6 @@ public class NextAnimation {
         }
 
         /*Mix and Regular ads*/
-        NextIntent();
         if (MyProHelperClass.getmix_ad_on_off().equals("1")) {
             MixAds();
         } else {
@@ -1789,7 +1790,6 @@ public class NextAnimation {
      */
     private static void QurekaInter() {
         if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
-
             MyProHelperClass.stopLoader(dialog);
             qureka_intent = main_intent;
             if (main_intent == null) {
@@ -1823,6 +1823,10 @@ public class NextAnimation {
                 main_context.finish();
             }
         }
+        if (getClose_intent_open_link().equals("1")){
+            MyProHelperClass.g_openAds_show = false;
+            MyProHelperClass.q_openAds_show = false;
+            MyProHelperClass.BtnAutolink();
+        }
     }
-
 }

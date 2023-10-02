@@ -26,7 +26,6 @@
         <meta-data
             android:name="applovin.sdk.verbose_logging"
             android:value="true" />
-
     </application>
 
 </manifest>
