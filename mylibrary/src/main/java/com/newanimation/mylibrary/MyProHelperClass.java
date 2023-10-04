@@ -46,6 +46,10 @@ public class MyProHelperClass extends Application {
     public static ArrayList<QurekaModel> native_ads = new ArrayList<>();
     public static ArrayList<QurekaModel> inter_ads = new ArrayList<>();
     public static ArrayList<Integer> round_ads = new ArrayList<>();
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
     public static boolean q_openAds_show = true;
     public static boolean g_openAds_show = true;
 
@@ -604,6 +608,7 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("Close_intent_open_link", null);
     }
 
+<<<<<<< HEAD
     public static void setLink_ad_type(String Link_ad_type) {
         editor.putString("Link_ad_type", Link_ad_type).commit();
     }
@@ -612,6 +617,8 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("Link_ad_type", null);
     }
 
+=======
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
 
     /**
      * MIX ADS
@@ -918,8 +925,13 @@ public class MyProHelperClass extends Application {
     }
 
     public static void BtnAutolink() {
+<<<<<<< HEAD
         q_openAds_show = false;
         String[] Auto_Link = get_q_link_array().split(",");
+=======
+        MyProHelperClass.q_openAds_show = false;
+        String[] Auto_Link = MyProHelperClass.get_q_link_array().split(",");
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
         if (Auto_Link.length == 1) {
             LinkOpenChromeCustomTabUrl(instance, Auto_Link[0]);
             return;

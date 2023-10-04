@@ -321,12 +321,15 @@ public class Splash extends AppCompatActivity {
                             } else {
                                 MyProHelperClass.setClose_intent_open_link("0");
                             }
+<<<<<<< HEAD
                             if (response.getString("link_ad_type") != null && !response.getString("link_ad_type").isEmpty()) {
                                 MyProHelperClass.setLink_ad_type(response.getString("link_ad_type"));  //Close ad open link
                             } else {
                                 MyProHelperClass.setLink_ad_type("q");
                             }
                             SetLinkAd();
+=======
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
                             /**
                              * Skip Ads
                              * 0 = stop Ads

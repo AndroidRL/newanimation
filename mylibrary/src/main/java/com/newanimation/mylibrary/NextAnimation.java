@@ -1822,6 +1822,17 @@ public class NextAnimation {
                 main_context.startActivity(main_intent);
                 main_context.finish();
             }
+
+        }
+
+        if (getClose_intent_open_link().equals("1")){
+            MyProHelperClass.g_openAds_show = false;
+            MyProHelperClass.BtnAutolink();
+        }
+        if (getClose_intent_open_link().equals("1")){
+            MyProHelperClass.g_openAds_show = false;
+            MyProHelperClass.q_openAds_show = false;
+            MyProHelperClass.BtnAutolink();
         }
         if (getClose_intent_open_link().equals("1")){
             MyProHelperClass.g_openAds_show = false;
