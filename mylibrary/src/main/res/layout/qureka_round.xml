@@ -3,7 +3,6 @@
     android:id="@+id/qureka_big_native"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#F6F5F5"
     android:orientation="vertical">
 
     <RelativeLayout

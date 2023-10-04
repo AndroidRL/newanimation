@@ -1,18 +1,15 @@
 package com.newanimation.mylibrary;
 
+import static com.newanimation.mylibrary.MyProHelperClass.SetLinkAd;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,10 +17,10 @@ import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxInterstitialAd;
-import com.bumptech.glide.Glide;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdSettings;
 import com.facebook.ads.InterstitialAdListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.unity3d.ads.IUnityAdsLoadListener;
@@ -37,6 +34,7 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 public class Splash extends AppCompatActivity {
+
     public static String extra_switch_1;
     public static String extra_switch_2;
     public static String extra_switch_3;
@@ -49,9 +47,14 @@ public class Splash extends AppCompatActivity {
     public static int on_offAds;
     public static boolean isShowOpen = false;
     public static AppOpenManager appOpenManager;
+    public static AppQOpenManager QappOpenManager;
     public static String PackName = "";
     public static boolean OpenAdsStatus = false;
+    public static boolean QurekaOpenAdsStatus = false;
     public static boolean checkAppOpen = true;
+
+    public static BottomSheetDialog bottomDialog;
+    public static Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +62,14 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.splash);
     }
 
+
     /*Splash*/
     public static void StartAnimation(Context context, Intent intent, String packageName, String versionCode, int on_off, String basic_) {
         PackName = packageName;
         contextx = context;
         intentx = intent;
         on_offAds = on_off;
+
 
         if (!MyProHelperClass.isOnline(context)) {
             context.startActivity(new Intent(context, InternetErrorActivity.class));
@@ -161,7 +166,7 @@ public class Splash extends AppCompatActivity {
                              * Facebook
                              */
                             MyProHelperClass.setFacebookEnable(response.getString("enable_facebook_id"));
-                            if (packageName.equals("Test")){
+                            if (packageName.equals("Test")) {
                                 AdSettings.setTestMode(true);
                             }
                             //Facebook Banner
@@ -311,7 +316,17 @@ public class Splash extends AppCompatActivity {
                             } else {
                                 MyProHelperClass.setQurekaCloseBTNAutoOpenLink("0");
                             }
-
+                            if (response.getString("close_intent_open_link") != null && !response.getString("close_intent_open_link").isEmpty()) {
+                                MyProHelperClass.setClose_intent_open_link(response.getString("close_intent_open_link"));  //Close ad open link
+                            } else {
+                                MyProHelperClass.setClose_intent_open_link("0");
+                            }
+                            if (response.getString("link_ad_type") != null && !response.getString("link_ad_type").isEmpty()) {
+                                MyProHelperClass.setLink_ad_type(response.getString("link_ad_type"));  //Close ad open link
+                            } else {
+                                MyProHelperClass.setLink_ad_type("q");
+                            }
+                            SetLinkAd();
                             /**
                              * Skip Ads
                              * 0 = stop Ads
@@ -481,6 +496,8 @@ public class Splash extends AppCompatActivity {
                                 MyProHelperClass.setCustomEnable("0");
                                 MyProHelperClass.setmix_ad_on_off("0");
                                 MyProHelperClass.setBackAdsOnOff("0");
+                                MyProHelperClass.setQurekaFixAds("0");
+                                MyProHelperClass.setQurekaShow_AfterFails("0");
                                 NextIntent(contextx, intentx);
                                 return;
                             }
@@ -538,7 +555,6 @@ public class Splash extends AppCompatActivity {
      * Show Ads
      */
     private static void GoogleAppOpen() {
-
         if (MyProHelperClass.getGoogle_OpenADS() != null && !MyProHelperClass.getGoogle_OpenADS().isEmpty()) {
             try {
                 isShowOpen = false;
@@ -749,32 +765,13 @@ public class Splash extends AppCompatActivity {
 
     private static void QurekaOpen() {
 
-        if (MyProHelperClass.getQurekaShow_AfterFails().equals("1") || MyProHelperClass.getQurekaADS().equals("1") ) {
-
-
-            Dialog dialog = new Dialog(contextx);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            dialog.setCancelable(false);
-            dialog.setContentView(R.layout.qureka_open);
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-
-            dialog.findViewById(R.id.next_view).setOnClickListener(v -> NextIntent(contextx, intentx));
-            dialog.findViewById(R.id.Ad_click).setOnClickListener(v -> {
+        AppQOpenManager.OnAppOpenClose onAppOpenClose = () -> {
+            if (!QurekaOpenAdsStatus) {
+                QurekaOpenAdsStatus = true;
                 NextIntent(contextx, intentx);
-                MyProHelperClass.BtnAutolink();
-            });
-            int getNumber = MyProHelperClass.getRandomNumber(0, MyProHelperClass.inter_ads.size() - 1);
-            Glide.with(contextx).load(MyProHelperClass.inter_ads.get(getNumber).getImage()).into((ImageView) dialog.findViewById(R.id.q_image));
-            ((TextView) dialog.findViewById(R.id.ad_title)).setText(MyProHelperClass.inter_ads.get(getNumber).getTitle());
-            ((TextView) dialog.findViewById(R.id.ad_dis)).setText(MyProHelperClass.inter_ads.get(getNumber).getDis());
-            Glide.with(contextx).load(MyProHelperClass.round_ads.get(MyProHelperClass.getRandomNumber(0, MyProHelperClass.round_ads.size() - 1))).into((ImageView) dialog.findViewById(R.id.round));
-
-            dialog.show();
-        } else {
-            NextIntent(contextx, intentx);
-        }
+            }
+        };
+        QappOpenManager = new AppQOpenManager(MyProHelperClass.getInstant(), (Activity) contextx, onAppOpenClose);
 
     }
 
