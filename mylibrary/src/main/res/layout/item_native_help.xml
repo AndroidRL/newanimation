@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
      android:id="@+id/ad_container"
+=======
+<<<<<<< HEAD
+     android:id="@+id/ad_container"
+=======
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ad_container"
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"/>

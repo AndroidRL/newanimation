@@ -1,5 +1,93 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:2:1-31:12
+	package
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:2:1-31:12
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:5:5-79
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:5:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:6:5-76
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:6:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:7:5-76
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:7:22-73
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:8:22-76
+application
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:11:5-29:19
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:11:18-50
+activity#com.newanimation.mylibrary.InternetErrorActivity
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:13:9-15:40
+	android:exported
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:14:13-50
+activity#com.newanimation.mylibrary.UpdateAppActivity
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:16:9-55
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:16:19-52
+activity#com.newanimation.mylibrary.Splash
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:17:9-44
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:17:19-41
+activity#com.newanimation.mylibrary.QurekaInterActivity
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:18:9-83
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:18:19-80
+meta-data#com.google.android.gms.ads.AD_MANAGER_APP
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:20:9-22:36
+	android:value
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:22:13-33
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:21:13-69
+meta-data#applovin.sdk.key
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:23:9-25:118
+	android:value
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:25:13-115
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:24:13-44
+meta-data#applovin.sdk.verbose_logging
+ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:26:9-28:36
+	android:value
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:28:13-33
+	android:name
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:27:13-56
+uses-sdk
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+		ADDED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+		INJECTED from D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 ADDED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:2:1-32:12
 INJECTED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:2:1-32:12
 INJECTED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:2:1-32:12
@@ -83,3 +171,7 @@ INJECTED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidMani
 		INJECTED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml
 		ADDED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml
 		INJECTED from D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587

@@ -1,5 +1,12 @@
 com.newanimation.mylibrary
 attr gnt_template_type
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+color ad_title_bg
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 color black
 color fix_black
 color fix_white
@@ -28,6 +35,35 @@ dimen gnt_small_cta_button_height
 dimen gnt_text_row_weight
 dimen gnt_text_size_large
 dimen gnt_text_size_small
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+drawable a_banner_1
+drawable a_banner_2
+drawable a_banner_3
+drawable a_inter_1
+drawable a_inter_2
+drawable a_inter_3
+drawable a_native_1
+drawable a_native_2
+drawable a_native_3
+drawable a_round_1
+drawable a_round_2
+drawable a_round_3
+drawable app_btn
+drawable boader
+drawable close
+drawable exit_btn
+drawable gnt_outline_shape
+drawable ic_ad_report
+drawable ic_ad_report_2
+drawable ic_download
+drawable ic_hide
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_report
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 drawable app_btn
 drawable boader
 drawable c_nine
@@ -38,12 +74,30 @@ drawable ic_download
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_playstore
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 drawable ic_right_arrow
 drawable ic_round
 drawable no_internet_bg
 drawable q_banner_1
 drawable q_banner_2
 drawable q_banner_3
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+drawable q_inter_1
+drawable q_inter_2
+drawable q_inter_3
+drawable q_native_1
+drawable q_native_2
+drawable q_native_3
+drawable q_round_1
+drawable q_round_2
+drawable q_round_3
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 drawable q_banner_4
 drawable q_banner_5
 drawable q_banner_6
@@ -71,6 +125,10 @@ drawable q_round_3
 drawable q_round_4
 drawable q_round_5
 drawable q_round_6
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 drawable round_ripple_black_btn
 drawable roundads
 drawable titidu
@@ -84,6 +142,13 @@ id ad_body_small_banner
 id ad_call_to_action
 id ad_call_to_action_small_banner
 id ad_choices_container
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id ad_container
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id ad_dis
 id ad_headline
 id ad_headline_small_banner
@@ -91,16 +156,51 @@ id ad_media
 id ad_notification
 id ad_notification_view_small_banner
 id ad_price
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id ad_report
+id ad_show
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id ad_store
 id ad_title
 id ad_unit
 id ad_unit_qureka
 id ad_view
 id ad_view_small_banner
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id ads
+id back_hide
+id back_report
+id baseliness
+id btn_hide
+id btn_report
+id close
+id close_2
+id fb_native_ad_container
+id full_view
+id header
+id hide_p_1
+id hide_p_2
+id hide_p_3
+id hide_p_4
+id hide_p_5
+id hide_p_6
+id hide_problem
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id baseliness
 id close
 id full_view
 id header
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id iconeview
 id inter_image
 id item_profile_img
@@ -122,6 +222,20 @@ id ll_2_2
 id ll_2_3
 id ll_2_4
 id ll_2_5
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id ll_AD
+id ll_done_problem
+id ll_hide
+id ll_hide_done
+id ll_main
+id ll_one
+id ll_report
+id ll_report_done
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id main_title
 id main_view
 id mina_btn
@@ -134,11 +248,31 @@ id native_ad_social_context
 id native_ad_sponsored_label
 id native_ad_title
 id next_view
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id problem
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id q_banner
 id q_btn
 id q_image
 id qureka_big_native
 id qureka_medium_native
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+id report_p_1
+id report_p_2
+id report_p_3
+id report_p_4
+id report_p_5
+id report_p_6
+id report_problem
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 id round
 id round_1_1
 id round_1_2
@@ -168,17 +302,39 @@ layout ad_fb_small_native
 layout ad_google_big_native
 layout ad_google_medium_native
 layout ad_google_native_banner
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+layout item_native_ad
+layout item_native_help
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 layout load_fb_big_native
 layout load_fb_medium_native
 layout load_google_big_native
 layout load_google_medium_native
 layout load_google_native_banner
 layout progress
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+layout q_dialog
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 layout qureka_big_native
 layout qureka_inter
 layout qureka_inter_2
 layout qureka_medium_native
 layout qureka_open
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+layout qureka_open_2
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 layout qureka_round
 layout qureka_small_native
 layout qureka_small_native_2
@@ -187,11 +343,25 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 string about_update
 string ads_load
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+string advertisement
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 string app_name
 string install_now
 string install_our_new_app_now_and_enjoy
 string internet_message
 string internet_title
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+string sponsored
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 string try_again
 string we_improves_speed_and_performance_etc
 style Base_Theme_AnimationDemo

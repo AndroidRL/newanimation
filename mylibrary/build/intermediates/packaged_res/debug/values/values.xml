@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <color name="ad_title_bg">#797878</color>
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
     <color name="black">#FF000000</color>
     <color name="fix_black">#000000</color>
     <color name="fix_white">#FFFFFF</color>
@@ -30,11 +37,25 @@
     <dimen name="gnt_text_size_small">12sp</dimen>
     <string name="about_update">About Update</string>
     <string name="ads_load">Ad Load...</string>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <string name="advertisement">Advertisement</string>
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
     <string name="app_name">MyLibrary</string>
     <string name="install_now">Install Now</string>
     <string name="install_our_new_app_now_and_enjoy">➺ Install our new app now and enjoy</string>
     <string name="internet_message"><![CDATA[You are not connected to the internet.\nmake sure Wi-Fi is on, Airplane mode is off & mobile data is on and try again.]]></string>
     <string name="internet_title">No Internet Connection</string>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <string name="sponsored">SPONSORED</string>
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
     <string name="try_again">Try Again</string>
     <string name="we_improves_speed_and_performance_etc">➺ We improves speed and performance, etc.</string>
     <style name="Base.Theme.AnimationDemo" parent="Theme.Material3.DayNight.NoActionBar">

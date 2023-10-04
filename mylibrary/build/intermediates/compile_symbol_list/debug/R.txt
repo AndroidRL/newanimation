@@ -1,4 +1,11 @@
 int attr gnt_template_type 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int color ad_title_bg 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int color black 0x0
 int color fix_black 0x0
 int color fix_white 0x0
@@ -27,6 +34,35 @@ int dimen gnt_small_cta_button_height 0x0
 int dimen gnt_text_row_weight 0x0
 int dimen gnt_text_size_large 0x0
 int dimen gnt_text_size_small 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int drawable a_banner_1 0x0
+int drawable a_banner_2 0x0
+int drawable a_banner_3 0x0
+int drawable a_inter_1 0x0
+int drawable a_inter_2 0x0
+int drawable a_inter_3 0x0
+int drawable a_native_1 0x0
+int drawable a_native_2 0x0
+int drawable a_native_3 0x0
+int drawable a_round_1 0x0
+int drawable a_round_2 0x0
+int drawable a_round_3 0x0
+int drawable app_btn 0x0
+int drawable boader 0x0
+int drawable close 0x0
+int drawable exit_btn 0x0
+int drawable gnt_outline_shape 0x0
+int drawable ic_ad_report 0x0
+int drawable ic_ad_report_2 0x0
+int drawable ic_download 0x0
+int drawable ic_hide 0x0
+int drawable ic_launcher_background 0x0
+int drawable ic_launcher_foreground 0x0
+int drawable ic_report 0x0
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int drawable app_btn 0x0
 int drawable boader 0x0
 int drawable c_nine 0x0
@@ -37,12 +73,30 @@ int drawable ic_download 0x0
 int drawable ic_launcher_background 0x0
 int drawable ic_launcher_foreground 0x0
 int drawable ic_playstore 0x0
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int drawable ic_right_arrow 0x0
 int drawable ic_round 0x0
 int drawable no_internet_bg 0x0
 int drawable q_banner_1 0x0
 int drawable q_banner_2 0x0
 int drawable q_banner_3 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int drawable q_inter_1 0x0
+int drawable q_inter_2 0x0
+int drawable q_inter_3 0x0
+int drawable q_native_1 0x0
+int drawable q_native_2 0x0
+int drawable q_native_3 0x0
+int drawable q_round_1 0x0
+int drawable q_round_2 0x0
+int drawable q_round_3 0x0
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int drawable q_banner_4 0x0
 int drawable q_banner_5 0x0
 int drawable q_banner_6 0x0
@@ -70,6 +124,10 @@ int drawable q_round_3 0x0
 int drawable q_round_4 0x0
 int drawable q_round_5 0x0
 int drawable q_round_6 0x0
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int drawable round_ripple_black_btn 0x0
 int drawable roundads 0x0
 int drawable titidu 0x0
@@ -83,6 +141,13 @@ int id ad_body_small_banner 0x0
 int id ad_call_to_action 0x0
 int id ad_call_to_action_small_banner 0x0
 int id ad_choices_container 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id ad_container 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id ad_dis 0x0
 int id ad_headline 0x0
 int id ad_headline_small_banner 0x0
@@ -90,16 +155,51 @@ int id ad_media 0x0
 int id ad_notification 0x0
 int id ad_notification_view_small_banner 0x0
 int id ad_price 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id ad_report 0x0
+int id ad_show 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id ad_store 0x0
 int id ad_title 0x0
 int id ad_unit 0x0
 int id ad_unit_qureka 0x0
 int id ad_view 0x0
 int id ad_view_small_banner 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id ads 0x0
+int id back_hide 0x0
+int id back_report 0x0
+int id baseliness 0x0
+int id btn_hide 0x0
+int id btn_report 0x0
+int id close 0x0
+int id close_2 0x0
+int id fb_native_ad_container 0x0
+int id full_view 0x0
+int id header 0x0
+int id hide_p_1 0x0
+int id hide_p_2 0x0
+int id hide_p_3 0x0
+int id hide_p_4 0x0
+int id hide_p_5 0x0
+int id hide_p_6 0x0
+int id hide_problem 0x0
+=======
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id baseliness 0x0
 int id close 0x0
 int id full_view 0x0
 int id header 0x0
+<<<<<<< HEAD
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id iconeview 0x0
 int id inter_image 0x0
 int id item_profile_img 0x0
@@ -121,6 +221,20 @@ int id ll_2_2 0x0
 int id ll_2_3 0x0
 int id ll_2_4 0x0
 int id ll_2_5 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id ll_AD 0x0
+int id ll_done_problem 0x0
+int id ll_hide 0x0
+int id ll_hide_done 0x0
+int id ll_main 0x0
+int id ll_one 0x0
+int id ll_report 0x0
+int id ll_report_done 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id main_title 0x0
 int id main_view 0x0
 int id mina_btn 0x0
@@ -133,11 +247,31 @@ int id native_ad_social_context 0x0
 int id native_ad_sponsored_label 0x0
 int id native_ad_title 0x0
 int id next_view 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id problem 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id q_banner 0x0
 int id q_btn 0x0
 int id q_image 0x0
 int id qureka_big_native 0x0
 int id qureka_medium_native 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int id report_p_1 0x0
+int id report_p_2 0x0
+int id report_p_3 0x0
+int id report_p_4 0x0
+int id report_p_5 0x0
+int id report_p_6 0x0
+int id report_problem 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int id round 0x0
 int id round_1_1 0x0
 int id round_1_2 0x0
@@ -167,17 +301,39 @@ int layout ad_fb_small_native 0x0
 int layout ad_google_big_native 0x0
 int layout ad_google_medium_native 0x0
 int layout ad_google_native_banner 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int layout item_native_ad 0x0
+int layout item_native_help 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int layout load_fb_big_native 0x0
 int layout load_fb_medium_native 0x0
 int layout load_google_big_native 0x0
 int layout load_google_medium_native 0x0
 int layout load_google_native_banner 0x0
 int layout progress 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int layout q_dialog 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int layout qureka_big_native 0x0
 int layout qureka_inter 0x0
 int layout qureka_inter_2 0x0
 int layout qureka_medium_native 0x0
 int layout qureka_open 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int layout qureka_open_2 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int layout qureka_round 0x0
 int layout qureka_small_native 0x0
 int layout qureka_small_native_2 0x0
@@ -186,11 +342,25 @@ int mipmap ic_launcher 0x0
 int mipmap ic_launcher_round 0x0
 int string about_update 0x0
 int string ads_load 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int string advertisement 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int string app_name 0x0
 int string install_now 0x0
 int string install_our_new_app_now_and_enjoy 0x0
 int string internet_message 0x0
 int string internet_title 0x0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+int string sponsored 0x0
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
+>>>>>>> 8585fe5ec0374bfedcfac71aa1a8f1c813a41587
 int string try_again 0x0
 int string we_improves_speed_and_performance_etc 0x0
 int style Base_Theme_AnimationDemo 0x0

@@ -46,6 +46,16 @@ public class MyProHelperClass extends Application {
     public static ArrayList<QurekaModel> native_ads = new ArrayList<>();
     public static ArrayList<QurekaModel> inter_ads = new ArrayList<>();
     public static ArrayList<Integer> round_ads = new ArrayList<>();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
     public static boolean q_openAds_show = true;
     public static boolean g_openAds_show = true;
 
@@ -604,6 +614,13 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("Close_intent_open_link", null);
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
     public static void setLink_ad_type(String Link_ad_type) {
         editor.putString("Link_ad_type", Link_ad_type).commit();
     }
@@ -612,6 +629,14 @@ public class MyProHelperClass extends Application {
         return sharedPreferences.getString("Link_ad_type", null);
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
 
     /**
      * MIX ADS
@@ -918,8 +943,23 @@ public class MyProHelperClass extends Application {
     }
 
     public static void BtnAutolink() {
+<<<<<<< HEAD
         q_openAds_show = false;
         String[] Auto_Link = get_q_link_array().split(",");
+=======
+<<<<<<< HEAD
+        q_openAds_show = false;
+        String[] Auto_Link = get_q_link_array().split(",");
+=======
+<<<<<<< HEAD
+        q_openAds_show = false;
+        String[] Auto_Link = get_q_link_array().split(",");
+=======
+        MyProHelperClass.q_openAds_show = false;
+        String[] Auto_Link = MyProHelperClass.get_q_link_array().split(",");
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
         if (Auto_Link.length == 1) {
             LinkOpenChromeCustomTabUrl(instance, Auto_Link[0]);
             return;
