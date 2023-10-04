@@ -3,33 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fix_white"
+    android:background="#000"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!--native-->
-    <RelativeLayout
-        android:id="@+id/top_animation"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:layout_height="wrap_content" />
 
-    <!--banner-->
-    <RelativeLayout
-        android:id="@+id/bottom_animation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center" />
+    <!--    &lt;!&ndash;native&ndash;&gt;-->
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/top_animation"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:gravity="center" />-->
+
+    <!--    &lt;!&ndash;banner&ndash;&gt;-->
+    <!--    <RelativeLayout-->
+    <!--        android:id="@+id/bottom_animation"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:gravity="center" />-->
 
 
-    <!--insta-->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:onClick="ADS"
-        android:text="MainActivity" />
+    <!--    &lt;!&ndash;insta&ndash;&gt;-->
+    <!--    <Button-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:onClick="ADS"-->
+    <!--        android:text="MainActivity" />-->
 
 
 </RelativeLayout>

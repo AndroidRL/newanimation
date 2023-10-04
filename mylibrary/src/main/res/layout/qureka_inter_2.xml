@@ -63,13 +63,17 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/lin_as_header"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/header"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -125,6 +129,32 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ad_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:tint="#838282"
+            android:padding="3dp"
+            android:src="@drawable/ic_ad_report_2" />
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="-5dp"
+            android:padding="2dp"
+            android:tint="#838282"
+            android:src="@drawable/ic_ad_report" />
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
     <ImageView
         android:id="@+id/inter_image"
         android:layout_width="match_parent"
@@ -135,5 +165,136 @@
         android:paddingHorizontal="10dp"
         android:scaleType="fitXY"
         android:src="@drawable/q_inter_1" />
+
+
+    <RelativeLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/fix_white">
+
+
+        <LinearLayout
+            android:id="@+id/ll_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_hide"
+                android:tint="#2196F3" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hide Ad"
+                android:textColor="#292929"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hide_p_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#2196F3"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_report"
+                android:tint="#FF9800" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ad reported"
+                android:textColor="#292929"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/report_p_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#FF9800"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/close_2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_round"
+            android:backgroundTint="#2B2A2A"
+            android:elevation="10dp"
+            android:onClick="close"
+            android:padding="2dp"
+            android:src="@drawable/close"
+            app:tint="@color/fix_white" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

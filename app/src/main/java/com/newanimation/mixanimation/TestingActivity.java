@@ -23,12 +23,11 @@ public class TestingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-         NextAnimation.BackAnimation(TestingActivity.this,null);
+        NextAnimation.BackAnimation(TestingActivity.this, null);
     }
 
     public void ADS(View view) {
-        NextAnimation.NextSliderAnimation(this, new Intent(this, MainActivity.class),0);
+        NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class), 0);
     }
-
 
 }
