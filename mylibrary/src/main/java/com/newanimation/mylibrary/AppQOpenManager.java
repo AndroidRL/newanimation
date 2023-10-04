@@ -204,5 +204,10 @@ public class AppQOpenManager implements Application.ActivityLifecycleCallbacks, 
             ((LinearLayout) dialog.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
             ((TextView) dialog.findViewById(R.id.report_p_1)).setText(problem);
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
     }
 }

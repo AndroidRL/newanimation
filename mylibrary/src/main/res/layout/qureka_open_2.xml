@@ -4,9 +4,22 @@
     android:id="@+id/full_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#00000000"
     android:orientation="vertical">
 
+=======
+<<<<<<< HEAD
+    android:background="#96000000"
+    android:orientation="vertical">
+
+
+=======
+    android:background="#00000000"
+    android:orientation="vertical">
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
     <LinearLayout
         android:id="@+id/next_view"
         android:layout_width="280dp"
@@ -44,7 +57,11 @@
             android:layout_gravity="center"
             android:layout_weight="0"
             android:src="@drawable/ic_right_arrow"
+<<<<<<< HEAD
             app:tint="#535353" />
+=======
+            android:tint="#535353" />
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
 
     </LinearLayout>
 
@@ -97,7 +114,11 @@
                     android:gravity="center"
                     android:includeFontPadding="false"
                     android:singleLine="true"
+<<<<<<< HEAD
                     android:text="@string/sponsored"
+=======
+                    android:text="SPONSORED"
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
                     android:textColor="@color/fix_black"
                     android:textSize="10dp" />
 
@@ -134,10 +155,21 @@
             android:id="@+id/ads"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="#E4E3E3"
             android:gravity="center"
             android:padding="2dp"
             android:text="@string/advertisement"
+=======
+<<<<<<< HEAD
+            android:background="#E4E3E3"
+=======
+            android:background="#F6F4F4"
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Advertisement"
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
             android:textColor="#797878"
             android:textSize="12sp" />
 
@@ -152,6 +184,10 @@
             android:background="@drawable/ic_round"
             android:backgroundTint="#2B2A2A"
             android:elevation="10dp"
+<<<<<<< HEAD
+=======
+            android:onClick="close"
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
             android:padding="2dp"
             android:src="@drawable/close"
             android:visibility="visible"
@@ -171,7 +207,11 @@
                 android:layout_height="18dp"
                 android:padding="3dp"
                 android:src="@drawable/ic_ad_report_2"
+<<<<<<< HEAD
                 app:tint="#838282" />
+=======
+                android:tint="#838282" />
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
 
             <ImageView
                 android:layout_width="18dp"
@@ -179,13 +219,24 @@
                 android:layout_marginLeft="-5dp"
                 android:padding="2dp"
                 android:src="@drawable/ic_ad_report"
+<<<<<<< HEAD
                 app:tint="#838282" />
+=======
+                android:tint="#838282" />
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
 
         </LinearLayout>
 
 
     </RelativeLayout>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
     <RelativeLayout
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
@@ -195,6 +246,10 @@
         android:background="@color/fix_white"
         android:visibility="gone">
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
         <LinearLayout
             android:id="@+id/ll_hide"
             android:layout_width="match_parent"
@@ -209,7 +264,11 @@
                 android:layout_height="80dp"
                 android:padding="8dp"
                 android:src="@drawable/ic_hide"
+<<<<<<< HEAD
                 app:tint="#2196F3" />
+=======
+                android:tint="#2196F3" />
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
 
 
             <TextView
@@ -261,7 +320,11 @@
                 android:layout_height="80dp"
                 android:padding="8dp"
                 android:src="@drawable/ic_report"
+<<<<<<< HEAD
                 app:tint="#FF9800" />
+=======
+                android:tint="#FF9800" />
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
 
 
             <TextView

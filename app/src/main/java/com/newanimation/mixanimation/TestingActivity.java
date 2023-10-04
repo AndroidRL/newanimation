@@ -27,7 +27,15 @@ public class TestingActivity extends AppCompatActivity {
     }
 
     public void ADS(View view) {
+<<<<<<< HEAD
         NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class), 0);
+=======
+<<<<<<< HEAD
+        NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class), 0);
+=======
+        NextAnimation.NextSliderAnimation(this, new Intent(this, TestingActivity.class),0);
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
     }
 
 }
