@@ -1,8 +1,23 @@
 package com.newanimation.mylibrary;
 
+<<<<<<< HEAD
 import static com.newanimation.mylibrary.MyProHelperClass.BtnAutolink;
 import static com.newanimation.mylibrary.MyProHelperClass.getQurekaCloseBTNAutoOpenLink;
 
+=======
+<<<<<<< HEAD
+import static com.newanimation.mylibrary.MyProHelperClass.BtnAutolink;
+import static com.newanimation.mylibrary.MyProHelperClass.getQurekaCloseBTNAutoOpenLink;
+
+=======
+<<<<<<< HEAD
+import static com.newanimation.mylibrary.MyProHelperClass.BtnAutolink;
+import static com.newanimation.mylibrary.MyProHelperClass.getQurekaCloseBTNAutoOpenLink;
+
+=======
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -45,14 +60,137 @@ public class QurekaInterActivity extends AppCompatActivity {
         txtSkip.setText("Skip " + MyProHelperClass.getQurekaInterSkipTime());
         getNumber = MyProHelperClass.getRandomNumber(0, MyProHelperClass.inter_ads.size() - 1);
         Glide.with(QurekaInterActivity.this).load(MyProHelperClass.inter_ads.get(getNumber).getImage()).into((ImageView) findViewById(R.id.inter_image));
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
 
         ((ImageView) findViewById(R.id.inter_image)).setOnClickListener(v -> Next());
         ((RelativeLayout) findViewById(R.id.lin_as_header)).setOnClickListener(v -> Next());
         ((LinearLayout) findViewById(R.id.ad_report)).setOnClickListener(v -> AdReport());
 
+<<<<<<< HEAD
         initView();
     }
 
+=======
+<<<<<<< HEAD
+        initView();
+    }
+
+=======
+        initView();
+=======
+        ((ImageView) findViewById(R.id.inter_image)).setOnClickListener(v ->
+                {
+                    if (NextAnimation.qureka_intent == null) {
+                        finish();
+                    } else {
+                        startActivity(NextAnimation.qureka_intent);
+                        finish();
+                    }
+                    MyProHelperClass.BtnAutolink();
+                }
+        );
+        ((RelativeLayout) findViewById(R.id.lin_as_header)).setOnClickListener(v ->
+                {
+                    if (NextAnimation.qureka_intent == null) {
+                        finish();
+                    } else {
+                        startActivity(NextAnimation.qureka_intent);
+                        finish();
+                    }
+                    MyProHelperClass.BtnAutolink();
+                }
+        );
+        ((LinearLayout) findViewById(R.id.ad_report)).setOnClickListener(v ->
+                {
+                    AdReport();
+                }
+        );
+        initView();
+    }
+
+    private void AdReport() {
+
+
+        dialogs = new BottomSheetDialog(this);
+        dialogs.setContentView(R.layout.q_dialog);
+        dialogs.setCancelable(true);
+        dialogs.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        dialogs.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        ((LinearLayout) dialogs.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+
+            //Main Btn Click
+            ((LinearLayout) dialogs.findViewById(R.id.btn_hide)).setOnClickListener(v -> {
+                ((LinearLayout) dialogs.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+                ((LinearLayout) dialogs.findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+
+            });
+            ((LinearLayout) dialogs.findViewById(R.id.btn_report)).setOnClickListener(v -> {
+                ((LinearLayout) dialogs.findViewById(R.id.ll_one)).setVisibility(View.GONE);
+                ((LinearLayout) dialogs.findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            });
+
+        //Back
+        ((ImageView) dialogs.findViewById(R.id.back_hide)).setOnClickListener(v -> {
+            ((LinearLayout) dialogs.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) dialogs.findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+
+        });
+        ((ImageView) dialogs.findViewById(R.id.back_report)).setOnClickListener(v -> {
+            ((LinearLayout) dialogs.findViewById(R.id.ll_one)).setVisibility(View.VISIBLE);
+            ((LinearLayout) dialogs.findViewById(R.id.ll_report)).setVisibility(View.GONE);
+
+        });
+
+        //Hide Click
+        ((TextView) dialogs.findViewById(R.id.hide_p_1)).setOnClickListener(v -> AdsNext("Irrelevant", "h"));
+        ((TextView) dialogs.findViewById(R.id.hide_p_2)).setOnClickListener(v -> AdsNext("Repetitive", "h"));
+        ((TextView) dialogs.findViewById(R.id.hide_p_3)).setOnClickListener(v -> AdsNext("Interrupted me", "h"));
+        ((TextView) dialogs.findViewById(R.id.hide_p_4)).setOnClickListener(v -> AdsNext("Unexpected", "h"));
+        ((TextView) dialogs.findViewById(R.id.hide_p_5)).setOnClickListener(v -> AdsNext("Too many ads", "h"));
+        ((TextView) dialogs.findViewById(R.id.hide_p_6)).setOnClickListener(v -> AdsNext("Offensive", "h"));
+
+        //Report Click
+        ((TextView) dialogs.findViewById(R.id.report_p_1)).setOnClickListener(v -> AdsNext("Sexually inappropriate", "r"));
+        ((TextView) dialogs.findViewById(R.id.report_p_2)).setOnClickListener(v -> AdsNext("Illegal", "r"));
+        ((TextView) dialogs.findViewById(R.id.report_p_3)).setOnClickListener(v -> AdsNext("Offensive", "r"));
+        ((TextView) dialogs.findViewById(R.id.report_p_4)).setOnClickListener(v -> AdsNext("Spam", "r"));
+        ((TextView) dialogs.findViewById(R.id.report_p_5)).setOnClickListener(v -> AdsNext("Disagreeable", "r"));
+        ((TextView) dialogs.findViewById(R.id.report_p_6)).setOnClickListener(v -> AdsNext("Other", "r"));
+
+        dialogs.show();
+
+
+    }
+
+    private void AdsNext(String problem, String type) {
+        dialogs.cancel();
+        ((ImageView) findViewById(R.id.inter_image)).setVisibility(View.GONE);
+        ((RelativeLayout) findViewById(R.id.lin_as_header)).setVisibility(View.GONE);
+        ((RelativeLayout) findViewById(R.id.ll_main)).setVisibility(View.VISIBLE);
+        if (type.equals("h")) {
+            ((LinearLayout) findViewById(R.id.ll_hide)).setVisibility(View.VISIBLE);
+            ((LinearLayout) findViewById(R.id.ll_report)).setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.hide_p_1)).setText(problem);
+        } else {
+            ((LinearLayout) findViewById(R.id.ll_report)).setVisibility(View.VISIBLE);
+            ((LinearLayout) findViewById(R.id.ll_hide)).setVisibility(View.GONE);
+            ((TextView) findViewById(R.id.report_p_1)).setText(problem);
+        }
+        ((ImageView) findViewById(R.id.close_2)).setOnClickListener(v -> {
+            startActivity(NextAnimation.qureka_intent);
+            finish();
+        });
+>>>>>>> c6dd13fe6a3b00cec4ad4abe001a47344709469c
+    }
+
+>>>>>>> 26b16ed09941370bd8bfb049ab1e0c3414fe0e53
+>>>>>>> 13559315ab5c88fea668186f17607a978d75438d
     private void Next() {
         if (NextAnimation.qureka_intent == null) {
             finish();
