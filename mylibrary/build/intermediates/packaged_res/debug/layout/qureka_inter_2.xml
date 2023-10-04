@@ -63,6 +63,7 @@
 
     </RelativeLayout>
 
+<<<<<<< HEAD
     <RelativeLayout
         android:id="@+id/lin_as_header"
         android:layout_width="match_parent"
@@ -74,6 +75,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="66dp"
+=======
+    <LinearLayout
+        android:id="@+id/lin_as_header"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_below="@+id/header"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
         android:orientation="horizontal">
 
         <ImageView
@@ -129,6 +139,7 @@
 
     </LinearLayout>
 
+<<<<<<< HEAD
     <LinearLayout
         android:id="@+id/ad_report"
         android:layout_width="wrap_content"
@@ -155,6 +166,8 @@
 
     </RelativeLayout>
 
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
     <ImageView
         android:id="@+id/inter_image"
         android:layout_width="match_parent"
@@ -166,6 +179,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/q_inter_1" />
 
+<<<<<<< HEAD
 
     <RelativeLayout
         android:id="@+id/ll_main"
@@ -297,4 +311,6 @@
     </RelativeLayout>
 
 
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 </RelativeLayout>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F6F5F5"
@@ -127,7 +130,11 @@
                 android:padding="7dp"
                 android:rotation="180"
                 android:src="@drawable/ic_right_arrow"
+<<<<<<< HEAD
                 app:tint="#AAA9A9" />
+=======
+                android:tint="#AAA9A9" />
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 
             <TextView
                 android:layout_width="wrap_content"
@@ -161,7 +168,11 @@
                 android:layout_height="25dp"
                 android:padding="4dp"
                 android:src="@drawable/ic_hide"
+<<<<<<< HEAD
                 app:tint="#646363" />
+=======
+                android:tint="#646363" />
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 
             <TextView
                 android:layout_width="wrap_content"
@@ -311,7 +322,11 @@
                 android:padding="7dp"
                 android:rotation="180"
                 android:src="@drawable/ic_right_arrow"
+<<<<<<< HEAD
                 app:tint="#AAA9A9" />
+=======
+                android:tint="#AAA9A9" />
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 
             <TextView
                 android:layout_width="wrap_content"
@@ -345,7 +360,11 @@
                 android:layout_height="25dp"
                 android:padding="2dp"
                 android:src="@drawable/ic_hide"
+<<<<<<< HEAD
                 app:tint="#646363" />
+=======
+                android:tint="#646363" />
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 
             <TextView
                 android:layout_width="wrap_content"

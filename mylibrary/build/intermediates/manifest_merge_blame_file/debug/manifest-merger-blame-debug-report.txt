@@ -4,6 +4,7 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="24"
+<<<<<<< HEAD
 6-->D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
 7        android:targetSdkVersion="33" />
 7-->D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml
@@ -61,6 +62,65 @@
 30-->D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:27:13-56
 31            android:value="true" />
 31-->D:\Running Project\ADS Demo\V 1.0.20\mylibrary\src\main\AndroidManifest.xml:28:13-33
+=======
+6-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="33" />
+7-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.INTERNET" />
+9-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:4:5-67
+9-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:4:22-64
+10    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+10-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:5:5-79
+10-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:5:22-76
+11    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+11-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:6:5-76
+11-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:6:22-73
+12    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+12-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:7:5-76
+12-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:7:22-73
+13    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+13-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:8:5-79
+13-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:8:22-76
+14
+15    <application android:name="com.newanimation.mylibrary.MyProHelperClass" >
+15-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:11:5-30:19
+15-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:11:18-50
+16        <activity
+16-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:13:9-15:40
+17            android:name="com.newanimation.mylibrary.InternetErrorActivity"
+17-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:14:13-50
+18            android:exported="false" />
+18-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:15:13-37
+19        <activity android:name="com.newanimation.mylibrary.UpdateAppActivity" />
+19-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:16:9-55
+19-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:16:19-52
+20        <activity android:name="com.newanimation.mylibrary.Splash" />
+20-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:17:9-44
+20-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:17:19-41
+21        <activity android:name="com.newanimation.mylibrary.QurekaInterActivity" />
+21-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:18:9-83
+21-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:18:19-80
+22
+23        <meta-data
+23-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:20:9-22:36
+24            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+24-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:21:13-69
+25            android:value="true" />
+25-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:22:13-33
+26        <meta-data
+26-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:23:9-25:118
+27            android:name="applovin.sdk.key"
+27-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:24:13-44
+28            android:value="VvMHQ8qTbnOUx1SS7gTV2dloZMX_RremcudgIVezo_tO0TSDTLUUkG5malJ63camEvhEOrnyLgkJm2gSniHLr2" />
+28-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:25:13-115
+29        <meta-data
+29-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:26:9-28:36
+30            android:name="applovin.sdk.verbose_logging"
+30-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:27:13-56
+31            android:value="true" />
+31-->D:\Running Project\ADS Demo\V 1.0.9\mylibrary\src\main\AndroidManifest.xml:28:13-33
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 32    </application>
 33
 34</manifest>

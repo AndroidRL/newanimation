@@ -28,10 +28,17 @@
         android:background="@drawable/ic_round"
         android:backgroundTint="#2B2A2A"
         android:elevation="10dp"
+<<<<<<< HEAD
         android:onClick="close"
         android:padding="2dp"
         android:src="@drawable/close"
         android:visibility="gone"
+=======
+        android:visibility="gone"
+        android:onClick="close"
+        android:padding="2dp"
+        android:src="@drawable/close"
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
         app:tint="@color/fix_white" />
 
     <TextView
@@ -66,6 +73,7 @@
         android:textColor="@color/fix_white"
         android:textSize="10sp" />
 
+<<<<<<< HEAD
 
     <RelativeLayout
         android:id="@+id/lin_as_header"
@@ -288,5 +296,70 @@
             app:tint="@color/fix_white" />
 
     </RelativeLayout>
+=======
+    <LinearLayout
+        android:id="@+id/lin_as_header"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/round"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/q_round_2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="SPONSORED"
+                android:textColor="@color/fix_black"
+                android:textSize="10dp" />
+
+            <TextView
+                android:id="@+id/ad_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:text=""
+                android:textColor="@color/fix_black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ad_dis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="Not App Install, Click and play game now.."
+                android:textColor="@color/fix_black"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
 
 </RelativeLayout>

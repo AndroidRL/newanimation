@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
     android:id="@+id/ad_unit_qureka"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#F6F5F5">
 
     <RelativeLayout
+<<<<<<< HEAD
         android:id="@+id/ad_show"
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -32,7 +39,10 @@
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center"
+<<<<<<< HEAD
                 android:layout_marginTop="5dp"
+=======
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
                 android:layout_marginStart="5dp"
                 android:background="@drawable/app_btn"
                 android:backgroundTint="@color/fix_black"
@@ -55,6 +65,7 @@
             android:textColor="@color/fix_white"
             android:textSize="10sp" />
 
+<<<<<<< HEAD
         <LinearLayout
             android:id="@+id/ad_report"
             android:layout_width="wrap_content"
@@ -513,3 +524,8 @@
     </RelativeLayout>
 
 </RelativeLayout>
+=======
+    </RelativeLayout>
+
+</LinearLayout>
+>>>>>>> 20c99338fd55d31bd630ff1ce5fc961e5dc6fda9
