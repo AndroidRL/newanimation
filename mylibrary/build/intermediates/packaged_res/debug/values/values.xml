@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ad_title_bg">#797878</color>
+    <color name="black">#FF000000</color>
+    <color name="fix_black">#000000</color>
+    <color name="fix_white">#FFFFFF</color>
+    <color name="gnt_gray">#808080</color>
+    <color name="gnt_outline">#E0E0E0</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="gnt_ad_indicator_bar_height">30dp</dimen>
+    <dimen name="gnt_ad_indicator_bottom_margin">10dp</dimen>
+    <dimen name="gnt_ad_indicator_height">20dp</dimen>
+    <dimen name="gnt_ad_indicator_text_size">10sp</dimen>
+    <dimen name="gnt_ad_indicator_top_margin">0dp</dimen>
+    <dimen name="gnt_ad_indicator_width">25dp</dimen>
+    <dimen name="gnt_default_margin">10dp</dimen>
+    <item format="float" name="gnt_media_view_weight" type="dimen">1.0</item>
+    <dimen name="gnt_medium_cta_button_height">50dp</dimen>
+    <item format="float" name="gnt_medium_template_bottom_weight" type="dimen">0.4</item>
+    <item format="float" name="gnt_medium_template_top_weight" type="dimen">0.2</item>
+    <dimen name="gnt_no_margin">0dp</dimen>
+    <dimen name="gnt_no_size">0dp</dimen>
+    <dimen name="gnt_small_cta_button_height">30dp</dimen>
+    <item format="float" name="gnt_text_row_weight" type="dimen">0.25</item>
+    <dimen name="gnt_text_size_large">15sp</dimen>
+    <dimen name="gnt_text_size_small">12sp</dimen>
+    <string name="about_update">About Update</string>
+    <string name="ads_load">Ad Load...</string>
+    <string name="advertisement">Advertisement</string>
+    <string name="app_name">MyLibrary</string>
+    <string name="install_now">Install Now</string>
+    <string name="install_our_new_app_now_and_enjoy">➺ Install our new app now and enjoy</string>
+    <string name="internet_message"><![CDATA[You are not connected to the internet.\nmake sure Wi-Fi is on, Airplane mode is off & mobile data is on and try again.]]></string>
+    <string name="internet_title">No Internet Connection</string>
+    <string name="sponsored">SPONSORED</string>
+    <string name="try_again">Try Again</string>
+    <string name="we_improves_speed_and_performance_etc">➺ We improves speed and performance, etc.</string>
+    <style name="Base.Theme.AnimationDemo" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.AnimationDemo" parent="Base.Theme.AnimationDemo"/>
+    <declare-styleable name="TemplateView">
+    <attr format="reference" name="gnt_template_type"/>
+  </declare-styleable>
+</resources>

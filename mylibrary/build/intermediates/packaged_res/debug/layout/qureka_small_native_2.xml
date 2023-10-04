@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/qureka_big_native"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F6F5F5">
+
+    <RelativeLayout
+        android:id="@+id/ad_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/lin_as_header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/round"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/q_round_2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="SPONSORED"
+                        android:textColor="@color/fix_black"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/txt_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="MEGA QUIZ COIN"
+                        android:textColor="@color/fix_black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/txt_dis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:text="Not App Install, Click and play game now.."
+                        android:textColor="@color/fix_black"
+                        android:textSize="12sp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/q_btn"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="@color/fix_black"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="Play"
+                android:textColor="@color/fix_white"
+                android:textSize="13.0sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gnt_outline_shape"
+            android:backgroundTint="@color/fix_black"
+            android:padding="2dp"
+            android:text="Ad"
+            android:textColor="@color/fix_white"
+            android:textSize="10sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ad_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="1dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_ad_report_2"
+                app:tint="#838282" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="-5dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_ad_report"
+                app:tint="#838282" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/problem"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F6F5F5"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/btn_hide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#EBECEC"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_hide" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:includeFontPadding="false"
+                    android:text="Hide Ad"
+                    android:textColor="#535353"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#EBECEC"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_report" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:includeFontPadding="false"
+                    android:text="Report Ad"
+                    android:textColor="#535353"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:id="@+id/ll_hide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/back_hide"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:padding="7dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_right_arrow"
+                    android:tint="#AAA9A9" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
+                    android:orientation="vertical"
+                    android:paddingVertical="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/hide_p_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Irrelevant"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/hide_p_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Repetitive"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+
+                            <TextView
+                                android:id="@+id/hide_p_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Interrupted me"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/hide_p_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Unexpected"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+
+                            <TextView
+                                android:id="@+id/hide_p_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Too many ads"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/hide_p_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Offensive"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/back_report"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:padding="7dp"
+                    android:rotation="180"
+                    android:src="@drawable/ic_right_arrow"
+                    android:tint="#AAA9A9" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center|start"
+                    android:orientation="vertical"
+                    android:paddingVertical="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/report_p_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Sexually inappropriate"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/report_p_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Illegal"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+
+                            <TextView
+                                android:id="@+id/report_p_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Offensive"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/report_p_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Spam"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/report_p_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Disagreeable"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/report_p_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:background="@drawable/app_btn"
+                                android:backgroundTint="#D5F1EDED"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="5dp"
+                                android:text="Other"
+                                android:textColor="#5D5D5D"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="10dp"
+            android:onClick="close"
+            android:padding="2dp"
+            android:src="@drawable/close"
+            android:tint="#AAA9A9"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_done_problem"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#F6F5F5"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_hide_done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hide_problem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#2196F3"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_report_done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/report_problem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#FF9800"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

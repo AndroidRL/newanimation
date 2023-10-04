@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fix_white"
+    tools:context=".QurekaInterActivity">
+
+    <ImageView
+        android:id="@+id/inter_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lin_as_header"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/q_inter_1" />
+
+    <ImageView
+        android:id="@+id/close"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_round"
+        android:backgroundTint="#2B2A2A"
+        android:elevation="10dp"
+        android:onClick="close"
+        android:padding="2dp"
+        android:src="@drawable/close"
+        android:visibility="gone"
+        app:tint="@color/fix_white" />
+
+    <TextView
+        android:id="@+id/txt_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/app_btn"
+        android:backgroundTint="#2B2A2A"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="Skip 4"
+        android:textColor="@color/fix_white"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/gnt_outline_shape"
+        android:backgroundTint="@color/fix_black"
+        android:padding="2dp"
+        android:text="Ad"
+        android:textColor="@color/fix_white"
+        android:textSize="10sp" />
+
+
+    <RelativeLayout
+        android:id="@+id/lin_as_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginVertical="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/round"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/q_round_2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="SPONSORED"
+                    android:textColor="@color/fix_black"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/ad_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/fix_black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/ad_dis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:text="Not App Install, Click and play game now.."
+                    android:textColor="@color/fix_black"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ad_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_ad_report_2"
+                android:tint="#838282" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="-5dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_ad_report"
+                android:tint="#838282" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/fix_white">
+
+
+        <LinearLayout
+            android:id="@+id/ll_hide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_hide"
+                android:tint="#2196F3" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hide Ad"
+                android:textColor="#292929"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hide_p_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#2196F3"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_report"
+                android:tint="#FF9800" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ad reported"
+                android:textColor="#292929"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:text="Thanks, your feedback helps us do better."
+                android:textColor="#4E4E4E"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/report_p_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/app_btn"
+                android:backgroundTint="#FF9800"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:text="Irrelevant"
+                android:textColor="@color/fix_white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/close_2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_round"
+            android:backgroundTint="#2B2A2A"
+            android:elevation="10dp"
+            android:onClick="close"
+            android:padding="2dp"
+            android:src="@drawable/close"
+            app:tint="@color/fix_white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
